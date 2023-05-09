@@ -7,8 +7,6 @@ Since our work is based on the SimpleBaseline. Please refer to the SimpleBaselin
 # Use
 Put the source model *.py to the lib/model folder and set it as the learning model.
 
-# Visualization
-
 
 
 
