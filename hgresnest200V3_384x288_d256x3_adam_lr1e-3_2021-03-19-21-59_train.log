@@ -1,0 +1,1291 @@
+2021-03-19 21:59:49,282 Namespace(cfg='experiments/coco/resnest/hgresnest200V3_384x288_d256x3_adam_lr1e-3.yaml', dataDir='', logDir='', modelDir='', opts=[], prevModelDir='')
+2021-03-19 21:59:49,282 AUTO_RESUME: True
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  COLOR_RGB: False
+  DATASET: coco
+  DATA_FORMAT: jpg
+  FLIP: True
+  HYBRID_JOINTS_TYPE: 
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.0
+  ROOT: data/coco/
+  ROT_FACTOR: 40
+  SCALE_FACTOR: 0.3
+  SELECT_DATA: False
+  TEST_SET: val2017
+  TRAIN_SET: train2017
+DATA_DIR: 
+DEBUG:
+  DEBUG: True
+  SAVE_BATCH_IMAGES_GT: True
+  SAVE_BATCH_IMAGES_PRED: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
+GPUS: (0, 1, 2, 3)
+LOG_DIR: log
+LOSS:
+  TOPK: 8
+  USE_DIFFERENT_JOINTS_WEIGHT: False
+  USE_OHKM: False
+  USE_TARGET_WEIGHT: True
+MODEL:
+  EXTRA:
+    DECONV_WITH_BIAS: False
+    FINAL_CONV_KERNEL: 1
+    NUM_DECONV_FILTERS: [256, 256, 256]
+    NUM_DECONV_KERNELS: [4, 4, 4]
+    NUM_DECONV_LAYERS: 3
+    NUM_LAYERS: 101
+  HEATMAP_SIZE: [72, 96]
+  IMAGE_SIZE: [288, 384]
+  INIT_WEIGHTS: True
+  NAME: pose_hgresnestV3_200
+  NUM_JOINTS: 17
+  PRETRAINED: models/pytorch/imagenet/resnest200-75117900.pth
+  SIGMA: 3
+  TAG_PER_JOINT: True
+  TARGET_TYPE: gaussian
+OUTPUT_DIR: output
+PIN_MEMORY: True
+PRINT_FREQ: 100
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 32
+  BBOX_THRE: 1.0
+  COCO_BBOX_FILE: data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json
+  FLIP_TEST: True
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: 
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  POST_PROCESS: True
+  SHIFT_HEATMAP: True
+  SOFT_NMS: False
+  USE_GT_BBOX: True
+TRAIN:
+  BATCH_SIZE_PER_GPU: 32
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  END_EPOCH: 80
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP: [50, 65]
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPTIMIZER: adam
+  RESUME: False
+  SHUFFLE: True
+  WD: 0.0001
+WORKERS: 24
+2021-03-19 21:59:53,135 V3---HGResNeSt200=> init deconv weights from normal distribution
+2021-03-19 21:59:53,135 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,135 => init 0.bias as 0
+2021-03-19 21:59:53,197 => init 1.weight as 1
+2021-03-19 21:59:53,197 => init 1.bias as 0
+2021-03-19 21:59:53,197 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,197 => init 0.bias as 0
+2021-03-19 21:59:53,205 => init 1.weight as 1
+2021-03-19 21:59:53,206 => init 1.bias as 0
+2021-03-19 21:59:53,206 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,206 => init 0.bias as 0
+2021-03-19 21:59:53,214 => init 1.weight as 1
+2021-03-19 21:59:53,214 => init 1.bias as 0
+2021-03-19 21:59:53,214 => init final conv weights from normal distribution
+2021-03-19 21:59:53,214 => init 2.weight as normal(0, 0.001)
+2021-03-19 21:59:53,214 => init 2.bias as 0
+2021-03-19 21:59:53,214 => init down-conv weights from normal distribution
+2021-03-19 21:59:53,214 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,214 => init 0.bias as 0
+2021-03-19 21:59:53,218 => init 1.weight as 1
+2021-03-19 21:59:53,219 => init 1.bias as 0
+2021-03-19 21:59:53,219 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,219 => init 0.bias as 0
+2021-03-19 21:59:53,228 => init 1.weight as 1
+2021-03-19 21:59:53,228 => init 1.bias as 0
+2021-03-19 21:59:53,228 => init 0.weight as normal(0, 0.001)
+2021-03-19 21:59:53,228 => init 0.bias as 0
+2021-03-19 21:59:53,246 => init 1.weight as 1
+2021-03-19 21:59:53,246 => init 1.bias as 0
+2021-03-19 21:59:53,413 => loading pretrained model models/pytorch/imagenet/resnest200-75117900.pth
+2021-03-19 21:59:56,722 
+Total Parameters: 120,168,337
+----------------------------------------------------------------------------------------------------------------------------------
+Total Multiply Adds (For Convolution and Linear Layers only): 54.209306716918945 GFLOPs
+----------------------------------------------------------------------------------------------------------------------------------
+Number of Layers
+Conv2d : 341 layers   BatchNorm2d : 277 layers   ReLU : 276 layers   MaxPool2d : 1 layers   rSoftMax : 66 layers   SplAtConv2d : 66 layers   AvgPool2d : 7 layers   Bottleneck : 66 layers   ConvTranspose2d : 3 layers   
+2021-03-19 22:00:16,885 => classes: ['__background__', 'person']
+2021-03-19 22:00:16,888 => num_images: 118287
+2021-03-19 22:00:32,901 => load 149813 samples
+2021-03-19 22:00:33,316 => classes: ['__background__', 'person']
+2021-03-19 22:00:33,316 => num_images: 5000
+2021-03-19 22:00:33,957 => load 6352 samples
+2021-03-19 22:02:27,639 Epoch: [0][0/1171]	Time 113.598s (113.598s)	Speed 1.1 samples/s	Data 62.570s (62.570s)	Loss 0.00137 (0.00137)	Accuracy 0.011 (0.011)
+2021-03-19 22:05:58,918 Epoch: [0][100/1171]	Time 1.998s (3.217s)	Speed 64.1 samples/s	Data 0.002s (0.687s)	Loss 0.00121 (0.00157)	Accuracy 0.072 (0.038)
+2021-03-19 22:09:33,809 Epoch: [0][200/1171]	Time 1.911s (2.685s)	Speed 67.0 samples/s	Data 0.005s (0.388s)	Loss 0.00122 (0.00139)	Accuracy 0.109 (0.072)
+2021-03-19 22:12:57,678 Epoch: [0][300/1171]	Time 1.976s (2.471s)	Speed 64.8 samples/s	Data 0.001s (0.287s)	Loss 0.00113 (0.00131)	Accuracy 0.210 (0.102)
+2021-03-19 22:16:21,656 Epoch: [0][400/1171]	Time 1.896s (2.363s)	Speed 67.5 samples/s	Data 0.000s (0.237s)	Loss 0.00103 (0.00125)	Accuracy 0.348 (0.142)
+2021-03-19 22:19:52,893 Epoch: [0][500/1171]	Time 1.923s (2.313s)	Speed 66.6 samples/s	Data 0.001s (0.206s)	Loss 0.00094 (0.00119)	Accuracy 0.424 (0.190)
+2021-03-19 22:23:16,016 Epoch: [0][600/1171]	Time 1.698s (2.266s)	Speed 75.4 samples/s	Data 0.000s (0.185s)	Loss 0.00076 (0.00113)	Accuracy 0.536 (0.237)
+2021-03-19 22:26:38,447 Epoch: [0][700/1171]	Time 1.934s (2.232s)	Speed 66.2 samples/s	Data 0.000s (0.171s)	Loss 0.00076 (0.00108)	Accuracy 0.523 (0.279)
+2021-03-19 22:29:55,898 Epoch: [0][800/1171]	Time 1.449s (2.200s)	Speed 88.3 samples/s	Data 0.001s (0.160s)	Loss 0.00065 (0.00103)	Accuracy 0.652 (0.317)
+2021-03-19 22:33:32,214 Epoch: [0][900/1171]	Time 3.752s (2.196s)	Speed 34.1 samples/s	Data 0.000s (0.157s)	Loss 0.00064 (0.00099)	Accuracy 0.612 (0.349)
+2021-03-19 22:36:51,682 Epoch: [0][1000/1171]	Time 2.105s (2.175s)	Speed 60.8 samples/s	Data 0.000s (0.149s)	Loss 0.00064 (0.00096)	Accuracy 0.601 (0.377)
+2021-03-19 22:40:11,969 Epoch: [0][1100/1171]	Time 1.813s (2.160s)	Speed 70.6 samples/s	Data 0.002s (0.143s)	Loss 0.00054 (0.00093)	Accuracy 0.694 (0.401)
+2021-03-19 22:43:40,340 Test: [0/50]	Time 62.962 (62.962)	Loss 0.0005 (0.0005)	Accuracy 0.697 (0.697)
+2021-03-19 22:45:59,832 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-19 22:46:06,933 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-19 22:46:06,934 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-19 22:46:06,934 | pose_hgr... | 0.458 | 0.753 | 0.463 | 0.427 | 0.507 | 0.502 | 0.774 | 0.519 | 0.463 | 0.558 |
+2021-03-19 22:46:06,954 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-19 22:47:29,412 Epoch: [1][0/1171]	Time 69.347s (69.347s)	Speed 1.8 samples/s	Data 32.984s (32.984s)	Loss 0.00057 (0.00057)	Accuracy 0.662 (0.662)
+2021-03-19 22:50:57,045 Epoch: [1][100/1171]	Time 2.008s (2.742s)	Speed 63.7 samples/s	Data 0.001s (0.396s)	Loss 0.00060 (0.00060)	Accuracy 0.670 (0.664)
+2021-03-19 22:54:32,654 Epoch: [1][200/1171]	Time 1.883s (2.451s)	Speed 68.0 samples/s	Data 0.000s (0.238s)	Loss 0.00054 (0.00059)	Accuracy 0.662 (0.668)
+2021-03-19 22:58:00,482 Epoch: [1][300/1171]	Time 1.837s (2.327s)	Speed 69.7 samples/s	Data 0.000s (0.186s)	Loss 0.00056 (0.00058)	Accuracy 0.697 (0.674)
+2021-03-19 23:01:28,217 Epoch: [1][400/1171]	Time 2.002s (2.265s)	Speed 63.9 samples/s	Data 0.001s (0.160s)	Loss 0.00052 (0.00058)	Accuracy 0.724 (0.677)
+2021-03-19 23:05:03,276 Epoch: [1][500/1171]	Time 2.102s (2.242s)	Speed 60.9 samples/s	Data 0.014s (0.144s)	Loss 0.00051 (0.00057)	Accuracy 0.722 (0.681)
+2021-03-19 23:08:32,528 Epoch: [1][600/1171]	Time 1.909s (2.217s)	Speed 67.0 samples/s	Data 0.001s (0.134s)	Loss 0.00057 (0.00057)	Accuracy 0.675 (0.684)
+2021-03-19 23:12:00,359 Epoch: [1][700/1171]	Time 1.917s (2.197s)	Speed 66.8 samples/s	Data 0.001s (0.126s)	Loss 0.00051 (0.00056)	Accuracy 0.714 (0.687)
+2021-03-19 23:15:23,162 Epoch: [1][800/1171]	Time 1.772s (2.176s)	Speed 72.2 samples/s	Data 0.001s (0.120s)	Loss 0.00053 (0.00056)	Accuracy 0.709 (0.692)
+2021-03-19 23:19:03,134 Epoch: [1][900/1171]	Time 1.740s (2.179s)	Speed 73.5 samples/s	Data 0.001s (0.130s)	Loss 0.00053 (0.00055)	Accuracy 0.695 (0.695)
+2021-03-19 23:22:29,316 Epoch: [1][1000/1171]	Time 1.854s (2.167s)	Speed 69.1 samples/s	Data 0.001s (0.125s)	Loss 0.00048 (0.00055)	Accuracy 0.737 (0.698)
+2021-03-19 23:25:56,995 Epoch: [1][1100/1171]	Time 1.811s (2.159s)	Speed 70.7 samples/s	Data 0.007s (0.121s)	Loss 0.00052 (0.00054)	Accuracy 0.721 (0.701)
+2021-03-19 23:28:59,617 Test: [0/50]	Time 63.455 (63.455)	Loss 0.0004 (0.0004)	Accuracy 0.762 (0.762)
+2021-03-19 23:31:14,540 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-19 23:31:21,674 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-19 23:31:21,676 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-19 23:31:21,676 | pose_hgr... | 0.581 | 0.831 | 0.632 | 0.550 | 0.629 | 0.617 | 0.848 | 0.665 | 0.580 | 0.671 |
+2021-03-19 23:31:21,686 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-19 23:32:41,190 Epoch: [2][0/1171]	Time 66.206s (66.206s)	Speed 1.9 samples/s	Data 41.550s (41.550s)	Loss 0.00048 (0.00048)	Accuracy 0.747 (0.747)
+2021-03-19 23:36:12,411 Epoch: [2][100/1171]	Time 3.914s (2.747s)	Speed 32.7 samples/s	Data 0.001s (0.505s)	Loss 0.00048 (0.00050)	Accuracy 0.721 (0.736)
+2021-03-19 23:39:48,009 Epoch: [2][200/1171]	Time 1.647s (2.453s)	Speed 77.7 samples/s	Data 0.002s (0.289s)	Loss 0.00044 (0.00049)	Accuracy 0.780 (0.739)
+2021-03-19 23:43:16,359 Epoch: [2][300/1171]	Time 2.021s (2.330s)	Speed 63.3 samples/s	Data 0.000s (0.218s)	Loss 0.00047 (0.00049)	Accuracy 0.743 (0.740)
+2021-03-19 23:46:44,625 Epoch: [2][400/1171]	Time 1.924s (2.268s)	Speed 66.5 samples/s	Data 0.003s (0.184s)	Loss 0.00050 (0.00049)	Accuracy 0.741 (0.742)
+2021-03-19 23:50:20,560 Epoch: [2][500/1171]	Time 1.899s (2.247s)	Speed 67.4 samples/s	Data 0.000s (0.164s)	Loss 0.00050 (0.00048)	Accuracy 0.726 (0.743)
+2021-03-19 23:53:49,939 Epoch: [2][600/1171]	Time 1.836s (2.221s)	Speed 69.7 samples/s	Data 0.001s (0.150s)	Loss 0.00049 (0.00048)	Accuracy 0.764 (0.744)
+2021-03-19 23:57:18,277 Epoch: [2][700/1171]	Time 2.094s (2.202s)	Speed 61.1 samples/s	Data 0.001s (0.141s)	Loss 0.00046 (0.00048)	Accuracy 0.771 (0.744)
+2021-03-20 00:00:38,833 Epoch: [2][800/1171]	Time 1.426s (2.177s)	Speed 89.8 samples/s	Data 0.001s (0.133s)	Loss 0.00046 (0.00048)	Accuracy 0.748 (0.746)
+2021-03-20 00:04:21,631 Epoch: [2][900/1171]	Time 1.769s (2.183s)	Speed 72.4 samples/s	Data 0.006s (0.139s)	Loss 0.00047 (0.00048)	Accuracy 0.754 (0.747)
+2021-03-20 00:07:49,024 Epoch: [2][1000/1171]	Time 1.939s (2.172s)	Speed 66.0 samples/s	Data 0.001s (0.133s)	Loss 0.00048 (0.00048)	Accuracy 0.735 (0.748)
+2021-03-20 00:11:15,940 Epoch: [2][1100/1171]	Time 2.044s (2.163s)	Speed 62.6 samples/s	Data 0.000s (0.128s)	Loss 0.00046 (0.00048)	Accuracy 0.760 (0.749)
+2021-03-20 00:14:16,471 Test: [0/50]	Time 63.681 (63.681)	Loss 0.0004 (0.0004)	Accuracy 0.794 (0.794)
+2021-03-20 00:16:30,869 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 00:16:38,049 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 00:16:38,050 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 00:16:38,050 | pose_hgr... | 0.609 | 0.842 | 0.662 | 0.578 | 0.657 | 0.644 | 0.859 | 0.690 | 0.606 | 0.699 |
+2021-03-20 00:16:38,061 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 00:17:56,073 Epoch: [3][0/1171]	Time 64.860s (64.860s)	Speed 2.0 samples/s	Data 53.026s (53.026s)	Loss 0.00046 (0.00046)	Accuracy 0.755 (0.755)
+2021-03-20 00:21:27,182 Epoch: [3][100/1171]	Time 1.974s (2.732s)	Speed 64.8 samples/s	Data 0.000s (0.619s)	Loss 0.00041 (0.00046)	Accuracy 0.788 (0.759)
+2021-03-20 00:25:04,495 Epoch: [3][200/1171]	Time 1.835s (2.454s)	Speed 69.7 samples/s	Data 0.001s (0.351s)	Loss 0.00043 (0.00045)	Accuracy 0.792 (0.762)
+2021-03-20 00:28:33,078 Epoch: [3][300/1171]	Time 1.988s (2.332s)	Speed 64.4 samples/s	Data 0.001s (0.261s)	Loss 0.00045 (0.00045)	Accuracy 0.744 (0.766)
+2021-03-20 00:32:01,439 Epoch: [3][400/1171]	Time 1.929s (2.270s)	Speed 66.4 samples/s	Data 0.001s (0.215s)	Loss 0.00044 (0.00045)	Accuracy 0.777 (0.766)
+2021-03-20 00:35:37,610 Epoch: [3][500/1171]	Time 2.100s (2.248s)	Speed 61.0 samples/s	Data 0.001s (0.189s)	Loss 0.00046 (0.00045)	Accuracy 0.767 (0.768)
+2021-03-20 00:39:05,505 Epoch: [3][600/1171]	Time 1.706s (2.220s)	Speed 75.0 samples/s	Data 0.001s (0.171s)	Loss 0.00043 (0.00044)	Accuracy 0.795 (0.769)
+2021-03-20 00:42:33,960 Epoch: [3][700/1171]	Time 1.521s (2.201s)	Speed 84.2 samples/s	Data 0.000s (0.158s)	Loss 0.00045 (0.00044)	Accuracy 0.762 (0.770)
+2021-03-20 00:45:57,209 Epoch: [3][800/1171]	Time 1.348s (2.180s)	Speed 94.9 samples/s	Data 0.001s (0.149s)	Loss 0.00040 (0.00044)	Accuracy 0.803 (0.772)
+2021-03-20 00:49:37,616 Epoch: [3][900/1171]	Time 1.879s (2.182s)	Speed 68.1 samples/s	Data 0.001s (0.150s)	Loss 0.00046 (0.00044)	Accuracy 0.752 (0.773)
+2021-03-20 00:53:06,048 Epoch: [3][1000/1171]	Time 1.798s (2.173s)	Speed 71.2 samples/s	Data 0.001s (0.143s)	Loss 0.00042 (0.00044)	Accuracy 0.777 (0.774)
+2021-03-20 00:56:33,130 Epoch: [3][1100/1171]	Time 2.158s (2.163s)	Speed 59.3 samples/s	Data 0.001s (0.137s)	Loss 0.00040 (0.00044)	Accuracy 0.802 (0.775)
+2021-03-20 00:59:32,860 Test: [0/50]	Time 62.587 (62.587)	Loss 0.0004 (0.0004)	Accuracy 0.820 (0.820)
+2021-03-20 01:01:46,325 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 01:01:54,695 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 01:01:54,697 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 01:01:54,697 | pose_hgr... | 0.647 | 0.873 | 0.709 | 0.618 | 0.694 | 0.681 | 0.881 | 0.737 | 0.646 | 0.734 |
+2021-03-20 01:01:54,705 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 01:02:58,151 Epoch: [4][0/1171]	Time 50.409s (50.409s)	Speed 2.5 samples/s	Data 33.123s (33.123s)	Loss 0.00041 (0.00041)	Accuracy 0.795 (0.795)
+2021-03-20 01:06:41,440 Epoch: [4][100/1171]	Time 1.945s (2.710s)	Speed 65.8 samples/s	Data 0.002s (0.553s)	Loss 0.00043 (0.00043)	Accuracy 0.781 (0.784)
+2021-03-20 01:10:16,971 Epoch: [4][200/1171]	Time 1.848s (2.434s)	Speed 69.3 samples/s	Data 0.001s (0.317s)	Loss 0.00042 (0.00043)	Accuracy 0.807 (0.786)
+2021-03-20 01:13:42,547 Epoch: [4][300/1171]	Time 2.196s (2.308s)	Speed 58.3 samples/s	Data 0.001s (0.237s)	Loss 0.00042 (0.00042)	Accuracy 0.786 (0.787)
+2021-03-20 01:17:09,997 Epoch: [4][400/1171]	Time 1.725s (2.250s)	Speed 74.2 samples/s	Data 0.000s (0.197s)	Loss 0.00044 (0.00042)	Accuracy 0.788 (0.787)
+2021-03-20 01:20:44,760 Epoch: [4][500/1171]	Time 1.885s (2.230s)	Speed 67.9 samples/s	Data 0.001s (0.174s)	Loss 0.00041 (0.00042)	Accuracy 0.781 (0.788)
+2021-03-20 01:24:12,860 Epoch: [4][600/1171]	Time 1.934s (2.205s)	Speed 66.2 samples/s	Data 0.001s (0.159s)	Loss 0.00042 (0.00042)	Accuracy 0.775 (0.788)
+2021-03-20 01:27:40,497 Epoch: [4][700/1171]	Time 2.070s (2.187s)	Speed 61.8 samples/s	Data 0.000s (0.148s)	Loss 0.00039 (0.00042)	Accuracy 0.801 (0.789)
+2021-03-20 01:31:04,906 Epoch: [4][800/1171]	Time 1.360s (2.169s)	Speed 94.1 samples/s	Data 0.001s (0.140s)	Loss 0.00042 (0.00042)	Accuracy 0.794 (0.789)
+2021-03-20 01:34:43,998 Epoch: [4][900/1171]	Time 1.971s (2.171s)	Speed 65.0 samples/s	Data 0.001s (0.139s)	Loss 0.00037 (0.00042)	Accuracy 0.793 (0.790)
+2021-03-20 01:38:11,748 Epoch: [4][1000/1171]	Time 2.100s (2.162s)	Speed 60.9 samples/s	Data 0.000s (0.133s)	Loss 0.00039 (0.00042)	Accuracy 0.790 (0.790)
+2021-03-20 01:41:40,304 Epoch: [4][1100/1171]	Time 1.949s (2.155s)	Speed 65.7 samples/s	Data 0.000s (0.128s)	Loss 0.00035 (0.00041)	Accuracy 0.835 (0.790)
+2021-03-20 01:44:39,349 Test: [0/50]	Time 63.297 (63.297)	Loss 0.0004 (0.0004)	Accuracy 0.825 (0.825)
+2021-03-20 01:46:53,592 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 01:47:00,675 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 01:47:00,677 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 01:47:00,677 | pose_hgr... | 0.664 | 0.875 | 0.731 | 0.633 | 0.715 | 0.694 | 0.889 | 0.753 | 0.656 | 0.751 |
+2021-03-20 01:47:00,686 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 01:48:04,559 Epoch: [5][0/1171]	Time 50.696s (50.696s)	Speed 2.5 samples/s	Data 32.552s (32.552s)	Loss 0.00037 (0.00037)	Accuracy 0.832 (0.832)
+2021-03-20 01:51:48,656 Epoch: [5][100/1171]	Time 1.944s (2.721s)	Speed 65.9 samples/s	Data 0.020s (0.555s)	Loss 0.00040 (0.00040)	Accuracy 0.799 (0.798)
+2021-03-20 01:55:25,057 Epoch: [5][200/1171]	Time 1.989s (2.444s)	Speed 64.3 samples/s	Data 0.006s (0.318s)	Loss 0.00042 (0.00040)	Accuracy 0.792 (0.800)
+2021-03-20 01:58:53,132 Epoch: [5][300/1171]	Time 1.995s (2.323s)	Speed 64.2 samples/s	Data 0.000s (0.240s)	Loss 0.00039 (0.00040)	Accuracy 0.791 (0.799)
+2021-03-20 02:02:21,047 Epoch: [5][400/1171]	Time 2.166s (2.262s)	Speed 59.1 samples/s	Data 0.000s (0.200s)	Loss 0.00036 (0.00040)	Accuracy 0.806 (0.799)
+2021-03-20 02:05:57,524 Epoch: [5][500/1171]	Time 2.812s (2.243s)	Speed 45.5 samples/s	Data 0.002s (0.176s)	Loss 0.00040 (0.00040)	Accuracy 0.786 (0.800)
+2021-03-20 02:09:25,445 Epoch: [5][600/1171]	Time 1.937s (2.216s)	Speed 66.1 samples/s	Data 0.001s (0.159s)	Loss 0.00039 (0.00040)	Accuracy 0.834 (0.801)
+2021-03-20 02:12:55,566 Epoch: [5][700/1171]	Time 1.785s (2.199s)	Speed 71.7 samples/s	Data 0.001s (0.148s)	Loss 0.00036 (0.00040)	Accuracy 0.815 (0.800)
+2021-03-20 02:16:21,084 Epoch: [5][800/1171]	Time 1.281s (2.181s)	Speed 99.9 samples/s	Data 0.001s (0.139s)	Loss 0.00037 (0.00040)	Accuracy 0.837 (0.801)
+2021-03-20 02:20:01,398 Epoch: [5][900/1171]	Time 2.129s (2.184s)	Speed 60.1 samples/s	Data 0.001s (0.138s)	Loss 0.00041 (0.00040)	Accuracy 0.798 (0.801)
+2021-03-20 02:23:27,612 Epoch: [5][1000/1171]	Time 1.754s (2.172s)	Speed 73.0 samples/s	Data 0.000s (0.132s)	Loss 0.00038 (0.00040)	Accuracy 0.803 (0.801)
+2021-03-20 02:26:56,244 Epoch: [5][1100/1171]	Time 1.988s (2.164s)	Speed 64.4 samples/s	Data 0.001s (0.127s)	Loss 0.00037 (0.00040)	Accuracy 0.802 (0.802)
+2021-03-20 02:29:54,070 Test: [0/50]	Time 62.457 (62.457)	Loss 0.0004 (0.0004)	Accuracy 0.824 (0.824)
+2021-03-20 02:32:09,417 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 02:32:16,496 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 02:32:16,497 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 02:32:16,497 | pose_hgr... | 0.675 | 0.885 | 0.741 | 0.643 | 0.722 | 0.705 | 0.897 | 0.764 | 0.671 | 0.757 |
+2021-03-20 02:32:16,506 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 02:33:34,865 Epoch: [6][0/1171]	Time 65.311s (65.311s)	Speed 2.0 samples/s	Data 54.968s (54.968s)	Loss 0.00039 (0.00039)	Accuracy 0.802 (0.802)
+2021-03-20 02:37:05,138 Epoch: [6][100/1171]	Time 1.803s (2.729s)	Speed 71.0 samples/s	Data 0.001s (0.640s)	Loss 0.00036 (0.00039)	Accuracy 0.811 (0.808)
+2021-03-20 02:40:42,964 Epoch: [6][200/1171]	Time 1.474s (2.455s)	Speed 86.8 samples/s	Data 0.001s (0.362s)	Loss 0.00039 (0.00039)	Accuracy 0.819 (0.809)
+2021-03-20 02:44:10,425 Epoch: [6][300/1171]	Time 2.041s (2.328s)	Speed 62.7 samples/s	Data 0.000s (0.267s)	Loss 0.00037 (0.00039)	Accuracy 0.802 (0.808)
+2021-03-20 02:47:38,282 Epoch: [6][400/1171]	Time 1.863s (2.266s)	Speed 68.7 samples/s	Data 0.001s (0.220s)	Loss 0.00041 (0.00039)	Accuracy 0.786 (0.808)
+2021-03-20 02:51:07,480 Epoch: [6][500/1171]	Time 7.257s (2.231s)	Speed 17.6 samples/s	Data 0.001s (0.192s)	Loss 0.00037 (0.00039)	Accuracy 0.824 (0.809)
+2021-03-20 02:54:38,711 Epoch: [6][600/1171]	Time 2.068s (2.212s)	Speed 61.9 samples/s	Data 0.001s (0.179s)	Loss 0.00039 (0.00039)	Accuracy 0.831 (0.809)
+2021-03-20 02:58:05,934 Epoch: [6][700/1171]	Time 2.067s (2.192s)	Speed 61.9 samples/s	Data 0.001s (0.165s)	Loss 0.00036 (0.00039)	Accuracy 0.818 (0.810)
+2021-03-20 03:01:32,728 Epoch: [6][800/1171]	Time 1.732s (2.176s)	Speed 73.9 samples/s	Data 0.001s (0.155s)	Loss 0.00033 (0.00039)	Accuracy 0.854 (0.810)
+2021-03-20 03:05:10,472 Epoch: [6][900/1171]	Time 1.882s (2.176s)	Speed 68.0 samples/s	Data 0.012s (0.150s)	Loss 0.00036 (0.00039)	Accuracy 0.825 (0.810)
+2021-03-20 03:08:37,781 Epoch: [6][1000/1171]	Time 1.873s (2.166s)	Speed 68.3 samples/s	Data 0.001s (0.143s)	Loss 0.00035 (0.00039)	Accuracy 0.854 (0.810)
+2021-03-20 03:12:06,486 Epoch: [6][1100/1171]	Time 1.515s (2.159s)	Speed 84.5 samples/s	Data 0.001s (0.137s)	Loss 0.00038 (0.00039)	Accuracy 0.833 (0.810)
+2021-03-20 03:15:05,170 Test: [0/50]	Time 63.175 (63.175)	Loss 0.0003 (0.0003)	Accuracy 0.831 (0.831)
+2021-03-20 03:17:19,737 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 03:17:26,904 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 03:17:26,905 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 03:17:26,905 | pose_hgr... | 0.683 | 0.884 | 0.750 | 0.651 | 0.733 | 0.715 | 0.898 | 0.774 | 0.679 | 0.769 |
+2021-03-20 03:17:26,914 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 03:18:32,366 Epoch: [7][0/1171]	Time 52.419s (52.419s)	Speed 2.4 samples/s	Data 34.445s (34.445s)	Loss 0.00036 (0.00036)	Accuracy 0.825 (0.825)
+2021-03-20 03:22:15,851 Epoch: [7][100/1171]	Time 1.864s (2.732s)	Speed 68.7 samples/s	Data 0.001s (0.549s)	Loss 0.00036 (0.00037)	Accuracy 0.835 (0.818)
+2021-03-20 03:25:51,466 Epoch: [7][200/1171]	Time 2.046s (2.445s)	Speed 62.6 samples/s	Data 0.001s (0.317s)	Loss 0.00037 (0.00038)	Accuracy 0.807 (0.815)
+2021-03-20 03:29:19,311 Epoch: [7][300/1171]	Time 1.865s (2.323s)	Speed 68.6 samples/s	Data 0.006s (0.238s)	Loss 0.00039 (0.00038)	Accuracy 0.826 (0.814)
+2021-03-20 03:32:47,283 Epoch: [7][400/1171]	Time 1.800s (2.263s)	Speed 71.1 samples/s	Data 0.000s (0.199s)	Loss 0.00036 (0.00038)	Accuracy 0.823 (0.813)
+2021-03-20 03:36:08,479 Epoch: [7][500/1171]	Time 1.647s (2.213s)	Speed 77.7 samples/s	Data 0.001s (0.174s)	Loss 0.00039 (0.00038)	Accuracy 0.825 (0.813)
+2021-03-20 03:39:48,983 Epoch: [7][600/1171]	Time 2.349s (2.211s)	Speed 54.5 samples/s	Data 0.001s (0.181s)	Loss 0.00035 (0.00038)	Accuracy 0.824 (0.814)
+2021-03-20 03:43:14,998 Epoch: [7][700/1171]	Time 3.550s (2.190s)	Speed 36.1 samples/s	Data 0.001s (0.166s)	Loss 0.00035 (0.00038)	Accuracy 0.852 (0.815)
+2021-03-20 03:46:37,930 Epoch: [7][800/1171]	Time 1.525s (2.170s)	Speed 83.9 samples/s	Data 0.001s (0.154s)	Loss 0.00037 (0.00038)	Accuracy 0.827 (0.816)
+2021-03-20 03:50:03,241 Epoch: [7][900/1171]	Time 1.777s (2.157s)	Speed 72.0 samples/s	Data 0.002s (0.145s)	Loss 0.00035 (0.00038)	Accuracy 0.842 (0.817)
+2021-03-20 03:53:27,027 Epoch: [7][1000/1171]	Time 1.780s (2.145s)	Speed 71.9 samples/s	Data 0.000s (0.139s)	Loss 0.00035 (0.00038)	Accuracy 0.839 (0.817)
+2021-03-20 03:56:49,967 Epoch: [7][1100/1171]	Time 1.887s (2.134s)	Speed 67.8 samples/s	Data 0.006s (0.133s)	Loss 0.00037 (0.00038)	Accuracy 0.810 (0.817)
+2021-03-20 03:59:46,915 Test: [0/50]	Time 63.111 (63.111)	Loss 0.0003 (0.0003)	Accuracy 0.854 (0.854)
+2021-03-20 04:02:00,180 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 04:02:07,285 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 04:02:07,286 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 04:02:07,286 | pose_hgr... | 0.696 | 0.895 | 0.763 | 0.663 | 0.749 | 0.726 | 0.907 | 0.782 | 0.688 | 0.782 |
+2021-03-20 04:02:07,294 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 04:03:25,749 Epoch: [8][0/1171]	Time 65.224s (65.224s)	Speed 2.0 samples/s	Data 58.428s (58.428s)	Loss 0.00034 (0.00034)	Accuracy 0.846 (0.846)
+2021-03-20 04:06:52,919 Epoch: [8][100/1171]	Time 1.828s (2.697s)	Speed 70.0 samples/s	Data 0.001s (0.664s)	Loss 0.00036 (0.00037)	Accuracy 0.815 (0.826)
+2021-03-20 04:10:19,138 Epoch: [8][200/1171]	Time 1.914s (2.381s)	Speed 66.9 samples/s	Data 0.001s (0.374s)	Loss 0.00036 (0.00037)	Accuracy 0.840 (0.824)
+2021-03-20 04:13:44,855 Epoch: [8][300/1171]	Time 1.882s (2.274s)	Speed 68.0 samples/s	Data 0.001s (0.276s)	Loss 0.00037 (0.00037)	Accuracy 0.807 (0.823)
+2021-03-20 04:17:10,021 Epoch: [8][400/1171]	Time 2.023s (2.218s)	Speed 63.3 samples/s	Data 0.001s (0.227s)	Loss 0.00036 (0.00037)	Accuracy 0.811 (0.823)
+2021-03-20 04:20:34,465 Epoch: [8][500/1171]	Time 1.709s (2.184s)	Speed 74.9 samples/s	Data 0.001s (0.197s)	Loss 0.00035 (0.00037)	Accuracy 0.810 (0.823)
+2021-03-20 04:23:58,567 Epoch: [8][600/1171]	Time 1.550s (2.160s)	Speed 82.6 samples/s	Data 0.000s (0.178s)	Loss 0.00039 (0.00037)	Accuracy 0.801 (0.824)
+2021-03-20 04:27:22,875 Epoch: [8][700/1171]	Time 1.743s (2.143s)	Speed 73.4 samples/s	Data 0.001s (0.164s)	Loss 0.00040 (0.00037)	Accuracy 0.811 (0.823)
+2021-03-20 04:30:47,208 Epoch: [8][800/1171]	Time 1.479s (2.131s)	Speed 86.5 samples/s	Data 0.001s (0.153s)	Loss 0.00034 (0.00037)	Accuracy 0.851 (0.824)
+2021-03-20 04:34:10,890 Epoch: [8][900/1171]	Time 1.417s (2.120s)	Speed 90.3 samples/s	Data 0.001s (0.144s)	Loss 0.00039 (0.00037)	Accuracy 0.809 (0.824)
+2021-03-20 04:37:35,350 Epoch: [8][1000/1171]	Time 3.578s (2.113s)	Speed 35.8 samples/s	Data 0.001s (0.137s)	Loss 0.00036 (0.00037)	Accuracy 0.828 (0.823)
+2021-03-20 04:40:57,732 Epoch: [8][1100/1171]	Time 2.111s (2.105s)	Speed 60.6 samples/s	Data 0.001s (0.131s)	Loss 0.00038 (0.00037)	Accuracy 0.831 (0.824)
+2021-03-20 04:43:55,061 Test: [0/50]	Time 62.730 (62.730)	Loss 0.0003 (0.0003)	Accuracy 0.845 (0.845)
+2021-03-20 04:46:08,520 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 04:46:15,557 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 04:46:15,558 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 04:46:15,558 | pose_hgr... | 0.702 | 0.895 | 0.771 | 0.673 | 0.748 | 0.733 | 0.909 | 0.792 | 0.699 | 0.784 |
+2021-03-20 04:46:15,567 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 04:47:21,030 Epoch: [9][0/1171]	Time 51.380s (51.380s)	Speed 2.5 samples/s	Data 33.950s (33.950s)	Loss 0.00037 (0.00037)	Accuracy 0.824 (0.824)
+2021-03-20 04:50:59,177 Epoch: [9][100/1171]	Time 1.901s (2.669s)	Speed 67.3 samples/s	Data 0.001s (0.547s)	Loss 0.00036 (0.00036)	Accuracy 0.835 (0.830)
+2021-03-20 04:54:22,829 Epoch: [9][200/1171]	Time 1.881s (2.354s)	Speed 68.0 samples/s	Data 0.001s (0.314s)	Loss 0.00041 (0.00036)	Accuracy 0.827 (0.829)
+2021-03-20 04:57:46,259 Epoch: [9][300/1171]	Time 1.433s (2.248s)	Speed 89.3 samples/s	Data 0.001s (0.237s)	Loss 0.00041 (0.00036)	Accuracy 0.786 (0.828)
+2021-03-20 05:01:09,982 Epoch: [9][400/1171]	Time 2.148s (2.195s)	Speed 59.6 samples/s	Data 0.001s (0.197s)	Loss 0.00038 (0.00036)	Accuracy 0.823 (0.827)
+2021-03-20 05:04:33,620 Epoch: [9][500/1171]	Time 1.786s (2.164s)	Speed 71.7 samples/s	Data 0.000s (0.172s)	Loss 0.00036 (0.00036)	Accuracy 0.816 (0.827)
+2021-03-20 05:07:57,326 Epoch: [9][600/1171]	Time 1.760s (2.143s)	Speed 72.7 samples/s	Data 0.000s (0.157s)	Loss 0.00034 (0.00036)	Accuracy 0.828 (0.826)
+2021-03-20 05:11:19,961 Epoch: [9][700/1171]	Time 1.774s (2.126s)	Speed 72.1 samples/s	Data 0.002s (0.146s)	Loss 0.00033 (0.00036)	Accuracy 0.855 (0.826)
+2021-03-20 05:14:42,386 Epoch: [9][800/1171]	Time 1.800s (2.113s)	Speed 71.1 samples/s	Data 0.001s (0.137s)	Loss 0.00038 (0.00036)	Accuracy 0.825 (0.826)
+2021-03-20 05:18:05,907 Epoch: [9][900/1171]	Time 1.910s (2.105s)	Speed 67.0 samples/s	Data 0.001s (0.131s)	Loss 0.00036 (0.00036)	Accuracy 0.833 (0.826)
+2021-03-20 05:21:28,328 Epoch: [9][1000/1171]	Time 1.944s (2.097s)	Speed 65.8 samples/s	Data 0.004s (0.126s)	Loss 0.00034 (0.00036)	Accuracy 0.838 (0.826)
+2021-03-20 05:24:52,422 Epoch: [9][1100/1171]	Time 1.800s (2.092s)	Speed 71.1 samples/s	Data 0.001s (0.121s)	Loss 0.00034 (0.00036)	Accuracy 0.833 (0.827)
+2021-03-20 05:27:47,581 Test: [0/50]	Time 61.285 (61.285)	Loss 0.0003 (0.0003)	Accuracy 0.860 (0.860)
+2021-03-20 05:30:00,768 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 05:30:08,995 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 05:30:08,996 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 05:30:08,997 | pose_hgr... | 0.707 | 0.905 | 0.774 | 0.672 | 0.761 | 0.736 | 0.913 | 0.795 | 0.697 | 0.794 |
+2021-03-20 05:30:09,005 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 05:31:18,814 Epoch: [10][0/1171]	Time 55.001s (55.001s)	Speed 2.3 samples/s	Data 37.390s (37.390s)	Loss 0.00033 (0.00033)	Accuracy 0.840 (0.840)
+2021-03-20 05:34:56,305 Epoch: [10][100/1171]	Time 1.918s (2.698s)	Speed 66.7 samples/s	Data 0.001s (0.561s)	Loss 0.00033 (0.00036)	Accuracy 0.803 (0.830)
+2021-03-20 05:38:22,751 Epoch: [10][200/1171]	Time 1.951s (2.383s)	Speed 65.6 samples/s	Data 0.008s (0.322s)	Loss 0.00034 (0.00036)	Accuracy 0.840 (0.831)
+2021-03-20 05:41:47,569 Epoch: [10][300/1171]	Time 1.865s (2.272s)	Speed 68.6 samples/s	Data 0.013s (0.242s)	Loss 0.00034 (0.00036)	Accuracy 0.839 (0.830)
+2021-03-20 05:45:12,912 Epoch: [10][400/1171]	Time 1.751s (2.217s)	Speed 73.1 samples/s	Data 0.000s (0.202s)	Loss 0.00037 (0.00036)	Accuracy 0.839 (0.830)
+2021-03-20 05:48:38,485 Epoch: [10][500/1171]	Time 1.897s (2.185s)	Speed 67.5 samples/s	Data 0.012s (0.176s)	Loss 0.00035 (0.00036)	Accuracy 0.829 (0.830)
+2021-03-20 05:52:03,777 Epoch: [10][600/1171]	Time 2.125s (2.163s)	Speed 60.2 samples/s	Data 0.001s (0.160s)	Loss 0.00034 (0.00036)	Accuracy 0.835 (0.831)
+2021-03-20 05:55:27,907 Epoch: [10][700/1171]	Time 1.826s (2.146s)	Speed 70.1 samples/s	Data 0.019s (0.149s)	Loss 0.00035 (0.00036)	Accuracy 0.828 (0.831)
+2021-03-20 05:58:51,481 Epoch: [10][800/1171]	Time 2.018s (2.132s)	Speed 63.4 samples/s	Data 0.006s (0.140s)	Loss 0.00034 (0.00035)	Accuracy 0.829 (0.831)
+2021-03-20 06:02:15,667 Epoch: [10][900/1171]	Time 1.924s (2.122s)	Speed 66.5 samples/s	Data 0.001s (0.133s)	Loss 0.00037 (0.00035)	Accuracy 0.811 (0.831)
+2021-03-20 06:05:41,066 Epoch: [10][1000/1171]	Time 1.813s (2.115s)	Speed 70.6 samples/s	Data 0.000s (0.127s)	Loss 0.00040 (0.00035)	Accuracy 0.812 (0.831)
+2021-03-20 06:09:06,216 Epoch: [10][1100/1171]	Time 1.718s (2.109s)	Speed 74.5 samples/s	Data 0.002s (0.123s)	Loss 0.00036 (0.00035)	Accuracy 0.835 (0.831)
+2021-03-20 06:12:04,755 Test: [0/50]	Time 62.973 (62.973)	Loss 0.0003 (0.0003)	Accuracy 0.864 (0.864)
+2021-03-20 06:14:17,013 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 06:14:25,259 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 06:14:25,261 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 06:14:25,261 | pose_hgr... | 0.709 | 0.905 | 0.775 | 0.678 | 0.759 | 0.737 | 0.913 | 0.798 | 0.702 | 0.790 |
+2021-03-20 06:14:25,270 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 06:15:31,166 Epoch: [11][0/1171]	Time 52.612s (52.612s)	Speed 2.4 samples/s	Data 34.455s (34.455s)	Loss 0.00037 (0.00037)	Accuracy 0.836 (0.836)
+2021-03-20 06:19:11,765 Epoch: [11][100/1171]	Time 1.685s (2.705s)	Speed 75.9 samples/s	Data 0.001s (0.551s)	Loss 0.00038 (0.00035)	Accuracy 0.829 (0.836)
+2021-03-20 06:22:38,068 Epoch: [11][200/1171]	Time 3.979s (2.386s)	Speed 32.2 samples/s	Data 0.021s (0.314s)	Loss 0.00035 (0.00035)	Accuracy 0.837 (0.835)
+2021-03-20 06:26:00,716 Epoch: [11][300/1171]	Time 1.824s (2.266s)	Speed 70.2 samples/s	Data 0.000s (0.233s)	Loss 0.00036 (0.00035)	Accuracy 0.830 (0.835)
+2021-03-20 06:29:25,151 Epoch: [11][400/1171]	Time 1.852s (2.211s)	Speed 69.1 samples/s	Data 0.000s (0.195s)	Loss 0.00038 (0.00035)	Accuracy 0.815 (0.835)
+2021-03-20 06:32:50,227 Epoch: [11][500/1171]	Time 1.912s (2.179s)	Speed 67.0 samples/s	Data 0.001s (0.172s)	Loss 0.00034 (0.00035)	Accuracy 0.831 (0.836)
+2021-03-20 06:36:15,875 Epoch: [11][600/1171]	Time 2.061s (2.159s)	Speed 62.1 samples/s	Data 0.001s (0.156s)	Loss 0.00032 (0.00035)	Accuracy 0.856 (0.836)
+2021-03-20 06:39:40,208 Epoch: [11][700/1171]	Time 1.966s (2.142s)	Speed 65.1 samples/s	Data 0.002s (0.145s)	Loss 0.00032 (0.00035)	Accuracy 0.850 (0.835)
+2021-03-20 06:43:04,939 Epoch: [11][800/1171]	Time 2.009s (2.130s)	Speed 63.7 samples/s	Data 0.000s (0.137s)	Loss 0.00036 (0.00035)	Accuracy 0.817 (0.835)
+2021-03-20 06:46:28,628 Epoch: [11][900/1171]	Time 1.542s (2.120s)	Speed 83.0 samples/s	Data 0.006s (0.130s)	Loss 0.00037 (0.00035)	Accuracy 0.824 (0.835)
+2021-03-20 06:49:54,498 Epoch: [11][1000/1171]	Time 2.058s (2.114s)	Speed 62.2 samples/s	Data 0.001s (0.125s)	Loss 0.00033 (0.00035)	Accuracy 0.867 (0.834)
+2021-03-20 06:53:18,921 Epoch: [11][1100/1171]	Time 1.899s (2.108s)	Speed 67.4 samples/s	Data 0.001s (0.121s)	Loss 0.00032 (0.00035)	Accuracy 0.843 (0.834)
+2021-03-20 06:56:17,032 Test: [0/50]	Time 63.012 (63.012)	Loss 0.0004 (0.0004)	Accuracy 0.864 (0.864)
+2021-03-20 06:58:29,150 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 06:58:36,173 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 06:58:36,175 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 06:58:36,175 | pose_hgr... | 0.712 | 0.905 | 0.774 | 0.682 | 0.762 | 0.742 | 0.915 | 0.800 | 0.707 | 0.794 |
+2021-03-20 06:58:36,184 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 06:59:51,426 Epoch: [12][0/1171]	Time 61.752s (61.752s)	Speed 2.1 samples/s	Data 45.503s (45.503s)	Loss 0.00035 (0.00035)	Accuracy 0.828 (0.828)
+2021-03-20 07:03:21,143 Epoch: [12][100/1171]	Time 1.941s (2.688s)	Speed 66.0 samples/s	Data 0.001s (0.579s)	Loss 0.00034 (0.00034)	Accuracy 0.852 (0.839)
+2021-03-20 07:06:46,246 Epoch: [12][200/1171]	Time 1.808s (2.371s)	Speed 70.8 samples/s	Data 0.001s (0.329s)	Loss 0.00032 (0.00034)	Accuracy 0.846 (0.837)
+2021-03-20 07:10:09,821 Epoch: [12][300/1171]	Time 2.154s (2.260s)	Speed 59.4 samples/s	Data 0.001s (0.245s)	Loss 0.00037 (0.00034)	Accuracy 0.815 (0.837)
+2021-03-20 07:13:32,539 Epoch: [12][400/1171]	Time 1.852s (2.202s)	Speed 69.1 samples/s	Data 0.001s (0.203s)	Loss 0.00033 (0.00035)	Accuracy 0.831 (0.836)
+2021-03-20 07:16:57,232 Epoch: [12][500/1171]	Time 2.014s (2.171s)	Speed 63.6 samples/s	Data 0.001s (0.178s)	Loss 0.00034 (0.00035)	Accuracy 0.836 (0.836)
+2021-03-20 07:20:20,560 Epoch: [12][600/1171]	Time 1.689s (2.148s)	Speed 75.8 samples/s	Data 0.000s (0.161s)	Loss 0.00033 (0.00035)	Accuracy 0.868 (0.837)
+2021-03-20 07:23:45,192 Epoch: [12][700/1171]	Time 1.900s (2.133s)	Speed 67.4 samples/s	Data 0.001s (0.149s)	Loss 0.00032 (0.00035)	Accuracy 0.861 (0.836)
+2021-03-20 07:27:08,485 Epoch: [12][800/1171]	Time 2.080s (2.121s)	Speed 61.6 samples/s	Data 0.011s (0.141s)	Loss 0.00034 (0.00035)	Accuracy 0.854 (0.837)
+2021-03-20 07:30:31,988 Epoch: [12][900/1171]	Time 1.868s (2.111s)	Speed 68.5 samples/s	Data 0.000s (0.134s)	Loss 0.00034 (0.00035)	Accuracy 0.857 (0.837)
+2021-03-20 07:33:54,572 Epoch: [12][1000/1171]	Time 1.961s (2.103s)	Speed 65.3 samples/s	Data 0.001s (0.128s)	Loss 0.00036 (0.00035)	Accuracy 0.832 (0.837)
+2021-03-20 07:37:17,577 Epoch: [12][1100/1171]	Time 1.817s (2.096s)	Speed 70.4 samples/s	Data 0.000s (0.123s)	Loss 0.00034 (0.00035)	Accuracy 0.821 (0.838)
+2021-03-20 07:40:15,147 Test: [0/50]	Time 63.939 (63.939)	Loss 0.0003 (0.0003)	Accuracy 0.879 (0.879)
+2021-03-20 07:42:27,629 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 07:42:34,704 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 07:42:34,706 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 07:42:34,706 | pose_hgr... | 0.714 | 0.905 | 0.783 | 0.681 | 0.764 | 0.742 | 0.915 | 0.801 | 0.705 | 0.798 |
+2021-03-20 07:42:34,715 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 07:43:38,095 Epoch: [13][0/1171]	Time 50.259s (50.259s)	Speed 2.5 samples/s	Data 33.152s (33.152s)	Loss 0.00030 (0.00030)	Accuracy 0.867 (0.867)
+2021-03-20 07:47:18,957 Epoch: [13][100/1171]	Time 1.768s (2.684s)	Speed 72.4 samples/s	Data 0.000s (0.558s)	Loss 0.00033 (0.00034)	Accuracy 0.856 (0.845)
+2021-03-20 07:50:43,942 Epoch: [13][200/1171]	Time 1.784s (2.369s)	Speed 71.8 samples/s	Data 0.001s (0.320s)	Loss 0.00034 (0.00034)	Accuracy 0.826 (0.844)
+2021-03-20 07:54:08,914 Epoch: [13][300/1171]	Time 1.864s (2.263s)	Speed 68.7 samples/s	Data 0.001s (0.239s)	Loss 0.00034 (0.00034)	Accuracy 0.831 (0.842)
+2021-03-20 07:57:34,936 Epoch: [13][400/1171]	Time 1.867s (2.212s)	Speed 68.5 samples/s	Data 0.001s (0.199s)	Loss 0.00035 (0.00034)	Accuracy 0.827 (0.842)
+2021-03-20 08:00:59,442 Epoch: [13][500/1171]	Time 1.836s (2.179s)	Speed 69.7 samples/s	Data 0.001s (0.175s)	Loss 0.00030 (0.00034)	Accuracy 0.865 (0.843)
+2021-03-20 08:04:24,559 Epoch: [13][600/1171]	Time 1.797s (2.158s)	Speed 71.2 samples/s	Data 0.001s (0.160s)	Loss 0.00033 (0.00034)	Accuracy 0.824 (0.843)
+2021-03-20 08:07:48,301 Epoch: [13][700/1171]	Time 1.624s (2.140s)	Speed 78.8 samples/s	Data 0.000s (0.148s)	Loss 0.00034 (0.00034)	Accuracy 0.818 (0.842)
+2021-03-20 08:11:12,260 Epoch: [13][800/1171]	Time 1.817s (2.128s)	Speed 70.4 samples/s	Data 0.001s (0.139s)	Loss 0.00032 (0.00034)	Accuracy 0.857 (0.843)
+2021-03-20 08:14:36,862 Epoch: [13][900/1171]	Time 1.850s (2.119s)	Speed 69.2 samples/s	Data 0.001s (0.132s)	Loss 0.00036 (0.00034)	Accuracy 0.834 (0.842)
+2021-03-20 08:18:01,732 Epoch: [13][1000/1171]	Time 1.508s (2.112s)	Speed 84.9 samples/s	Data 0.001s (0.126s)	Loss 0.00036 (0.00034)	Accuracy 0.823 (0.842)
+2021-03-20 08:21:26,486 Epoch: [13][1100/1171]	Time 4.263s (2.106s)	Speed 30.0 samples/s	Data 0.000s (0.122s)	Loss 0.00034 (0.00034)	Accuracy 0.829 (0.842)
+2021-03-20 08:24:21,006 Test: [0/50]	Time 62.042 (62.042)	Loss 0.0003 (0.0003)	Accuracy 0.878 (0.878)
+2021-03-20 08:26:33,583 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 08:26:40,587 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 08:26:40,588 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 08:26:40,588 | pose_hgr... | 0.725 | 0.915 | 0.794 | 0.690 | 0.775 | 0.752 | 0.921 | 0.811 | 0.715 | 0.808 |
+2021-03-20 08:26:40,598 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 08:27:49,060 Epoch: [14][0/1171]	Time 55.347s (55.347s)	Speed 2.3 samples/s	Data 37.450s (37.450s)	Loss 0.00035 (0.00035)	Accuracy 0.832 (0.832)
+2021-03-20 08:31:23,393 Epoch: [14][100/1171]	Time 1.855s (2.670s)	Speed 69.0 samples/s	Data 0.001s (0.549s)	Loss 0.00033 (0.00034)	Accuracy 0.830 (0.841)
+2021-03-20 08:34:48,050 Epoch: [14][200/1171]	Time 1.890s (2.360s)	Speed 67.7 samples/s	Data 0.001s (0.315s)	Loss 0.00033 (0.00034)	Accuracy 0.857 (0.844)
+2021-03-20 08:38:14,217 Epoch: [14][300/1171]	Time 3.853s (2.261s)	Speed 33.2 samples/s	Data 0.001s (0.237s)	Loss 0.00034 (0.00034)	Accuracy 0.842 (0.844)
+2021-03-20 08:41:38,341 Epoch: [14][400/1171]	Time 1.414s (2.206s)	Speed 90.5 samples/s	Data 0.001s (0.195s)	Loss 0.00033 (0.00034)	Accuracy 0.846 (0.844)
+2021-03-20 08:45:02,648 Epoch: [14][500/1171]	Time 1.730s (2.174s)	Speed 74.0 samples/s	Data 0.001s (0.171s)	Loss 0.00031 (0.00034)	Accuracy 0.850 (0.845)
+2021-03-20 08:48:26,407 Epoch: [14][600/1171]	Time 2.088s (2.151s)	Speed 61.3 samples/s	Data 0.001s (0.155s)	Loss 0.00032 (0.00033)	Accuracy 0.856 (0.845)
+2021-03-20 08:51:49,525 Epoch: [14][700/1171]	Time 1.781s (2.134s)	Speed 71.9 samples/s	Data 0.001s (0.144s)	Loss 0.00037 (0.00033)	Accuracy 0.818 (0.845)
+2021-03-20 08:55:13,375 Epoch: [14][800/1171]	Time 1.779s (2.122s)	Speed 72.0 samples/s	Data 0.000s (0.135s)	Loss 0.00034 (0.00033)	Accuracy 0.838 (0.846)
+2021-03-20 08:58:36,035 Epoch: [14][900/1171]	Time 1.989s (2.111s)	Speed 64.4 samples/s	Data 0.001s (0.129s)	Loss 0.00034 (0.00033)	Accuracy 0.839 (0.846)
+2021-03-20 09:01:59,889 Epoch: [14][1000/1171]	Time 1.978s (2.104s)	Speed 64.7 samples/s	Data 0.006s (0.124s)	Loss 0.00037 (0.00033)	Accuracy 0.808 (0.846)
+2021-03-20 09:05:22,188 Epoch: [14][1100/1171]	Time 2.010s (2.097s)	Speed 63.7 samples/s	Data 0.001s (0.119s)	Loss 0.00032 (0.00033)	Accuracy 0.859 (0.846)
+2021-03-20 09:08:18,548 Test: [0/50]	Time 63.188 (63.188)	Loss 0.0003 (0.0003)	Accuracy 0.869 (0.869)
+2021-03-20 09:10:31,612 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 09:10:38,664 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 09:10:38,666 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 09:10:38,666 | pose_hgr... | 0.729 | 0.915 | 0.794 | 0.696 | 0.778 | 0.757 | 0.921 | 0.818 | 0.721 | 0.811 |
+2021-03-20 09:10:38,674 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 09:11:46,605 Epoch: [15][0/1171]	Time 54.825s (54.825s)	Speed 2.3 samples/s	Data 37.759s (37.759s)	Loss 0.00030 (0.00030)	Accuracy 0.871 (0.871)
+2021-03-20 09:15:23,958 Epoch: [15][100/1171]	Time 1.921s (2.695s)	Speed 66.6 samples/s	Data 0.000s (0.566s)	Loss 0.00031 (0.00032)	Accuracy 0.855 (0.856)
+2021-03-20 09:18:50,307 Epoch: [15][200/1171]	Time 2.020s (2.381s)	Speed 63.4 samples/s	Data 0.004s (0.324s)	Loss 0.00032 (0.00033)	Accuracy 0.861 (0.851)
+2021-03-20 09:22:15,556 Epoch: [15][300/1171]	Time 1.870s (2.272s)	Speed 68.5 samples/s	Data 0.001s (0.242s)	Loss 0.00032 (0.00033)	Accuracy 0.845 (0.849)
+2021-03-20 09:25:39,918 Epoch: [15][400/1171]	Time 2.054s (2.215s)	Speed 62.3 samples/s	Data 0.001s (0.202s)	Loss 0.00033 (0.00033)	Accuracy 0.842 (0.849)
+2021-03-20 09:29:05,148 Epoch: [15][500/1171]	Time 1.958s (2.182s)	Speed 65.4 samples/s	Data 0.017s (0.177s)	Loss 0.00036 (0.00033)	Accuracy 0.818 (0.849)
+2021-03-20 09:32:30,400 Epoch: [15][600/1171]	Time 1.805s (2.161s)	Speed 70.9 samples/s	Data 0.002s (0.160s)	Loss 0.00036 (0.00033)	Accuracy 0.817 (0.849)
+2021-03-20 09:35:54,726 Epoch: [15][700/1171]	Time 1.505s (2.144s)	Speed 85.1 samples/s	Data 0.000s (0.149s)	Loss 0.00034 (0.00033)	Accuracy 0.836 (0.849)
+2021-03-20 09:39:19,822 Epoch: [15][800/1171]	Time 1.646s (2.132s)	Speed 77.8 samples/s	Data 0.001s (0.140s)	Loss 0.00034 (0.00033)	Accuracy 0.852 (0.849)
+2021-03-20 09:42:44,761 Epoch: [15][900/1171]	Time 1.682s (2.123s)	Speed 76.1 samples/s	Data 0.001s (0.133s)	Loss 0.00035 (0.00033)	Accuracy 0.844 (0.849)
+2021-03-20 09:46:07,798 Epoch: [15][1000/1171]	Time 1.444s (2.114s)	Speed 88.6 samples/s	Data 0.001s (0.128s)	Loss 0.00035 (0.00033)	Accuracy 0.838 (0.849)
+2021-03-20 09:49:31,929 Epoch: [15][1100/1171]	Time 4.108s (2.107s)	Speed 31.2 samples/s	Data 0.001s (0.123s)	Loss 0.00033 (0.00033)	Accuracy 0.852 (0.848)
+2021-03-20 09:52:28,314 Test: [0/50]	Time 63.412 (63.412)	Loss 0.0003 (0.0003)	Accuracy 0.866 (0.866)
+2021-03-20 09:54:41,663 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 09:54:48,713 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 09:54:48,714 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 09:54:48,714 | pose_hgr... | 0.714 | 0.905 | 0.784 | 0.680 | 0.766 | 0.744 | 0.915 | 0.806 | 0.705 | 0.802 |
+2021-03-20 09:54:48,724 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 09:55:48,068 Epoch: [16][0/1171]	Time 49.544s (49.544s)	Speed 2.6 samples/s	Data 32.685s (32.685s)	Loss 0.00037 (0.00037)	Accuracy 0.813 (0.813)
+2021-03-20 09:59:30,407 Epoch: [16][100/1171]	Time 1.452s (2.692s)	Speed 88.2 samples/s	Data 0.001s (0.553s)	Loss 0.00031 (0.00033)	Accuracy 0.868 (0.847)
+2021-03-20 10:02:54,180 Epoch: [16][200/1171]	Time 1.981s (2.366s)	Speed 64.6 samples/s	Data 0.017s (0.315s)	Loss 0.00033 (0.00033)	Accuracy 0.831 (0.849)
+2021-03-20 10:06:19,140 Epoch: [16][300/1171]	Time 2.025s (2.261s)	Speed 63.2 samples/s	Data 0.001s (0.236s)	Loss 0.00030 (0.00033)	Accuracy 0.866 (0.849)
+2021-03-20 10:09:42,045 Epoch: [16][400/1171]	Time 1.751s (2.203s)	Speed 73.1 samples/s	Data 0.000s (0.196s)	Loss 0.00028 (0.00033)	Accuracy 0.884 (0.849)
+2021-03-20 10:13:06,055 Epoch: [16][500/1171]	Time 2.120s (2.171s)	Speed 60.4 samples/s	Data 0.006s (0.173s)	Loss 0.00034 (0.00033)	Accuracy 0.839 (0.850)
+2021-03-20 10:16:30,908 Epoch: [16][600/1171]	Time 1.667s (2.150s)	Speed 76.8 samples/s	Data 0.001s (0.156s)	Loss 0.00034 (0.00033)	Accuracy 0.841 (0.851)
+2021-03-20 10:19:54,570 Epoch: [16][700/1171]	Time 1.965s (2.134s)	Speed 65.2 samples/s	Data 0.001s (0.145s)	Loss 0.00028 (0.00033)	Accuracy 0.907 (0.851)
+2021-03-20 10:23:17,338 Epoch: [16][800/1171]	Time 1.932s (2.121s)	Speed 66.2 samples/s	Data 0.000s (0.137s)	Loss 0.00032 (0.00033)	Accuracy 0.840 (0.851)
+2021-03-20 10:26:39,643 Epoch: [16][900/1171]	Time 1.864s (2.110s)	Speed 68.7 samples/s	Data 0.016s (0.130s)	Loss 0.00030 (0.00032)	Accuracy 0.846 (0.852)
+2021-03-20 10:30:02,585 Epoch: [16][1000/1171]	Time 1.900s (2.102s)	Speed 67.4 samples/s	Data 0.000s (0.125s)	Loss 0.00033 (0.00032)	Accuracy 0.868 (0.852)
+2021-03-20 10:33:29,259 Epoch: [16][1100/1171]	Time 2.076s (2.099s)	Speed 61.7 samples/s	Data 0.001s (0.125s)	Loss 0.00032 (0.00033)	Accuracy 0.823 (0.852)
+2021-03-20 10:36:29,270 Test: [0/50]	Time 63.037 (63.037)	Loss 0.0003 (0.0003)	Accuracy 0.873 (0.873)
+2021-03-20 10:38:42,655 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 10:38:49,728 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 10:38:49,730 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 10:38:49,730 | pose_hgr... | 0.734 | 0.915 | 0.805 | 0.702 | 0.785 | 0.762 | 0.923 | 0.821 | 0.726 | 0.816 |
+2021-03-20 10:38:49,739 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 10:40:08,294 Epoch: [17][0/1171]	Time 65.434s (65.434s)	Speed 2.0 samples/s	Data 34.479s (34.479s)	Loss 0.00030 (0.00030)	Accuracy 0.878 (0.878)
+2021-03-20 10:43:37,372 Epoch: [17][100/1171]	Time 1.686s (2.718s)	Speed 75.9 samples/s	Data 0.001s (0.442s)	Loss 0.00035 (0.00032)	Accuracy 0.827 (0.856)
+2021-03-20 10:47:03,789 Epoch: [17][200/1171]	Time 1.814s (2.393s)	Speed 70.6 samples/s	Data 0.001s (0.261s)	Loss 0.00031 (0.00032)	Accuracy 0.862 (0.855)
+2021-03-20 10:50:29,199 Epoch: [17][300/1171]	Time 1.998s (2.280s)	Speed 64.1 samples/s	Data 0.001s (0.201s)	Loss 0.00031 (0.00032)	Accuracy 0.856 (0.853)
+2021-03-20 10:53:54,520 Epoch: [17][400/1171]	Time 2.068s (2.224s)	Speed 61.9 samples/s	Data 0.001s (0.170s)	Loss 0.00034 (0.00032)	Accuracy 0.855 (0.852)
+2021-03-20 10:57:20,837 Epoch: [17][500/1171]	Time 1.528s (2.192s)	Speed 83.8 samples/s	Data 0.000s (0.152s)	Loss 0.00027 (0.00032)	Accuracy 0.894 (0.853)
+2021-03-20 11:00:45,168 Epoch: [17][600/1171]	Time 2.054s (2.167s)	Speed 62.3 samples/s	Data 0.001s (0.139s)	Loss 0.00035 (0.00032)	Accuracy 0.833 (0.852)
+2021-03-20 11:04:09,509 Epoch: [17][700/1171]	Time 1.989s (2.149s)	Speed 64.4 samples/s	Data 0.001s (0.131s)	Loss 0.00032 (0.00032)	Accuracy 0.854 (0.852)
+2021-03-20 11:07:34,730 Epoch: [17][800/1171]	Time 1.765s (2.137s)	Speed 72.5 samples/s	Data 0.010s (0.124s)	Loss 0.00032 (0.00032)	Accuracy 0.875 (0.853)
+2021-03-20 11:10:59,795 Epoch: [17][900/1171]	Time 2.015s (2.128s)	Speed 63.5 samples/s	Data 0.001s (0.119s)	Loss 0.00032 (0.00032)	Accuracy 0.861 (0.853)
+2021-03-20 11:14:24,394 Epoch: [17][1000/1171]	Time 1.668s (2.119s)	Speed 76.7 samples/s	Data 0.000s (0.115s)	Loss 0.00034 (0.00032)	Accuracy 0.862 (0.853)
+2021-03-20 11:17:47,769 Epoch: [17][1100/1171]	Time 1.953s (2.112s)	Speed 65.6 samples/s	Data 0.001s (0.111s)	Loss 0.00033 (0.00032)	Accuracy 0.844 (0.853)
+2021-03-20 11:21:01,119 Test: [0/50]	Time 79.360 (79.360)	Loss 0.0003 (0.0003)	Accuracy 0.869 (0.869)
+2021-03-20 11:23:13,279 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 11:23:21,502 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 11:23:21,504 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 11:23:21,504 | pose_hgr... | 0.733 | 0.915 | 0.804 | 0.702 | 0.783 | 0.761 | 0.921 | 0.821 | 0.725 | 0.814 |
+2021-03-20 11:23:21,511 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 11:24:34,498 Epoch: [18][0/1171]	Time 63.156s (63.156s)	Speed 2.0 samples/s	Data 47.519s (47.519s)	Loss 0.00028 (0.00028)	Accuracy 0.870 (0.870)
+2021-03-20 11:28:03,435 Epoch: [18][100/1171]	Time 1.693s (2.694s)	Speed 75.6 samples/s	Data 0.000s (0.574s)	Loss 0.00032 (0.00032)	Accuracy 0.855 (0.857)
+2021-03-20 11:31:29,080 Epoch: [18][200/1171]	Time 2.034s (2.377s)	Speed 62.9 samples/s	Data 0.001s (0.327s)	Loss 0.00036 (0.00032)	Accuracy 0.853 (0.854)
+2021-03-20 11:34:54,902 Epoch: [18][300/1171]	Time 2.036s (2.271s)	Speed 62.9 samples/s	Data 0.001s (0.244s)	Loss 0.00034 (0.00032)	Accuracy 0.831 (0.854)
+2021-03-20 11:38:18,951 Epoch: [18][400/1171]	Time 1.899s (2.213s)	Speed 67.4 samples/s	Data 0.001s (0.203s)	Loss 0.00031 (0.00032)	Accuracy 0.849 (0.852)
+2021-03-20 11:41:44,639 Epoch: [18][500/1171]	Time 1.859s (2.182s)	Speed 68.9 samples/s	Data 0.000s (0.178s)	Loss 0.00028 (0.00032)	Accuracy 0.864 (0.852)
+2021-03-20 11:45:09,498 Epoch: [18][600/1171]	Time 1.906s (2.160s)	Speed 67.2 samples/s	Data 0.001s (0.162s)	Loss 0.00032 (0.00032)	Accuracy 0.850 (0.852)
+2021-03-20 11:48:34,435 Epoch: [18][700/1171]	Time 2.070s (2.144s)	Speed 61.8 samples/s	Data 0.011s (0.150s)	Loss 0.00032 (0.00032)	Accuracy 0.853 (0.853)
+2021-03-20 11:51:59,289 Epoch: [18][800/1171]	Time 1.962s (2.132s)	Speed 65.3 samples/s	Data 0.001s (0.141s)	Loss 0.00036 (0.00032)	Accuracy 0.811 (0.854)
+2021-03-20 11:55:23,755 Epoch: [18][900/1171]	Time 1.972s (2.123s)	Speed 64.9 samples/s	Data 0.001s (0.134s)	Loss 0.00033 (0.00032)	Accuracy 0.854 (0.854)
+2021-03-20 11:58:48,275 Epoch: [18][1000/1171]	Time 1.774s (2.115s)	Speed 72.2 samples/s	Data 0.002s (0.128s)	Loss 0.00036 (0.00032)	Accuracy 0.826 (0.855)
+2021-03-20 12:02:13,492 Epoch: [18][1100/1171]	Time 2.043s (2.109s)	Speed 62.7 samples/s	Data 0.001s (0.124s)	Loss 0.00030 (0.00032)	Accuracy 0.865 (0.855)
+2021-03-20 12:05:10,573 Test: [0/50]	Time 62.295 (62.295)	Loss 0.0003 (0.0003)	Accuracy 0.860 (0.860)
+2021-03-20 12:07:22,917 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 12:07:29,926 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 12:07:29,927 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 12:07:29,927 | pose_hgr... | 0.739 | 0.915 | 0.806 | 0.704 | 0.787 | 0.766 | 0.925 | 0.825 | 0.729 | 0.820 |
+2021-03-20 12:07:29,936 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 12:08:39,601 Epoch: [19][0/1171]	Time 56.365s (56.365s)	Speed 2.3 samples/s	Data 39.231s (39.231s)	Loss 0.00029 (0.00029)	Accuracy 0.869 (0.869)
+2021-03-20 12:12:14,385 Epoch: [19][100/1171]	Time 1.857s (2.685s)	Speed 68.9 samples/s	Data 0.000s (0.567s)	Loss 0.00027 (0.00031)	Accuracy 0.880 (0.863)
+2021-03-20 12:15:40,984 Epoch: [19][200/1171]	Time 1.922s (2.377s)	Speed 66.6 samples/s	Data 0.001s (0.325s)	Loss 0.00031 (0.00031)	Accuracy 0.879 (0.860)
+2021-03-20 12:19:06,709 Epoch: [19][300/1171]	Time 2.054s (2.271s)	Speed 62.3 samples/s	Data 0.001s (0.244s)	Loss 0.00035 (0.00031)	Accuracy 0.841 (0.859)
+2021-03-20 12:22:33,785 Epoch: [19][400/1171]	Time 1.903s (2.221s)	Speed 67.3 samples/s	Data 0.001s (0.203s)	Loss 0.00030 (0.00032)	Accuracy 0.861 (0.859)
+2021-03-20 12:25:59,201 Epoch: [19][500/1171]	Time 2.044s (2.188s)	Speed 62.6 samples/s	Data 0.001s (0.178s)	Loss 0.00031 (0.00032)	Accuracy 0.870 (0.859)
+2021-03-20 12:29:22,700 Epoch: [19][600/1171]	Time 1.659s (2.162s)	Speed 77.2 samples/s	Data 0.000s (0.161s)	Loss 0.00031 (0.00031)	Accuracy 0.868 (0.859)
+2021-03-20 12:32:47,281 Epoch: [19][700/1171]	Time 1.899s (2.146s)	Speed 67.4 samples/s	Data 0.001s (0.149s)	Loss 0.00029 (0.00031)	Accuracy 0.890 (0.859)
+2021-03-20 12:36:12,641 Epoch: [19][800/1171]	Time 1.924s (2.134s)	Speed 66.5 samples/s	Data 0.002s (0.141s)	Loss 0.00036 (0.00031)	Accuracy 0.829 (0.859)
+2021-03-20 12:39:37,769 Epoch: [19][900/1171]	Time 2.206s (2.125s)	Speed 58.0 samples/s	Data 0.001s (0.134s)	Loss 0.00031 (0.00031)	Accuracy 0.855 (0.859)
+2021-03-20 12:43:02,860 Epoch: [19][1000/1171]	Time 2.062s (2.118s)	Speed 62.1 samples/s	Data 0.001s (0.128s)	Loss 0.00030 (0.00032)	Accuracy 0.876 (0.858)
+2021-03-20 12:46:27,001 Epoch: [19][1100/1171]	Time 1.722s (2.111s)	Speed 74.3 samples/s	Data 0.000s (0.123s)	Loss 0.00029 (0.00032)	Accuracy 0.870 (0.858)
+2021-03-20 12:49:22,933 Test: [0/50]	Time 62.059 (62.059)	Loss 0.0003 (0.0003)	Accuracy 0.863 (0.863)
+2021-03-20 12:51:36,155 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 12:51:43,154 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 12:51:43,156 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 12:51:43,156 | pose_hgr... | 0.732 | 0.916 | 0.795 | 0.699 | 0.784 | 0.761 | 0.925 | 0.818 | 0.723 | 0.818 |
+2021-03-20 12:51:43,166 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 12:52:59,279 Epoch: [20][0/1171]	Time 66.296s (66.296s)	Speed 1.9 samples/s	Data 47.725s (47.725s)	Loss 0.00033 (0.00033)	Accuracy 0.868 (0.868)
+2021-03-20 12:56:27,132 Epoch: [20][100/1171]	Time 1.431s (2.714s)	Speed 89.5 samples/s	Data 0.000s (0.557s)	Loss 0.00030 (0.00031)	Accuracy 0.860 (0.864)
+2021-03-20 12:59:52,586 Epoch: [20][200/1171]	Time 1.741s (2.386s)	Speed 73.5 samples/s	Data 0.001s (0.317s)	Loss 0.00035 (0.00032)	Accuracy 0.856 (0.859)
+2021-03-20 13:03:17,424 Epoch: [20][300/1171]	Time 1.813s (2.274s)	Speed 70.6 samples/s	Data 0.000s (0.237s)	Loss 0.00039 (0.00032)	Accuracy 0.816 (0.856)
+2021-03-20 13:06:42,277 Epoch: [20][400/1171]	Time 1.855s (2.218s)	Speed 69.0 samples/s	Data 0.001s (0.197s)	Loss 0.00033 (0.00032)	Accuracy 0.844 (0.857)
+2021-03-20 13:10:06,119 Epoch: [20][500/1171]	Time 1.953s (2.182s)	Speed 65.6 samples/s	Data 0.001s (0.173s)	Loss 0.00035 (0.00032)	Accuracy 0.830 (0.858)
+2021-03-20 13:13:30,586 Epoch: [20][600/1171]	Time 1.743s (2.159s)	Speed 73.5 samples/s	Data 0.010s (0.158s)	Loss 0.00029 (0.00032)	Accuracy 0.883 (0.858)
+2021-03-20 13:16:55,174 Epoch: [20][700/1171]	Time 1.933s (2.143s)	Speed 66.2 samples/s	Data 0.001s (0.147s)	Loss 0.00031 (0.00032)	Accuracy 0.861 (0.858)
+2021-03-20 13:20:18,977 Epoch: [20][800/1171]	Time 1.567s (2.130s)	Speed 81.7 samples/s	Data 0.000s (0.138s)	Loss 0.00031 (0.00032)	Accuracy 0.858 (0.859)
+2021-03-20 13:23:43,677 Epoch: [20][900/1171]	Time 1.753s (2.121s)	Speed 73.0 samples/s	Data 0.000s (0.132s)	Loss 0.00035 (0.00032)	Accuracy 0.829 (0.859)
+2021-03-20 13:27:06,830 Epoch: [20][1000/1171]	Time 1.667s (2.112s)	Speed 76.8 samples/s	Data 0.007s (0.126s)	Loss 0.00031 (0.00032)	Accuracy 0.877 (0.859)
+2021-03-20 13:30:32,192 Epoch: [20][1100/1171]	Time 1.767s (2.106s)	Speed 72.4 samples/s	Data 0.000s (0.122s)	Loss 0.00033 (0.00032)	Accuracy 0.866 (0.859)
+2021-03-20 13:33:30,087 Test: [0/50]	Time 63.599 (63.599)	Loss 0.0003 (0.0003)	Accuracy 0.878 (0.878)
+2021-03-20 13:35:42,647 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 13:35:49,600 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 13:35:49,602 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 13:35:49,602 | pose_hgr... | 0.738 | 0.914 | 0.805 | 0.708 | 0.787 | 0.765 | 0.923 | 0.823 | 0.730 | 0.818 |
+2021-03-20 13:35:49,611 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 13:36:52,595 Epoch: [21][0/1171]	Time 52.417s (52.417s)	Speed 2.4 samples/s	Data 35.617s (35.617s)	Loss 0.00032 (0.00032)	Accuracy 0.855 (0.855)
+2021-03-20 13:40:31,596 Epoch: [21][100/1171]	Time 1.841s (2.687s)	Speed 69.5 samples/s	Data 0.001s (0.572s)	Loss 0.00033 (0.00031)	Accuracy 0.859 (0.861)
+2021-03-20 13:43:56,856 Epoch: [21][200/1171]	Time 1.948s (2.372s)	Speed 65.7 samples/s	Data 0.001s (0.327s)	Loss 0.00031 (0.00031)	Accuracy 0.857 (0.859)
+2021-03-20 13:47:21,960 Epoch: [21][300/1171]	Time 1.890s (2.265s)	Speed 67.7 samples/s	Data 0.012s (0.244s)	Loss 0.00035 (0.00032)	Accuracy 0.835 (0.855)
+2021-03-20 13:50:46,081 Epoch: [21][400/1171]	Time 1.714s (2.209s)	Speed 74.7 samples/s	Data 0.000s (0.203s)	Loss 0.00034 (0.00032)	Accuracy 0.838 (0.855)
+2021-03-20 13:54:09,984 Epoch: [21][500/1171]	Time 1.782s (2.175s)	Speed 71.8 samples/s	Data 0.000s (0.178s)	Loss 0.00028 (0.00032)	Accuracy 0.876 (0.856)
+2021-03-20 13:57:34,665 Epoch: [21][600/1171]	Time 1.727s (2.154s)	Speed 74.1 samples/s	Data 0.001s (0.161s)	Loss 0.00032 (0.00032)	Accuracy 0.865 (0.857)
+2021-03-20 14:00:58,633 Epoch: [21][700/1171]	Time 1.457s (2.138s)	Speed 87.9 samples/s	Data 0.001s (0.149s)	Loss 0.00034 (0.00032)	Accuracy 0.857 (0.858)
+2021-03-20 14:04:22,827 Epoch: [21][800/1171]	Time 1.438s (2.126s)	Speed 89.0 samples/s	Data 0.001s (0.140s)	Loss 0.00031 (0.00031)	Accuracy 0.850 (0.859)
+2021-03-20 14:07:48,129 Epoch: [21][900/1171]	Time 3.474s (2.118s)	Speed 36.8 samples/s	Data 0.000s (0.132s)	Loss 0.00035 (0.00031)	Accuracy 0.837 (0.859)
+2021-03-20 14:11:08,845 Epoch: [21][1000/1171]	Time 1.896s (2.107s)	Speed 67.5 samples/s	Data 0.000s (0.126s)	Loss 0.00032 (0.00031)	Accuracy 0.856 (0.859)
+2021-03-20 14:14:33,359 Epoch: [21][1100/1171]	Time 1.926s (2.101s)	Speed 66.5 samples/s	Data 0.016s (0.122s)	Loss 0.00029 (0.00031)	Accuracy 0.861 (0.859)
+2021-03-20 14:17:30,908 Test: [0/50]	Time 62.134 (62.134)	Loss 0.0003 (0.0003)	Accuracy 0.887 (0.887)
+2021-03-20 14:19:45,450 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 14:19:52,466 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 14:19:52,467 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 14:19:52,467 | pose_hgr... | 0.744 | 0.925 | 0.805 | 0.714 | 0.792 | 0.771 | 0.930 | 0.827 | 0.736 | 0.825 |
+2021-03-20 14:19:52,477 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 14:20:57,728 Epoch: [22][0/1171]	Time 52.133s (52.133s)	Speed 2.5 samples/s	Data 34.386s (34.386s)	Loss 0.00031 (0.00031)	Accuracy 0.863 (0.863)
+2021-03-20 14:24:37,781 Epoch: [22][100/1171]	Time 1.941s (2.695s)	Speed 66.0 samples/s	Data 0.001s (0.561s)	Loss 0.00030 (0.00030)	Accuracy 0.858 (0.867)
+2021-03-20 14:28:03,459 Epoch: [22][200/1171]	Time 1.998s (2.377s)	Speed 64.1 samples/s	Data 0.001s (0.321s)	Loss 0.00033 (0.00031)	Accuracy 0.847 (0.863)
+2021-03-20 14:31:27,968 Epoch: [22][300/1171]	Time 1.840s (2.267s)	Speed 69.6 samples/s	Data 0.051s (0.240s)	Loss 0.00032 (0.00031)	Accuracy 0.853 (0.862)
+2021-03-20 14:34:51,300 Epoch: [22][400/1171]	Time 2.061s (2.209s)	Speed 62.1 samples/s	Data 0.004s (0.200s)	Loss 0.00030 (0.00031)	Accuracy 0.866 (0.862)
+2021-03-20 14:38:14,638 Epoch: [22][500/1171]	Time 1.883s (2.174s)	Speed 68.0 samples/s	Data 0.004s (0.175s)	Loss 0.00028 (0.00031)	Accuracy 0.879 (0.862)
+2021-03-20 14:41:39,589 Epoch: [22][600/1171]	Time 1.801s (2.153s)	Speed 71.1 samples/s	Data 0.001s (0.159s)	Loss 0.00032 (0.00031)	Accuracy 0.845 (0.863)
+2021-03-20 14:45:04,112 Epoch: [22][700/1171]	Time 1.724s (2.138s)	Speed 74.2 samples/s	Data 0.000s (0.147s)	Loss 0.00028 (0.00031)	Accuracy 0.874 (0.862)
+2021-03-20 14:48:28,102 Epoch: [22][800/1171]	Time 1.670s (2.125s)	Speed 76.7 samples/s	Data 0.001s (0.138s)	Loss 0.00030 (0.00031)	Accuracy 0.858 (0.863)
+2021-03-20 14:51:52,393 Epoch: [22][900/1171]	Time 1.532s (2.116s)	Speed 83.5 samples/s	Data 0.000s (0.132s)	Loss 0.00032 (0.00031)	Accuracy 0.850 (0.862)
+2021-03-20 14:55:16,591 Epoch: [22][1000/1171]	Time 1.712s (2.109s)	Speed 74.8 samples/s	Data 0.001s (0.126s)	Loss 0.00034 (0.00031)	Accuracy 0.829 (0.861)
+2021-03-20 14:58:40,946 Epoch: [22][1100/1171]	Time 1.424s (2.103s)	Speed 89.9 samples/s	Data 0.000s (0.122s)	Loss 0.00032 (0.00031)	Accuracy 0.838 (0.861)
+2021-03-20 15:01:37,052 Test: [0/50]	Time 62.641 (62.641)	Loss 0.0003 (0.0003)	Accuracy 0.879 (0.879)
+2021-03-20 15:03:50,877 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 15:03:57,935 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 15:03:57,937 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 15:03:57,937 | pose_hgr... | 0.742 | 0.916 | 0.806 | 0.711 | 0.792 | 0.771 | 0.927 | 0.827 | 0.736 | 0.823 |
+2021-03-20 15:03:57,946 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 15:05:11,442 Epoch: [23][0/1171]	Time 63.671s (63.671s)	Speed 2.0 samples/s	Data 49.324s (49.324s)	Loss 0.00027 (0.00027)	Accuracy 0.885 (0.885)
+2021-03-20 15:08:40,863 Epoch: [23][100/1171]	Time 2.050s (2.704s)	Speed 62.4 samples/s	Data 0.001s (0.584s)	Loss 0.00032 (0.00031)	Accuracy 0.850 (0.865)
+2021-03-20 15:12:06,933 Epoch: [23][200/1171]	Time 1.878s (2.384s)	Speed 68.1 samples/s	Data 0.000s (0.332s)	Loss 0.00030 (0.00031)	Accuracy 0.864 (0.864)
+2021-03-20 15:15:32,678 Epoch: [23][300/1171]	Time 1.686s (2.275s)	Speed 75.9 samples/s	Data 0.001s (0.249s)	Loss 0.00030 (0.00031)	Accuracy 0.861 (0.864)
+2021-03-20 15:19:00,050 Epoch: [23][400/1171]	Time 2.022s (2.225s)	Speed 63.3 samples/s	Data 0.000s (0.207s)	Loss 0.00033 (0.00031)	Accuracy 0.844 (0.864)
+2021-03-20 15:22:25,183 Epoch: [23][500/1171]	Time 1.973s (2.190s)	Speed 64.9 samples/s	Data 0.001s (0.180s)	Loss 0.00032 (0.00031)	Accuracy 0.863 (0.864)
+2021-03-20 15:25:50,234 Epoch: [23][600/1171]	Time 1.687s (2.167s)	Speed 75.9 samples/s	Data 0.000s (0.163s)	Loss 0.00031 (0.00031)	Accuracy 0.871 (0.864)
+2021-03-20 15:29:15,103 Epoch: [23][700/1171]	Time 1.914s (2.150s)	Speed 66.9 samples/s	Data 0.001s (0.151s)	Loss 0.00032 (0.00031)	Accuracy 0.826 (0.864)
+2021-03-20 15:32:40,902 Epoch: [23][800/1171]	Time 1.496s (2.139s)	Speed 85.6 samples/s	Data 0.001s (0.142s)	Loss 0.00030 (0.00031)	Accuracy 0.846 (0.865)
+2021-03-20 15:36:06,080 Epoch: [23][900/1171]	Time 1.854s (2.129s)	Speed 69.0 samples/s	Data 0.001s (0.135s)	Loss 0.00029 (0.00031)	Accuracy 0.863 (0.865)
+2021-03-20 15:39:31,082 Epoch: [23][1000/1171]	Time 2.028s (2.121s)	Speed 63.1 samples/s	Data 0.001s (0.129s)	Loss 0.00029 (0.00031)	Accuracy 0.868 (0.865)
+2021-03-20 15:42:55,578 Epoch: [23][1100/1171]	Time 1.934s (2.114s)	Speed 66.2 samples/s	Data 0.001s (0.124s)	Loss 0.00031 (0.00031)	Accuracy 0.875 (0.865)
+2021-03-20 15:45:53,803 Test: [0/50]	Time 62.958 (62.958)	Loss 0.0003 (0.0003)	Accuracy 0.884 (0.884)
+2021-03-20 15:48:07,514 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 15:48:14,535 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 15:48:14,536 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 15:48:14,536 | pose_hgr... | 0.744 | 0.916 | 0.815 | 0.712 | 0.795 | 0.771 | 0.930 | 0.830 | 0.735 | 0.827 |
+2021-03-20 15:48:14,544 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 15:49:28,541 Epoch: [24][0/1171]	Time 64.164s (64.164s)	Speed 2.0 samples/s	Data 50.027s (50.027s)	Loss 0.00028 (0.00028)	Accuracy 0.860 (0.860)
+2021-03-20 15:52:56,225 Epoch: [24][100/1171]	Time 1.656s (2.692s)	Speed 77.3 samples/s	Data 0.001s (0.592s)	Loss 0.00033 (0.00030)	Accuracy 0.838 (0.867)
+2021-03-20 15:56:20,620 Epoch: [24][200/1171]	Time 1.924s (2.369s)	Speed 66.5 samples/s	Data 0.001s (0.338s)	Loss 0.00031 (0.00031)	Accuracy 0.872 (0.864)
+2021-03-20 15:59:45,838 Epoch: [24][300/1171]	Time 1.983s (2.264s)	Speed 64.6 samples/s	Data 0.001s (0.251s)	Loss 0.00031 (0.00031)	Accuracy 0.854 (0.863)
+2021-03-20 16:03:09,823 Epoch: [24][400/1171]	Time 1.828s (2.208s)	Speed 70.0 samples/s	Data 0.001s (0.208s)	Loss 0.00032 (0.00031)	Accuracy 0.845 (0.862)
+2021-03-20 16:06:34,353 Epoch: [24][500/1171]	Time 1.995s (2.176s)	Speed 64.2 samples/s	Data 0.001s (0.182s)	Loss 0.00029 (0.00031)	Accuracy 0.882 (0.862)
+2021-03-20 16:09:58,335 Epoch: [24][600/1171]	Time 1.830s (2.153s)	Speed 70.0 samples/s	Data 0.011s (0.165s)	Loss 0.00029 (0.00031)	Accuracy 0.869 (0.863)
+2021-03-20 16:13:21,737 Epoch: [24][700/1171]	Time 1.705s (2.136s)	Speed 75.1 samples/s	Data 0.001s (0.153s)	Loss 0.00031 (0.00031)	Accuracy 0.862 (0.863)
+2021-03-20 16:16:46,046 Epoch: [24][800/1171]	Time 1.750s (2.124s)	Speed 73.1 samples/s	Data 0.000s (0.144s)	Loss 0.00029 (0.00031)	Accuracy 0.878 (0.863)
+2021-03-20 16:20:10,321 Epoch: [24][900/1171]	Time 1.962s (2.115s)	Speed 65.2 samples/s	Data 0.006s (0.136s)	Loss 0.00029 (0.00031)	Accuracy 0.874 (0.864)
+2021-03-20 16:23:35,074 Epoch: [24][1000/1171]	Time 2.014s (2.109s)	Speed 63.6 samples/s	Data 0.001s (0.131s)	Loss 0.00029 (0.00031)	Accuracy 0.880 (0.864)
+2021-03-20 16:27:00,298 Epoch: [24][1100/1171]	Time 1.858s (2.103s)	Speed 68.9 samples/s	Data 0.006s (0.126s)	Loss 0.00030 (0.00031)	Accuracy 0.862 (0.864)
+2021-03-20 16:29:58,598 Test: [0/50]	Time 63.935 (63.935)	Loss 0.0003 (0.0003)	Accuracy 0.884 (0.884)
+2021-03-20 16:32:11,319 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 16:32:18,314 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 16:32:18,316 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 16:32:18,316 | pose_hgr... | 0.746 | 0.916 | 0.807 | 0.713 | 0.798 | 0.773 | 0.927 | 0.829 | 0.737 | 0.829 |
+2021-03-20 16:32:18,324 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 16:33:32,166 Epoch: [25][0/1171]	Time 60.135s (60.135s)	Speed 2.1 samples/s	Data 43.193s (43.193s)	Loss 0.00028 (0.00028)	Accuracy 0.879 (0.879)
+2021-03-20 16:37:04,470 Epoch: [25][100/1171]	Time 1.893s (2.697s)	Speed 67.6 samples/s	Data 0.000s (0.571s)	Loss 0.00031 (0.00030)	Accuracy 0.852 (0.868)
+2021-03-20 16:40:29,688 Epoch: [25][200/1171]	Time 1.925s (2.376s)	Speed 66.5 samples/s	Data 0.000s (0.326s)	Loss 0.00029 (0.00030)	Accuracy 0.877 (0.866)
+2021-03-20 16:43:55,326 Epoch: [25][300/1171]	Time 1.647s (2.270s)	Speed 77.7 samples/s	Data 0.001s (0.244s)	Loss 0.00031 (0.00030)	Accuracy 0.863 (0.866)
+2021-03-20 16:47:20,244 Epoch: [25][400/1171]	Time 1.824s (2.215s)	Speed 70.2 samples/s	Data 0.001s (0.202s)	Loss 0.00030 (0.00030)	Accuracy 0.866 (0.866)
+2021-03-20 16:50:44,422 Epoch: [25][500/1171]	Time 1.867s (2.180s)	Speed 68.6 samples/s	Data 0.001s (0.178s)	Loss 0.00030 (0.00031)	Accuracy 0.881 (0.865)
+2021-03-20 16:54:09,639 Epoch: [25][600/1171]	Time 1.825s (2.159s)	Speed 70.1 samples/s	Data 0.007s (0.161s)	Loss 0.00030 (0.00030)	Accuracy 0.885 (0.866)
+2021-03-20 16:57:35,618 Epoch: [25][700/1171]	Time 1.635s (2.145s)	Speed 78.3 samples/s	Data 0.000s (0.150s)	Loss 0.00030 (0.00030)	Accuracy 0.873 (0.865)
+2021-03-20 17:01:02,229 Epoch: [25][800/1171]	Time 1.668s (2.135s)	Speed 76.7 samples/s	Data 0.001s (0.142s)	Loss 0.00025 (0.00030)	Accuracy 0.906 (0.866)
+2021-03-20 17:04:28,062 Epoch: [25][900/1171]	Time 1.781s (2.127s)	Speed 71.9 samples/s	Data 0.001s (0.135s)	Loss 0.00030 (0.00030)	Accuracy 0.865 (0.866)
+2021-03-20 17:07:53,243 Epoch: [25][1000/1171]	Time 1.418s (2.119s)	Speed 90.3 samples/s	Data 0.001s (0.130s)	Loss 0.00036 (0.00030)	Accuracy 0.859 (0.866)
+2021-03-20 17:11:18,539 Epoch: [25][1100/1171]	Time 3.718s (2.113s)	Speed 34.4 samples/s	Data 0.000s (0.125s)	Loss 0.00028 (0.00030)	Accuracy 0.891 (0.866)
+2021-03-20 17:14:15,735 Test: [0/50]	Time 63.270 (63.270)	Loss 0.0003 (0.0003)	Accuracy 0.884 (0.884)
+2021-03-20 17:16:29,759 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 17:16:36,892 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 17:16:36,894 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 17:16:36,894 | pose_hgr... | 0.744 | 0.917 | 0.808 | 0.713 | 0.796 | 0.772 | 0.930 | 0.828 | 0.736 | 0.827 |
+2021-03-20 17:16:36,903 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 17:17:37,894 Epoch: [26][0/1171]	Time 49.968s (49.968s)	Speed 2.6 samples/s	Data 32.746s (32.746s)	Loss 0.00030 (0.00030)	Accuracy 0.859 (0.859)
+2021-03-20 17:21:19,957 Epoch: [26][100/1171]	Time 2.180s (2.693s)	Speed 58.7 samples/s	Data 0.006s (0.556s)	Loss 0.00032 (0.00030)	Accuracy 0.853 (0.870)
+2021-03-20 17:24:47,999 Epoch: [26][200/1171]	Time 3.611s (2.388s)	Speed 35.4 samples/s	Data 0.000s (0.318s)	Loss 0.00026 (0.00030)	Accuracy 0.893 (0.869)
+2021-03-20 17:28:13,028 Epoch: [26][300/1171]	Time 1.830s (2.276s)	Speed 69.9 samples/s	Data 0.002s (0.237s)	Loss 0.00028 (0.00030)	Accuracy 0.878 (0.868)
+2021-03-20 17:31:38,966 Epoch: [26][400/1171]	Time 1.855s (2.222s)	Speed 69.0 samples/s	Data 0.001s (0.198s)	Loss 0.00031 (0.00030)	Accuracy 0.871 (0.869)
+2021-03-20 17:35:04,921 Epoch: [26][500/1171]	Time 1.821s (2.189s)	Speed 70.3 samples/s	Data 0.000s (0.174s)	Loss 0.00033 (0.00030)	Accuracy 0.860 (0.868)
+2021-03-20 17:38:30,566 Epoch: [26][600/1171]	Time 1.818s (2.167s)	Speed 70.4 samples/s	Data 0.004s (0.159s)	Loss 0.00032 (0.00030)	Accuracy 0.853 (0.869)
+2021-03-20 17:41:56,543 Epoch: [26][700/1171]	Time 2.166s (2.152s)	Speed 59.1 samples/s	Data 0.002s (0.148s)	Loss 0.00033 (0.00030)	Accuracy 0.854 (0.868)
+2021-03-20 17:45:21,647 Epoch: [26][800/1171]	Time 1.835s (2.139s)	Speed 69.8 samples/s	Data 0.000s (0.140s)	Loss 0.00028 (0.00030)	Accuracy 0.868 (0.868)
+2021-03-20 17:48:46,967 Epoch: [26][900/1171]	Time 1.915s (2.130s)	Speed 66.9 samples/s	Data 0.001s (0.133s)	Loss 0.00030 (0.00030)	Accuracy 0.879 (0.868)
+2021-03-20 17:52:12,099 Epoch: [26][1000/1171]	Time 1.814s (2.122s)	Speed 70.6 samples/s	Data 0.002s (0.128s)	Loss 0.00029 (0.00030)	Accuracy 0.872 (0.868)
+2021-03-20 17:55:37,496 Epoch: [26][1100/1171]	Time 2.076s (2.116s)	Speed 61.6 samples/s	Data 0.000s (0.124s)	Loss 0.00033 (0.00030)	Accuracy 0.832 (0.868)
+2021-03-20 17:58:36,799 Test: [0/50]	Time 63.184 (63.184)	Loss 0.0003 (0.0003)	Accuracy 0.887 (0.887)
+2021-03-20 18:00:49,758 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 18:00:57,123 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 18:00:57,124 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 18:00:57,124 | pose_hgr... | 0.754 | 0.926 | 0.817 | 0.720 | 0.804 | 0.781 | 0.934 | 0.839 | 0.745 | 0.835 |
+2021-03-20 18:00:57,132 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 18:02:07,983 Epoch: [27][0/1171]	Time 55.049s (55.049s)	Speed 2.3 samples/s	Data 36.769s (36.769s)	Loss 0.00029 (0.00029)	Accuracy 0.867 (0.867)
+2021-03-20 18:05:45,907 Epoch: [27][100/1171]	Time 1.458s (2.703s)	Speed 87.8 samples/s	Data 0.001s (0.544s)	Loss 0.00031 (0.00030)	Accuracy 0.852 (0.871)
+2021-03-20 18:09:13,029 Epoch: [27][200/1171]	Time 3.221s (2.389s)	Speed 39.7 samples/s	Data 0.005s (0.311s)	Loss 0.00030 (0.00030)	Accuracy 0.875 (0.872)
+2021-03-20 18:12:36,875 Epoch: [27][300/1171]	Time 1.871s (2.272s)	Speed 68.4 samples/s	Data 0.001s (0.233s)	Loss 0.00026 (0.00030)	Accuracy 0.876 (0.870)
+2021-03-20 18:16:01,459 Epoch: [27][400/1171]	Time 1.863s (2.216s)	Speed 68.7 samples/s	Data 0.000s (0.195s)	Loss 0.00028 (0.00030)	Accuracy 0.890 (0.871)
+2021-03-20 18:19:26,092 Epoch: [27][500/1171]	Time 1.881s (2.182s)	Speed 68.1 samples/s	Data 0.001s (0.172s)	Loss 0.00028 (0.00030)	Accuracy 0.875 (0.872)
+2021-03-20 18:22:51,758 Epoch: [27][600/1171]	Time 1.864s (2.161s)	Speed 68.7 samples/s	Data 0.002s (0.158s)	Loss 0.00030 (0.00030)	Accuracy 0.884 (0.872)
+2021-03-20 18:26:16,768 Epoch: [27][700/1171]	Time 1.719s (2.145s)	Speed 74.5 samples/s	Data 0.000s (0.147s)	Loss 0.00029 (0.00030)	Accuracy 0.878 (0.872)
+2021-03-20 18:29:41,950 Epoch: [27][800/1171]	Time 1.821s (2.134s)	Speed 70.3 samples/s	Data 0.001s (0.139s)	Loss 0.00026 (0.00030)	Accuracy 0.889 (0.872)
+2021-03-20 18:33:07,356 Epoch: [27][900/1171]	Time 1.875s (2.125s)	Speed 68.3 samples/s	Data 0.000s (0.133s)	Loss 0.00031 (0.00030)	Accuracy 0.848 (0.872)
+2021-03-20 18:36:31,632 Epoch: [27][1000/1171]	Time 2.033s (2.117s)	Speed 63.0 samples/s	Data 0.001s (0.128s)	Loss 0.00029 (0.00030)	Accuracy 0.861 (0.872)
+2021-03-20 18:39:56,587 Epoch: [27][1100/1171]	Time 1.714s (2.110s)	Speed 74.7 samples/s	Data 0.001s (0.123s)	Loss 0.00030 (0.00030)	Accuracy 0.867 (0.871)
+2021-03-20 18:42:55,374 Test: [0/50]	Time 63.700 (63.700)	Loss 0.0003 (0.0003)	Accuracy 0.890 (0.890)
+2021-03-20 18:45:08,468 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 18:45:15,732 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 18:45:15,733 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 18:45:15,733 | pose_hgr... | 0.750 | 0.925 | 0.817 | 0.719 | 0.798 | 0.778 | 0.933 | 0.837 | 0.743 | 0.831 |
+2021-03-20 18:45:15,742 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 18:46:31,454 Epoch: [28][0/1171]	Time 64.691s (64.691s)	Speed 2.0 samples/s	Data 52.468s (52.468s)	Loss 0.00025 (0.00025)	Accuracy 0.902 (0.902)
+2021-03-20 18:50:00,821 Epoch: [28][100/1171]	Time 2.063s (2.713s)	Speed 62.1 samples/s	Data 0.000s (0.616s)	Loss 0.00028 (0.00029)	Accuracy 0.891 (0.876)
+2021-03-20 18:53:30,643 Epoch: [28][200/1171]	Time 3.805s (2.407s)	Speed 33.6 samples/s	Data 0.000s (0.352s)	Loss 0.00033 (0.00029)	Accuracy 0.842 (0.874)
+2021-03-20 18:56:56,187 Epoch: [28][300/1171]	Time 1.939s (2.290s)	Speed 66.0 samples/s	Data 0.001s (0.259s)	Loss 0.00030 (0.00029)	Accuracy 0.874 (0.874)
+2021-03-20 19:00:23,363 Epoch: [28][400/1171]	Time 1.937s (2.236s)	Speed 66.1 samples/s	Data 0.001s (0.214s)	Loss 0.00033 (0.00029)	Accuracy 0.848 (0.873)
+2021-03-20 19:03:49,911 Epoch: [28][500/1171]	Time 1.879s (2.202s)	Speed 68.1 samples/s	Data 0.001s (0.187s)	Loss 0.00033 (0.00030)	Accuracy 0.849 (0.873)
+2021-03-20 19:07:15,918 Epoch: [28][600/1171]	Time 1.991s (2.178s)	Speed 64.3 samples/s	Data 0.001s (0.170s)	Loss 0.00035 (0.00030)	Accuracy 0.852 (0.872)
+2021-03-20 19:10:43,610 Epoch: [28][700/1171]	Time 1.600s (2.164s)	Speed 80.0 samples/s	Data 0.001s (0.157s)	Loss 0.00027 (0.00030)	Accuracy 0.878 (0.872)
+2021-03-20 19:14:09,402 Epoch: [28][800/1171]	Time 1.886s (2.151s)	Speed 67.9 samples/s	Data 0.001s (0.147s)	Loss 0.00027 (0.00030)	Accuracy 0.883 (0.872)
+2021-03-20 19:17:34,678 Epoch: [28][900/1171]	Time 1.837s (2.140s)	Speed 69.7 samples/s	Data 0.001s (0.140s)	Loss 0.00027 (0.00030)	Accuracy 0.889 (0.872)
+2021-03-20 19:21:00,431 Epoch: [28][1000/1171]	Time 1.719s (2.132s)	Speed 74.5 samples/s	Data 0.028s (0.134s)	Loss 0.00030 (0.00030)	Accuracy 0.889 (0.872)
+2021-03-20 19:24:26,514 Epoch: [28][1100/1171]	Time 2.033s (2.125s)	Speed 63.0 samples/s	Data 0.000s (0.129s)	Loss 0.00029 (0.00030)	Accuracy 0.889 (0.872)
+2021-03-20 19:27:23,894 Test: [0/50]	Time 61.342 (61.342)	Loss 0.0003 (0.0003)	Accuracy 0.890 (0.890)
+2021-03-20 19:29:38,644 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 19:29:45,665 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 19:29:45,667 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 19:29:45,667 | pose_hgr... | 0.751 | 0.926 | 0.816 | 0.718 | 0.800 | 0.777 | 0.936 | 0.832 | 0.741 | 0.831 |
+2021-03-20 19:29:45,675 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 19:30:55,140 Epoch: [29][0/1171]	Time 59.354s (59.354s)	Speed 2.2 samples/s	Data 41.704s (41.704s)	Loss 0.00025 (0.00025)	Accuracy 0.915 (0.915)
+2021-03-20 19:34:30,418 Epoch: [29][100/1171]	Time 2.070s (2.719s)	Speed 61.8 samples/s	Data 0.001s (0.559s)	Loss 0.00029 (0.00029)	Accuracy 0.887 (0.877)
+2021-03-20 19:37:58,490 Epoch: [29][200/1171]	Time 1.453s (2.402s)	Speed 88.1 samples/s	Data 0.001s (0.321s)	Loss 0.00028 (0.00029)	Accuracy 0.884 (0.875)
+2021-03-20 19:41:22,561 Epoch: [29][300/1171]	Time 2.017s (2.282s)	Speed 63.5 samples/s	Data 0.001s (0.239s)	Loss 0.00028 (0.00029)	Accuracy 0.879 (0.874)
+2021-03-20 19:44:47,485 Epoch: [29][400/1171]	Time 1.741s (2.224s)	Speed 73.5 samples/s	Data 0.001s (0.199s)	Loss 0.00029 (0.00029)	Accuracy 0.867 (0.874)
+2021-03-20 19:48:13,731 Epoch: [29][500/1171]	Time 1.971s (2.192s)	Speed 65.0 samples/s	Data 0.010s (0.176s)	Loss 0.00030 (0.00029)	Accuracy 0.867 (0.873)
+2021-03-20 19:51:39,513 Epoch: [29][600/1171]	Time 1.785s (2.169s)	Speed 71.7 samples/s	Data 0.001s (0.160s)	Loss 0.00032 (0.00029)	Accuracy 0.872 (0.873)
+2021-03-20 19:55:03,337 Epoch: [29][700/1171]	Time 1.922s (2.151s)	Speed 66.6 samples/s	Data 0.001s (0.148s)	Loss 0.00028 (0.00030)	Accuracy 0.885 (0.873)
+2021-03-20 19:58:28,520 Epoch: [29][800/1171]	Time 2.046s (2.138s)	Speed 62.5 samples/s	Data 0.000s (0.139s)	Loss 0.00028 (0.00029)	Accuracy 0.873 (0.873)
+2021-03-20 20:01:55,752 Epoch: [29][900/1171]	Time 1.807s (2.131s)	Speed 70.8 samples/s	Data 0.048s (0.133s)	Loss 0.00028 (0.00029)	Accuracy 0.881 (0.873)
+2021-03-20 20:05:21,602 Epoch: [29][1000/1171]	Time 1.692s (2.124s)	Speed 75.6 samples/s	Data 0.000s (0.127s)	Loss 0.00032 (0.00030)	Accuracy 0.865 (0.873)
+2021-03-20 20:08:46,183 Epoch: [29][1100/1171]	Time 1.843s (2.117s)	Speed 69.5 samples/s	Data 0.005s (0.123s)	Loss 0.00030 (0.00030)	Accuracy 0.858 (0.873)
+2021-03-20 20:11:44,764 Test: [0/50]	Time 63.517 (63.517)	Loss 0.0003 (0.0003)	Accuracy 0.895 (0.895)
+2021-03-20 20:13:57,641 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 20:14:04,826 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 20:14:04,828 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 20:14:04,828 | pose_hgr... | 0.752 | 0.926 | 0.818 | 0.722 | 0.804 | 0.780 | 0.933 | 0.840 | 0.745 | 0.833 |
+2021-03-20 20:14:04,837 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 20:15:19,444 Epoch: [30][0/1171]	Time 64.616s (64.616s)	Speed 2.0 samples/s	Data 54.457s (54.457s)	Loss 0.00029 (0.00029)	Accuracy 0.884 (0.884)
+2021-03-20 20:18:48,076 Epoch: [30][100/1171]	Time 1.888s (2.705s)	Speed 67.8 samples/s	Data 0.010s (0.633s)	Loss 0.00027 (0.00029)	Accuracy 0.890 (0.878)
+2021-03-20 20:22:14,938 Epoch: [30][200/1171]	Time 1.854s (2.389s)	Speed 69.1 samples/s	Data 0.001s (0.358s)	Loss 0.00031 (0.00029)	Accuracy 0.870 (0.878)
+2021-03-20 20:25:40,051 Epoch: [30][300/1171]	Time 1.797s (2.276s)	Speed 71.2 samples/s	Data 0.000s (0.265s)	Loss 0.00027 (0.00029)	Accuracy 0.867 (0.877)
+2021-03-20 20:29:05,442 Epoch: [30][400/1171]	Time 1.892s (2.221s)	Speed 67.7 samples/s	Data 0.025s (0.219s)	Loss 0.00028 (0.00029)	Accuracy 0.881 (0.875)
+2021-03-20 20:32:31,093 Epoch: [30][500/1171]	Time 1.967s (2.188s)	Speed 65.1 samples/s	Data 0.001s (0.191s)	Loss 0.00029 (0.00029)	Accuracy 0.871 (0.875)
+2021-03-20 20:35:57,574 Epoch: [30][600/1171]	Time 1.784s (2.168s)	Speed 71.7 samples/s	Data 0.000s (0.172s)	Loss 0.00032 (0.00029)	Accuracy 0.867 (0.875)
+2021-03-20 20:39:23,571 Epoch: [30][700/1171]	Time 1.961s (2.152s)	Speed 65.3 samples/s	Data 0.001s (0.158s)	Loss 0.00030 (0.00029)	Accuracy 0.864 (0.875)
+2021-03-20 20:42:49,085 Epoch: [30][800/1171]	Time 1.949s (2.140s)	Speed 65.7 samples/s	Data 0.004s (0.148s)	Loss 0.00030 (0.00029)	Accuracy 0.871 (0.875)
+2021-03-20 20:46:14,741 Epoch: [30][900/1171]	Time 2.095s (2.131s)	Speed 61.1 samples/s	Data 0.000s (0.140s)	Loss 0.00028 (0.00029)	Accuracy 0.875 (0.875)
+2021-03-20 20:49:40,744 Epoch: [30][1000/1171]	Time 2.127s (2.124s)	Speed 60.2 samples/s	Data 0.001s (0.134s)	Loss 0.00028 (0.00029)	Accuracy 0.874 (0.875)
+2021-03-20 20:53:04,400 Epoch: [30][1100/1171]	Time 2.045s (2.116s)	Speed 62.6 samples/s	Data 0.001s (0.129s)	Loss 0.00033 (0.00029)	Accuracy 0.845 (0.875)
+2021-03-20 20:56:03,426 Test: [0/50]	Time 63.409 (63.409)	Loss 0.0003 (0.0003)	Accuracy 0.875 (0.875)
+2021-03-20 20:58:16,260 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 20:58:23,261 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 20:58:23,263 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 20:58:23,263 | pose_hgr... | 0.746 | 0.915 | 0.807 | 0.713 | 0.796 | 0.772 | 0.924 | 0.829 | 0.736 | 0.827 |
+2021-03-20 20:58:23,271 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 20:59:38,253 Epoch: [31][0/1171]	Time 65.069s (65.069s)	Speed 2.0 samples/s	Data 57.718s (57.718s)	Loss 0.00030 (0.00030)	Accuracy 0.885 (0.885)
+2021-03-20 21:03:06,916 Epoch: [31][100/1171]	Time 1.723s (2.710s)	Speed 74.3 samples/s	Data 0.001s (0.662s)	Loss 0.00027 (0.00030)	Accuracy 0.896 (0.875)
+2021-03-20 21:06:33,919 Epoch: [31][200/1171]	Time 1.939s (2.392s)	Speed 66.0 samples/s	Data 0.001s (0.371s)	Loss 0.00028 (0.00030)	Accuracy 0.886 (0.873)
+2021-03-20 21:09:59,692 Epoch: [31][300/1171]	Time 1.976s (2.281s)	Speed 64.8 samples/s	Data 0.001s (0.274s)	Loss 0.00029 (0.00030)	Accuracy 0.867 (0.873)
+2021-03-20 21:13:24,556 Epoch: [31][400/1171]	Time 1.703s (2.223s)	Speed 75.2 samples/s	Data 0.000s (0.225s)	Loss 0.00027 (0.00029)	Accuracy 0.867 (0.873)
+2021-03-20 21:16:49,265 Epoch: [31][500/1171]	Time 2.001s (2.188s)	Speed 64.0 samples/s	Data 0.001s (0.196s)	Loss 0.00028 (0.00029)	Accuracy 0.882 (0.874)
+2021-03-20 21:20:15,667 Epoch: [31][600/1171]	Time 1.797s (2.167s)	Speed 71.2 samples/s	Data 0.001s (0.176s)	Loss 0.00030 (0.00029)	Accuracy 0.852 (0.874)
+2021-03-20 21:23:40,233 Epoch: [31][700/1171]	Time 1.683s (2.150s)	Speed 76.0 samples/s	Data 0.000s (0.162s)	Loss 0.00029 (0.00029)	Accuracy 0.886 (0.874)
+2021-03-20 21:27:04,589 Epoch: [31][800/1171]	Time 1.974s (2.137s)	Speed 64.8 samples/s	Data 0.001s (0.151s)	Loss 0.00032 (0.00029)	Accuracy 0.867 (0.874)
+2021-03-20 21:30:28,110 Epoch: [31][900/1171]	Time 1.919s (2.125s)	Speed 66.7 samples/s	Data 0.001s (0.143s)	Loss 0.00028 (0.00029)	Accuracy 0.868 (0.874)
+2021-03-20 21:33:52,513 Epoch: [31][1000/1171]	Time 1.851s (2.117s)	Speed 69.2 samples/s	Data 0.020s (0.137s)	Loss 0.00030 (0.00029)	Accuracy 0.872 (0.874)
+2021-03-20 21:37:17,923 Epoch: [31][1100/1171]	Time 1.890s (2.111s)	Speed 67.7 samples/s	Data 0.001s (0.132s)	Loss 0.00031 (0.00029)	Accuracy 0.862 (0.874)
+2021-03-20 21:40:16,886 Test: [0/50]	Time 63.304 (63.304)	Loss 0.0003 (0.0003)	Accuracy 0.883 (0.883)
+2021-03-20 21:42:29,605 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 21:42:36,784 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 21:42:36,785 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 21:42:36,785 | pose_hgr... | 0.756 | 0.925 | 0.818 | 0.723 | 0.803 | 0.781 | 0.931 | 0.840 | 0.748 | 0.833 |
+2021-03-20 21:42:36,793 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 21:43:55,537 Epoch: [32][0/1171]	Time 65.629s (65.629s)	Speed 2.0 samples/s	Data 38.017s (38.017s)	Loss 0.00028 (0.00028)	Accuracy 0.885 (0.885)
+2021-03-20 21:47:24,205 Epoch: [32][100/1171]	Time 1.885s (2.716s)	Speed 67.9 samples/s	Data 0.001s (0.472s)	Loss 0.00025 (0.00030)	Accuracy 0.882 (0.868)
+2021-03-20 21:50:52,549 Epoch: [32][200/1171]	Time 1.926s (2.401s)	Speed 66.4 samples/s	Data 0.001s (0.276s)	Loss 0.00032 (0.00030)	Accuracy 0.850 (0.870)
+2021-03-20 21:54:19,380 Epoch: [32][300/1171]	Time 2.118s (2.291s)	Speed 60.4 samples/s	Data 0.000s (0.210s)	Loss 0.00028 (0.00030)	Accuracy 0.879 (0.871)
+2021-03-20 21:57:46,626 Epoch: [32][400/1171]	Time 2.168s (2.236s)	Speed 59.0 samples/s	Data 0.001s (0.177s)	Loss 0.00031 (0.00029)	Accuracy 0.868 (0.872)
+2021-03-20 22:01:14,883 Epoch: [32][500/1171]	Time 3.676s (2.206s)	Speed 34.8 samples/s	Data 0.000s (0.158s)	Loss 0.00028 (0.00029)	Accuracy 0.885 (0.873)
+2021-03-20 22:04:39,558 Epoch: [32][600/1171]	Time 1.873s (2.179s)	Speed 68.4 samples/s	Data 0.002s (0.143s)	Loss 0.00030 (0.00029)	Accuracy 0.867 (0.874)
+2021-03-20 22:08:05,035 Epoch: [32][700/1171]	Time 1.971s (2.161s)	Speed 64.9 samples/s	Data 0.011s (0.134s)	Loss 0.00029 (0.00029)	Accuracy 0.891 (0.874)
+2021-03-20 22:11:30,581 Epoch: [32][800/1171]	Time 1.819s (2.148s)	Speed 70.4 samples/s	Data 0.002s (0.127s)	Loss 0.00029 (0.00029)	Accuracy 0.876 (0.875)
+2021-03-20 22:14:56,334 Epoch: [32][900/1171]	Time 1.934s (2.138s)	Speed 66.2 samples/s	Data 0.001s (0.122s)	Loss 0.00029 (0.00029)	Accuracy 0.874 (0.875)
+2021-03-20 22:18:22,975 Epoch: [32][1000/1171]	Time 1.717s (2.131s)	Speed 74.6 samples/s	Data 0.001s (0.118s)	Loss 0.00030 (0.00029)	Accuracy 0.859 (0.875)
+2021-03-20 22:21:47,676 Epoch: [32][1100/1171]	Time 1.789s (2.123s)	Speed 71.5 samples/s	Data 0.001s (0.114s)	Loss 0.00028 (0.00029)	Accuracy 0.882 (0.875)
+2021-03-20 22:24:46,602 Test: [0/50]	Time 64.014 (64.014)	Loss 0.0003 (0.0003)	Accuracy 0.883 (0.883)
+2021-03-20 22:26:59,153 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 22:27:06,230 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 22:27:06,232 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 22:27:06,232 | pose_hgr... | 0.752 | 0.925 | 0.816 | 0.718 | 0.802 | 0.779 | 0.931 | 0.835 | 0.743 | 0.833 |
+2021-03-20 22:27:06,241 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 22:28:05,952 Epoch: [33][0/1171]	Time 49.844s (49.844s)	Speed 2.6 samples/s	Data 33.026s (33.026s)	Loss 0.00028 (0.00028)	Accuracy 0.883 (0.883)
+2021-03-20 22:31:49,254 Epoch: [33][100/1171]	Time 1.733s (2.704s)	Speed 73.9 samples/s	Data 0.001s (0.562s)	Loss 0.00027 (0.00028)	Accuracy 0.876 (0.879)
+2021-03-20 22:35:15,355 Epoch: [33][200/1171]	Time 2.056s (2.384s)	Speed 62.3 samples/s	Data 0.001s (0.323s)	Loss 0.00035 (0.00029)	Accuracy 0.842 (0.878)
+2021-03-20 22:38:44,798 Epoch: [33][300/1171]	Time 3.685s (2.288s)	Speed 34.7 samples/s	Data 0.000s (0.242s)	Loss 0.00028 (0.00029)	Accuracy 0.871 (0.878)
+2021-03-20 22:42:11,238 Epoch: [33][400/1171]	Time 1.443s (2.232s)	Speed 88.7 samples/s	Data 0.001s (0.198s)	Loss 0.00029 (0.00029)	Accuracy 0.868 (0.878)
+2021-03-20 22:45:36,441 Epoch: [33][500/1171]	Time 1.693s (2.196s)	Speed 75.6 samples/s	Data 0.002s (0.174s)	Loss 0.00032 (0.00029)	Accuracy 0.846 (0.878)
+2021-03-20 22:49:02,315 Epoch: [33][600/1171]	Time 1.793s (2.173s)	Speed 71.4 samples/s	Data 0.003s (0.158s)	Loss 0.00029 (0.00029)	Accuracy 0.890 (0.878)
+2021-03-20 22:52:28,459 Epoch: [33][700/1171]	Time 2.004s (2.157s)	Speed 63.9 samples/s	Data 0.001s (0.146s)	Loss 0.00026 (0.00029)	Accuracy 0.891 (0.878)
+2021-03-20 22:55:53,502 Epoch: [33][800/1171]	Time 1.773s (2.144s)	Speed 72.2 samples/s	Data 0.001s (0.137s)	Loss 0.00030 (0.00029)	Accuracy 0.871 (0.878)
+2021-03-20 22:59:18,908 Epoch: [33][900/1171]	Time 1.955s (2.134s)	Speed 65.5 samples/s	Data 0.001s (0.131s)	Loss 0.00030 (0.00029)	Accuracy 0.865 (0.878)
+2021-03-20 23:02:43,914 Epoch: [33][1000/1171]	Time 1.934s (2.126s)	Speed 66.2 samples/s	Data 0.000s (0.126s)	Loss 0.00028 (0.00029)	Accuracy 0.877 (0.878)
+2021-03-20 23:06:09,847 Epoch: [33][1100/1171]	Time 2.198s (2.120s)	Speed 58.2 samples/s	Data 0.000s (0.121s)	Loss 0.00027 (0.00029)	Accuracy 0.892 (0.878)
+2021-03-20 23:09:06,718 Test: [0/50]	Time 62.977 (62.977)	Loss 0.0003 (0.0003)	Accuracy 0.883 (0.883)
+2021-03-20 23:11:19,201 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 23:11:26,348 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 23:11:26,350 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 23:11:26,350 | pose_hgr... | 0.755 | 0.926 | 0.817 | 0.722 | 0.805 | 0.782 | 0.934 | 0.839 | 0.747 | 0.835 |
+2021-03-20 23:11:26,358 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 23:12:27,364 Epoch: [34][0/1171]	Time 51.106s (51.106s)	Speed 2.5 samples/s	Data 32.949s (32.949s)	Loss 0.00027 (0.00027)	Accuracy 0.888 (0.888)
+2021-03-20 23:16:09,981 Epoch: [34][100/1171]	Time 1.922s (2.710s)	Speed 66.6 samples/s	Data 0.001s (0.556s)	Loss 0.00026 (0.00029)	Accuracy 0.902 (0.879)
+2021-03-20 23:19:37,401 Epoch: [34][200/1171]	Time 2.155s (2.394s)	Speed 59.4 samples/s	Data 0.001s (0.320s)	Loss 0.00027 (0.00029)	Accuracy 0.876 (0.879)
+2021-03-20 23:23:02,733 Epoch: [34][300/1171]	Time 1.781s (2.281s)	Speed 71.9 samples/s	Data 0.001s (0.239s)	Loss 0.00027 (0.00029)	Accuracy 0.893 (0.879)
+2021-03-20 23:26:27,706 Epoch: [34][400/1171]	Time 2.225s (2.223s)	Speed 57.5 samples/s	Data 0.000s (0.199s)	Loss 0.00029 (0.00029)	Accuracy 0.888 (0.878)
+2021-03-20 23:29:51,399 Epoch: [34][500/1171]	Time 1.790s (2.186s)	Speed 71.5 samples/s	Data 0.001s (0.175s)	Loss 0.00029 (0.00029)	Accuracy 0.875 (0.878)
+2021-03-20 23:33:16,517 Epoch: [34][600/1171]	Time 1.996s (2.163s)	Speed 64.1 samples/s	Data 0.006s (0.159s)	Loss 0.00025 (0.00029)	Accuracy 0.902 (0.878)
+2021-03-20 23:36:41,162 Epoch: [34][700/1171]	Time 1.792s (2.147s)	Speed 71.4 samples/s	Data 0.001s (0.148s)	Loss 0.00031 (0.00029)	Accuracy 0.887 (0.878)
+2021-03-20 23:40:06,836 Epoch: [34][800/1171]	Time 3.720s (2.136s)	Speed 34.4 samples/s	Data 0.000s (0.139s)	Loss 0.00028 (0.00029)	Accuracy 0.866 (0.878)
+2021-03-20 23:43:31,468 Epoch: [34][900/1171]	Time 1.821s (2.126s)	Speed 70.3 samples/s	Data 0.000s (0.131s)	Loss 0.00033 (0.00029)	Accuracy 0.865 (0.878)
+2021-03-20 23:46:57,209 Epoch: [34][1000/1171]	Time 1.900s (2.119s)	Speed 67.4 samples/s	Data 0.001s (0.126s)	Loss 0.00027 (0.00029)	Accuracy 0.897 (0.879)
+2021-03-20 23:50:21,872 Epoch: [34][1100/1171]	Time 2.146s (2.112s)	Speed 59.6 samples/s	Data 0.001s (0.121s)	Loss 0.00033 (0.00029)	Accuracy 0.862 (0.879)
+2021-03-20 23:53:19,526 Test: [0/50]	Time 63.568 (63.568)	Loss 0.0003 (0.0003)	Accuracy 0.891 (0.891)
+2021-03-20 23:55:32,524 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-20 23:55:40,814 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-20 23:55:40,816 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-20 23:55:40,816 | pose_hgr... | 0.757 | 0.926 | 0.826 | 0.728 | 0.807 | 0.785 | 0.937 | 0.842 | 0.750 | 0.838 |
+2021-03-20 23:55:40,823 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-20 23:57:00,948 Epoch: [35][0/1171]	Time 66.689s (66.689s)	Speed 1.9 samples/s	Data 59.273s (59.273s)	Loss 0.00028 (0.00028)	Accuracy 0.871 (0.871)
+2021-03-21 00:00:29,675 Epoch: [35][100/1171]	Time 1.999s (2.727s)	Speed 64.0 samples/s	Data 0.000s (0.676s)	Loss 0.00030 (0.00028)	Accuracy 0.866 (0.882)
+2021-03-21 00:03:56,615 Epoch: [35][200/1171]	Time 2.150s (2.400s)	Speed 59.5 samples/s	Data 0.004s (0.379s)	Loss 0.00029 (0.00028)	Accuracy 0.862 (0.880)
+2021-03-21 00:07:23,462 Epoch: [35][300/1171]	Time 2.112s (2.290s)	Speed 60.6 samples/s	Data 0.000s (0.278s)	Loss 0.00030 (0.00029)	Accuracy 0.860 (0.879)
+2021-03-21 00:10:51,325 Epoch: [35][400/1171]	Time 1.877s (2.237s)	Speed 68.2 samples/s	Data 0.001s (0.229s)	Loss 0.00028 (0.00029)	Accuracy 0.873 (0.880)
+2021-03-21 00:14:16,979 Epoch: [35][500/1171]	Time 1.861s (2.201s)	Speed 68.8 samples/s	Data 0.005s (0.198s)	Loss 0.00027 (0.00029)	Accuracy 0.896 (0.880)
+2021-03-21 00:17:42,498 Epoch: [35][600/1171]	Time 1.842s (2.177s)	Speed 69.5 samples/s	Data 0.000s (0.178s)	Loss 0.00029 (0.00028)	Accuracy 0.878 (0.880)
+2021-03-21 00:21:07,661 Epoch: [35][700/1171]	Time 1.902s (2.159s)	Speed 67.3 samples/s	Data 0.000s (0.164s)	Loss 0.00033 (0.00028)	Accuracy 0.862 (0.880)
+2021-03-21 00:24:33,067 Epoch: [35][800/1171]	Time 1.561s (2.146s)	Speed 82.0 samples/s	Data 0.000s (0.154s)	Loss 0.00028 (0.00029)	Accuracy 0.888 (0.880)
+2021-03-21 00:28:00,138 Epoch: [35][900/1171]	Time 1.583s (2.137s)	Speed 80.9 samples/s	Data 0.004s (0.145s)	Loss 0.00030 (0.00028)	Accuracy 0.876 (0.880)
+2021-03-21 00:31:25,112 Epoch: [35][1000/1171]	Time 2.111s (2.129s)	Speed 60.6 samples/s	Data 0.000s (0.139s)	Loss 0.00028 (0.00028)	Accuracy 0.873 (0.880)
+2021-03-21 00:34:49,999 Epoch: [35][1100/1171]	Time 1.877s (2.121s)	Speed 68.2 samples/s	Data 0.001s (0.133s)	Loss 0.00029 (0.00029)	Accuracy 0.887 (0.880)
+2021-03-21 00:37:49,143 Test: [0/50]	Time 62.509 (62.509)	Loss 0.0003 (0.0003)	Accuracy 0.887 (0.887)
+2021-03-21 00:40:01,699 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 00:40:08,902 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 00:40:08,904 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 00:40:08,904 | pose_hgr... | 0.757 | 0.926 | 0.825 | 0.725 | 0.805 | 0.783 | 0.937 | 0.840 | 0.749 | 0.835 |
+2021-03-21 00:40:08,912 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 00:41:27,243 Epoch: [36][0/1171]	Time 68.419s (68.419s)	Speed 1.9 samples/s	Data 58.295s (58.295s)	Loss 0.00027 (0.00027)	Accuracy 0.883 (0.883)
+2021-03-21 00:44:59,623 Epoch: [36][100/1171]	Time 1.858s (2.780s)	Speed 68.9 samples/s	Data 0.001s (0.658s)	Loss 0.00032 (0.00028)	Accuracy 0.874 (0.885)
+2021-03-21 00:48:26,771 Epoch: [36][200/1171]	Time 1.971s (2.428s)	Speed 65.0 samples/s	Data 0.001s (0.371s)	Loss 0.00028 (0.00028)	Accuracy 0.859 (0.882)
+2021-03-21 00:51:52,692 Epoch: [36][300/1171]	Time 1.745s (2.305s)	Speed 73.3 samples/s	Data 0.006s (0.274s)	Loss 0.00025 (0.00028)	Accuracy 0.903 (0.882)
+2021-03-21 00:55:20,489 Epoch: [36][400/1171]	Time 1.444s (2.249s)	Speed 88.6 samples/s	Data 0.001s (0.226s)	Loss 0.00028 (0.00028)	Accuracy 0.881 (0.882)
+2021-03-21 00:58:45,107 Epoch: [36][500/1171]	Time 1.859s (2.208s)	Speed 68.9 samples/s	Data 0.016s (0.196s)	Loss 0.00027 (0.00028)	Accuracy 0.896 (0.882)
+2021-03-21 01:02:10,631 Epoch: [36][600/1171]	Time 1.800s (2.183s)	Speed 71.1 samples/s	Data 0.001s (0.176s)	Loss 0.00026 (0.00028)	Accuracy 0.907 (0.883)
+2021-03-21 01:05:35,731 Epoch: [36][700/1171]	Time 2.025s (2.164s)	Speed 63.2 samples/s	Data 0.001s (0.162s)	Loss 0.00027 (0.00028)	Accuracy 0.907 (0.883)
+2021-03-21 01:09:01,076 Epoch: [36][800/1171]	Time 1.849s (2.150s)	Speed 69.2 samples/s	Data 0.001s (0.152s)	Loss 0.00027 (0.00028)	Accuracy 0.892 (0.883)
+2021-03-21 01:12:24,136 Epoch: [36][900/1171]	Time 1.840s (2.137s)	Speed 69.6 samples/s	Data 0.001s (0.144s)	Loss 0.00028 (0.00028)	Accuracy 0.880 (0.882)
+2021-03-21 01:16:01,648 Epoch: [36][1000/1171]	Time 2.004s (2.141s)	Speed 63.9 samples/s	Data 0.001s (0.137s)	Loss 0.00027 (0.00028)	Accuracy 0.893 (0.882)
+2021-03-21 01:19:27,409 Epoch: [36][1100/1171]	Time 1.889s (2.133s)	Speed 67.8 samples/s	Data 0.000s (0.131s)	Loss 0.00029 (0.00028)	Accuracy 0.867 (0.882)
+2021-03-21 01:22:23,881 Test: [0/50]	Time 62.576 (62.576)	Loss 0.0003 (0.0003)	Accuracy 0.894 (0.894)
+2021-03-21 01:24:37,180 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 01:24:44,188 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 01:24:44,189 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 01:24:44,189 | pose_hgr... | 0.758 | 0.926 | 0.828 | 0.727 | 0.807 | 0.785 | 0.936 | 0.843 | 0.750 | 0.839 |
+2021-03-21 01:24:44,198 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 01:25:47,722 Epoch: [37][0/1171]	Time 50.310s (50.310s)	Speed 2.5 samples/s	Data 32.721s (32.721s)	Loss 0.00026 (0.00026)	Accuracy 0.894 (0.894)
+2021-03-21 01:29:29,879 Epoch: [37][100/1171]	Time 1.962s (2.698s)	Speed 65.2 samples/s	Data 0.001s (0.551s)	Loss 0.00030 (0.00028)	Accuracy 0.849 (0.884)
+2021-03-21 01:32:57,035 Epoch: [37][200/1171]	Time 1.769s (2.386s)	Speed 72.3 samples/s	Data 0.001s (0.316s)	Loss 0.00026 (0.00028)	Accuracy 0.891 (0.884)
+2021-03-21 01:36:22,929 Epoch: [37][300/1171]	Time 1.879s (2.277s)	Speed 68.1 samples/s	Data 0.000s (0.238s)	Loss 0.00030 (0.00028)	Accuracy 0.868 (0.884)
+2021-03-21 01:39:48,841 Epoch: [37][400/1171]	Time 1.888s (2.223s)	Speed 67.8 samples/s	Data 0.001s (0.198s)	Loss 0.00026 (0.00028)	Accuracy 0.890 (0.884)
+2021-03-21 01:43:14,948 Epoch: [37][500/1171]	Time 2.085s (2.191s)	Speed 61.4 samples/s	Data 0.001s (0.174s)	Loss 0.00030 (0.00028)	Accuracy 0.863 (0.884)
+2021-03-21 01:46:40,341 Epoch: [37][600/1171]	Time 1.661s (2.168s)	Speed 77.1 samples/s	Data 0.000s (0.158s)	Loss 0.00028 (0.00028)	Accuracy 0.884 (0.884)
+2021-03-21 01:50:06,025 Epoch: [37][700/1171]	Time 1.848s (2.152s)	Speed 69.3 samples/s	Data 0.001s (0.146s)	Loss 0.00029 (0.00028)	Accuracy 0.880 (0.883)
+2021-03-21 01:53:32,798 Epoch: [37][800/1171]	Time 1.906s (2.142s)	Speed 67.2 samples/s	Data 0.000s (0.138s)	Loss 0.00028 (0.00028)	Accuracy 0.894 (0.884)
+2021-03-21 01:56:57,747 Epoch: [37][900/1171]	Time 1.789s (2.131s)	Speed 71.6 samples/s	Data 0.015s (0.131s)	Loss 0.00026 (0.00028)	Accuracy 0.902 (0.884)
+2021-03-21 02:00:22,003 Epoch: [37][1000/1171]	Time 1.801s (2.122s)	Speed 71.1 samples/s	Data 0.001s (0.126s)	Loss 0.00033 (0.00028)	Accuracy 0.851 (0.883)
+2021-03-21 02:03:49,438 Epoch: [37][1100/1171]	Time 4.114s (2.118s)	Speed 31.1 samples/s	Data 0.001s (0.122s)	Loss 0.00029 (0.00028)	Accuracy 0.882 (0.883)
+2021-03-21 02:06:45,377 Test: [0/50]	Time 62.843 (62.843)	Loss 0.0003 (0.0003)	Accuracy 0.886 (0.886)
+2021-03-21 02:08:59,267 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 02:09:06,290 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 02:09:06,292 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 02:09:06,292 | pose_hgr... | 0.760 | 0.926 | 0.828 | 0.730 | 0.810 | 0.787 | 0.935 | 0.846 | 0.752 | 0.839 |
+2021-03-21 02:09:06,300 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 02:10:15,404 Epoch: [38][0/1171]	Time 55.803s (55.803s)	Speed 2.3 samples/s	Data 38.673s (38.673s)	Loss 0.00027 (0.00027)	Accuracy 0.899 (0.899)
+2021-03-21 02:13:53,221 Epoch: [38][100/1171]	Time 1.873s (2.710s)	Speed 68.3 samples/s	Data 0.001s (0.571s)	Loss 0.00031 (0.00028)	Accuracy 0.854 (0.887)
+2021-03-21 02:17:19,852 Epoch: [38][200/1171]	Time 1.948s (2.390s)	Speed 65.7 samples/s	Data 0.022s (0.326s)	Loss 0.00027 (0.00028)	Accuracy 0.886 (0.886)
+2021-03-21 02:20:47,226 Epoch: [38][300/1171]	Time 2.165s (2.285s)	Speed 59.1 samples/s	Data 0.001s (0.243s)	Loss 0.00029 (0.00028)	Accuracy 0.867 (0.885)
+2021-03-21 02:24:12,660 Epoch: [38][400/1171]	Time 1.998s (2.227s)	Speed 64.1 samples/s	Data 0.001s (0.201s)	Loss 0.00027 (0.00028)	Accuracy 0.887 (0.885)
+2021-03-21 02:27:39,294 Epoch: [38][500/1171]	Time 1.942s (2.195s)	Speed 65.9 samples/s	Data 0.001s (0.177s)	Loss 0.00027 (0.00028)	Accuracy 0.883 (0.885)
+2021-03-21 02:31:04,542 Epoch: [38][600/1171]	Time 1.862s (2.171s)	Speed 68.8 samples/s	Data 0.001s (0.160s)	Loss 0.00028 (0.00028)	Accuracy 0.872 (0.884)
+2021-03-21 02:34:28,271 Epoch: [38][700/1171]	Time 1.681s (2.152s)	Speed 76.1 samples/s	Data 0.000s (0.149s)	Loss 0.00026 (0.00028)	Accuracy 0.891 (0.884)
+2021-03-21 02:37:53,992 Epoch: [38][800/1171]	Time 2.123s (2.140s)	Speed 60.3 samples/s	Data 0.001s (0.140s)	Loss 0.00027 (0.00028)	Accuracy 0.887 (0.884)
+2021-03-21 02:41:19,325 Epoch: [38][900/1171]	Time 1.960s (2.131s)	Speed 65.3 samples/s	Data 0.001s (0.133s)	Loss 0.00027 (0.00028)	Accuracy 0.881 (0.884)
+2021-03-21 02:44:44,083 Epoch: [38][1000/1171]	Time 1.880s (2.122s)	Speed 68.1 samples/s	Data 0.001s (0.127s)	Loss 0.00029 (0.00028)	Accuracy 0.874 (0.884)
+2021-03-21 02:48:09,274 Epoch: [38][1100/1171]	Time 1.961s (2.116s)	Speed 65.3 samples/s	Data 0.001s (0.123s)	Loss 0.00030 (0.00028)	Accuracy 0.861 (0.884)
+2021-03-21 02:51:06,884 Test: [0/50]	Time 63.414 (63.414)	Loss 0.0003 (0.0003)	Accuracy 0.883 (0.883)
+2021-03-21 02:53:20,614 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 02:53:27,598 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 02:53:27,599 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 02:53:27,599 | pose_hgr... | 0.736 | 0.909 | 0.800 | 0.705 | 0.788 | 0.770 | 0.927 | 0.827 | 0.732 | 0.827 |
+2021-03-21 02:53:27,608 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 02:54:43,396 Epoch: [39][0/1171]	Time 65.912s (65.912s)	Speed 1.9 samples/s	Data 52.008s (52.008s)	Loss 0.00024 (0.00024)	Accuracy 0.921 (0.921)
+2021-03-21 02:58:13,619 Epoch: [39][100/1171]	Time 2.025s (2.734s)	Speed 63.2 samples/s	Data 0.001s (0.612s)	Loss 0.00027 (0.00028)	Accuracy 0.898 (0.885)
+2021-03-21 03:01:41,648 Epoch: [39][200/1171]	Time 1.975s (2.409s)	Speed 64.8 samples/s	Data 0.000s (0.346s)	Loss 0.00029 (0.00028)	Accuracy 0.892 (0.885)
+2021-03-21 03:05:08,793 Epoch: [39][300/1171]	Time 1.766s (2.297s)	Speed 72.5 samples/s	Data 0.001s (0.257s)	Loss 0.00031 (0.00028)	Accuracy 0.864 (0.886)
+2021-03-21 03:08:35,256 Epoch: [39][400/1171]	Time 1.615s (2.239s)	Speed 79.3 samples/s	Data 0.000s (0.213s)	Loss 0.00028 (0.00028)	Accuracy 0.872 (0.885)
+2021-03-21 03:12:01,518 Epoch: [39][500/1171]	Time 1.946s (2.204s)	Speed 65.8 samples/s	Data 0.001s (0.186s)	Loss 0.00027 (0.00028)	Accuracy 0.900 (0.886)
+2021-03-21 03:15:27,786 Epoch: [39][600/1171]	Time 2.190s (2.180s)	Speed 58.4 samples/s	Data 0.020s (0.168s)	Loss 0.00032 (0.00028)	Accuracy 0.860 (0.886)
+2021-03-21 03:18:54,290 Epoch: [39][700/1171]	Time 1.957s (2.164s)	Speed 65.4 samples/s	Data 0.001s (0.155s)	Loss 0.00030 (0.00028)	Accuracy 0.869 (0.886)
+2021-03-21 03:22:20,707 Epoch: [39][800/1171]	Time 2.042s (2.151s)	Speed 62.7 samples/s	Data 0.001s (0.146s)	Loss 0.00026 (0.00028)	Accuracy 0.894 (0.886)
+2021-03-21 03:25:48,361 Epoch: [39][900/1171]	Time 3.810s (2.143s)	Speed 33.6 samples/s	Data 0.001s (0.138s)	Loss 0.00032 (0.00028)	Accuracy 0.840 (0.886)
+2021-03-21 03:29:13,860 Epoch: [39][1000/1171]	Time 1.473s (2.134s)	Speed 86.9 samples/s	Data 0.001s (0.131s)	Loss 0.00030 (0.00028)	Accuracy 0.858 (0.886)
+2021-03-21 03:32:39,938 Epoch: [39][1100/1171]	Time 1.866s (2.128s)	Speed 68.6 samples/s	Data 0.001s (0.126s)	Loss 0.00025 (0.00028)	Accuracy 0.892 (0.885)
+2021-03-21 03:35:36,344 Test: [0/50]	Time 61.936 (61.936)	Loss 0.0003 (0.0003)	Accuracy 0.891 (0.891)
+2021-03-21 03:37:49,871 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 03:37:58,001 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 03:37:58,002 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 03:37:58,002 | pose_hgr... | 0.759 | 0.926 | 0.827 | 0.730 | 0.809 | 0.788 | 0.937 | 0.847 | 0.754 | 0.840 |
+2021-03-21 03:37:58,012 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 03:39:12,561 Epoch: [40][0/1171]	Time 64.725s (64.725s)	Speed 2.0 samples/s	Data 59.127s (59.127s)	Loss 0.00027 (0.00027)	Accuracy 0.874 (0.874)
+2021-03-21 03:42:39,917 Epoch: [40][100/1171]	Time 1.616s (2.694s)	Speed 79.2 samples/s	Data 0.001s (0.670s)	Loss 0.00027 (0.00027)	Accuracy 0.897 (0.889)
+2021-03-21 03:46:03,554 Epoch: [40][200/1171]	Time 1.726s (2.367s)	Speed 74.1 samples/s	Data 0.000s (0.376s)	Loss 0.00029 (0.00027)	Accuracy 0.883 (0.890)
+2021-03-21 03:49:28,818 Epoch: [40][300/1171]	Time 1.713s (2.262s)	Speed 74.7 samples/s	Data 0.001s (0.277s)	Loss 0.00028 (0.00027)	Accuracy 0.888 (0.890)
+2021-03-21 03:52:53,866 Epoch: [40][400/1171]	Time 1.430s (2.210s)	Speed 89.5 samples/s	Data 0.001s (0.227s)	Loss 0.00025 (0.00027)	Accuracy 0.911 (0.889)
+2021-03-21 03:56:19,605 Epoch: [40][500/1171]	Time 3.267s (2.179s)	Speed 39.2 samples/s	Data 0.000s (0.197s)	Loss 0.00026 (0.00027)	Accuracy 0.875 (0.889)
+2021-03-21 03:59:43,172 Epoch: [40][600/1171]	Time 3.432s (2.155s)	Speed 37.3 samples/s	Data 0.001s (0.175s)	Loss 0.00028 (0.00027)	Accuracy 0.875 (0.889)
+2021-03-21 04:03:04,287 Epoch: [40][700/1171]	Time 1.920s (2.135s)	Speed 66.7 samples/s	Data 0.001s (0.160s)	Loss 0.00026 (0.00027)	Accuracy 0.906 (0.888)
+2021-03-21 04:06:27,702 Epoch: [40][800/1171]	Time 1.958s (2.122s)	Speed 65.4 samples/s	Data 0.001s (0.150s)	Loss 0.00029 (0.00027)	Accuracy 0.864 (0.888)
+2021-03-21 04:09:52,726 Epoch: [40][900/1171]	Time 1.735s (2.114s)	Speed 73.8 samples/s	Data 0.000s (0.142s)	Loss 0.00029 (0.00027)	Accuracy 0.873 (0.888)
+2021-03-21 04:13:16,442 Epoch: [40][1000/1171]	Time 2.092s (2.106s)	Speed 61.2 samples/s	Data 0.001s (0.135s)	Loss 0.00026 (0.00027)	Accuracy 0.876 (0.887)
+2021-03-21 04:16:40,887 Epoch: [40][1100/1171]	Time 2.023s (2.101s)	Speed 63.3 samples/s	Data 0.001s (0.130s)	Loss 0.00030 (0.00028)	Accuracy 0.885 (0.887)
+2021-03-21 04:19:38,130 Test: [0/50]	Time 62.664 (62.664)	Loss 0.0003 (0.0003)	Accuracy 0.889 (0.889)
+2021-03-21 04:21:50,408 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 04:21:58,629 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 04:21:58,631 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 04:21:58,631 | pose_hgr... | 0.763 | 0.926 | 0.827 | 0.736 | 0.809 | 0.791 | 0.937 | 0.848 | 0.759 | 0.840 |
+2021-03-21 04:21:58,640 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 04:23:06,957 Epoch: [41][0/1171]	Time 54.127s (54.127s)	Speed 2.4 samples/s	Data 37.200s (37.200s)	Loss 0.00024 (0.00024)	Accuracy 0.913 (0.913)
+2021-03-21 04:26:44,207 Epoch: [41][100/1171]	Time 1.734s (2.687s)	Speed 73.8 samples/s	Data 0.001s (0.559s)	Loss 0.00029 (0.00027)	Accuracy 0.881 (0.889)
+2021-03-21 04:30:10,834 Epoch: [41][200/1171]	Time 1.669s (2.378s)	Speed 76.7 samples/s	Data 0.000s (0.321s)	Loss 0.00026 (0.00027)	Accuracy 0.885 (0.887)
+2021-03-21 04:33:35,225 Epoch: [41][300/1171]	Time 1.824s (2.267s)	Speed 70.2 samples/s	Data 0.017s (0.240s)	Loss 0.00028 (0.00027)	Accuracy 0.872 (0.887)
+2021-03-21 04:37:00,053 Epoch: [41][400/1171]	Time 2.168s (2.213s)	Speed 59.0 samples/s	Data 0.002s (0.200s)	Loss 0.00030 (0.00028)	Accuracy 0.848 (0.887)
+2021-03-21 04:40:24,621 Epoch: [41][500/1171]	Time 1.905s (2.179s)	Speed 67.2 samples/s	Data 0.001s (0.175s)	Loss 0.00025 (0.00027)	Accuracy 0.899 (0.887)
+2021-03-21 04:43:50,628 Epoch: [41][600/1171]	Time 2.078s (2.159s)	Speed 61.6 samples/s	Data 0.001s (0.159s)	Loss 0.00025 (0.00027)	Accuracy 0.905 (0.888)
+2021-03-21 04:47:15,070 Epoch: [41][700/1171]	Time 1.987s (2.143s)	Speed 64.4 samples/s	Data 0.000s (0.147s)	Loss 0.00029 (0.00027)	Accuracy 0.884 (0.887)
+2021-03-21 04:50:40,327 Epoch: [41][800/1171]	Time 1.826s (2.132s)	Speed 70.1 samples/s	Data 0.001s (0.139s)	Loss 0.00028 (0.00027)	Accuracy 0.886 (0.887)
+2021-03-21 04:54:05,740 Epoch: [41][900/1171]	Time 2.082s (2.123s)	Speed 61.5 samples/s	Data 0.001s (0.132s)	Loss 0.00027 (0.00027)	Accuracy 0.896 (0.887)
+2021-03-21 04:57:30,774 Epoch: [41][1000/1171]	Time 1.906s (2.116s)	Speed 67.1 samples/s	Data 0.001s (0.126s)	Loss 0.00027 (0.00028)	Accuracy 0.890 (0.887)
+2021-03-21 05:00:56,274 Epoch: [41][1100/1171]	Time 2.071s (2.110s)	Speed 61.8 samples/s	Data 0.016s (0.122s)	Loss 0.00026 (0.00028)	Accuracy 0.879 (0.887)
+2021-03-21 05:03:54,430 Test: [0/50]	Time 63.252 (63.252)	Loss 0.0003 (0.0003)	Accuracy 0.898 (0.898)
+2021-03-21 05:06:06,400 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 05:06:14,587 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 05:06:14,588 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 05:06:14,588 | pose_hgr... | 0.760 | 0.924 | 0.825 | 0.732 | 0.807 | 0.789 | 0.936 | 0.846 | 0.755 | 0.841 |
+2021-03-21 05:06:14,597 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 05:07:17,490 Epoch: [42][0/1171]	Time 52.565s (52.565s)	Speed 2.4 samples/s	Data 33.919s (33.919s)	Loss 0.00027 (0.00027)	Accuracy 0.900 (0.900)
+2021-03-21 05:10:59,875 Epoch: [42][100/1171]	Time 1.435s (2.722s)	Speed 89.2 samples/s	Data 0.000s (0.561s)	Loss 0.00023 (0.00027)	Accuracy 0.915 (0.890)
+2021-03-21 05:14:26,218 Epoch: [42][200/1171]	Time 3.809s (2.394s)	Speed 33.6 samples/s	Data 0.001s (0.319s)	Loss 0.00025 (0.00027)	Accuracy 0.917 (0.890)
+2021-03-21 05:17:49,258 Epoch: [42][300/1171]	Time 2.024s (2.274s)	Speed 63.3 samples/s	Data 0.001s (0.236s)	Loss 0.00027 (0.00027)	Accuracy 0.900 (0.889)
+2021-03-21 05:21:14,110 Epoch: [42][400/1171]	Time 2.018s (2.217s)	Speed 63.4 samples/s	Data 0.011s (0.197s)	Loss 0.00030 (0.00027)	Accuracy 0.879 (0.889)
+2021-03-21 05:24:39,153 Epoch: [42][500/1171]	Time 1.842s (2.184s)	Speed 69.5 samples/s	Data 0.025s (0.173s)	Loss 0.00028 (0.00027)	Accuracy 0.891 (0.889)
+2021-03-21 05:28:05,896 Epoch: [42][600/1171]	Time 1.796s (2.165s)	Speed 71.3 samples/s	Data 0.001s (0.158s)	Loss 0.00024 (0.00027)	Accuracy 0.903 (0.889)
+2021-03-21 05:31:31,306 Epoch: [42][700/1171]	Time 1.885s (2.149s)	Speed 67.9 samples/s	Data 0.001s (0.146s)	Loss 0.00028 (0.00027)	Accuracy 0.888 (0.889)
+2021-03-21 05:34:56,366 Epoch: [42][800/1171]	Time 1.854s (2.137s)	Speed 69.1 samples/s	Data 0.001s (0.138s)	Loss 0.00026 (0.00027)	Accuracy 0.901 (0.889)
+2021-03-21 05:38:20,312 Epoch: [42][900/1171]	Time 2.094s (2.126s)	Speed 61.1 samples/s	Data 0.001s (0.131s)	Loss 0.00028 (0.00027)	Accuracy 0.898 (0.889)
+2021-03-21 05:41:44,384 Epoch: [42][1000/1171]	Time 1.729s (2.117s)	Speed 74.0 samples/s	Data 0.022s (0.126s)	Loss 0.00029 (0.00027)	Accuracy 0.877 (0.889)
+2021-03-21 05:45:10,507 Epoch: [42][1100/1171]	Time 1.847s (2.112s)	Speed 69.3 samples/s	Data 0.001s (0.122s)	Loss 0.00027 (0.00027)	Accuracy 0.893 (0.888)
+2021-03-21 05:48:08,356 Test: [0/50]	Time 63.027 (63.027)	Loss 0.0003 (0.0003)	Accuracy 0.892 (0.892)
+2021-03-21 05:50:20,295 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 05:50:27,295 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 05:50:27,296 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 05:50:27,296 | pose_hgr... | 0.762 | 0.926 | 0.828 | 0.732 | 0.811 | 0.789 | 0.936 | 0.848 | 0.755 | 0.842 |
+2021-03-21 05:50:27,305 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 05:51:35,168 Epoch: [43][0/1171]	Time 57.887s (57.887s)	Speed 2.2 samples/s	Data 40.169s (40.169s)	Loss 0.00026 (0.00026)	Accuracy 0.897 (0.897)
+2021-03-21 05:55:11,452 Epoch: [43][100/1171]	Time 1.771s (2.715s)	Speed 72.3 samples/s	Data 0.001s (0.564s)	Loss 0.00023 (0.00027)	Accuracy 0.918 (0.890)
+2021-03-21 05:58:38,305 Epoch: [43][200/1171]	Time 1.841s (2.393s)	Speed 69.5 samples/s	Data 0.001s (0.322s)	Loss 0.00028 (0.00027)	Accuracy 0.884 (0.889)
+2021-03-21 06:02:05,153 Epoch: [43][300/1171]	Time 1.876s (2.285s)	Speed 68.2 samples/s	Data 0.001s (0.242s)	Loss 0.00025 (0.00027)	Accuracy 0.907 (0.889)
+2021-03-21 06:05:31,379 Epoch: [43][400/1171]	Time 1.974s (2.230s)	Speed 64.9 samples/s	Data 0.005s (0.201s)	Loss 0.00023 (0.00027)	Accuracy 0.911 (0.889)
+2021-03-21 06:08:55,566 Epoch: [43][500/1171]	Time 1.926s (2.192s)	Speed 66.5 samples/s	Data 0.006s (0.176s)	Loss 0.00029 (0.00027)	Accuracy 0.868 (0.890)
+2021-03-21 06:12:21,290 Epoch: [43][600/1171]	Time 2.071s (2.170s)	Speed 61.8 samples/s	Data 0.000s (0.160s)	Loss 0.00031 (0.00027)	Accuracy 0.853 (0.890)
+2021-03-21 06:15:46,510 Epoch: [43][700/1171]	Time 1.624s (2.153s)	Speed 78.8 samples/s	Data 0.000s (0.149s)	Loss 0.00025 (0.00027)	Accuracy 0.917 (0.889)
+2021-03-21 06:19:11,454 Epoch: [43][800/1171]	Time 1.949s (2.140s)	Speed 65.7 samples/s	Data 0.001s (0.140s)	Loss 0.00029 (0.00027)	Accuracy 0.895 (0.890)
+2021-03-21 06:22:36,402 Epoch: [43][900/1171]	Time 2.112s (2.130s)	Speed 60.6 samples/s	Data 0.001s (0.133s)	Loss 0.00027 (0.00027)	Accuracy 0.887 (0.889)
+2021-03-21 06:26:00,320 Epoch: [43][1000/1171]	Time 2.042s (2.121s)	Speed 62.7 samples/s	Data 0.012s (0.128s)	Loss 0.00027 (0.00027)	Accuracy 0.887 (0.889)
+2021-03-21 06:29:24,321 Epoch: [43][1100/1171]	Time 1.730s (2.114s)	Speed 74.0 samples/s	Data 0.000s (0.123s)	Loss 0.00026 (0.00027)	Accuracy 0.891 (0.889)
+2021-03-21 06:32:23,339 Test: [0/50]	Time 64.457 (64.457)	Loss 0.0003 (0.0003)	Accuracy 0.899 (0.899)
+2021-03-21 06:34:35,613 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 06:34:42,630 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 06:34:42,631 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 06:34:42,631 | pose_hgr... | 0.755 | 0.921 | 0.820 | 0.732 | 0.796 | 0.789 | 0.938 | 0.848 | 0.757 | 0.839 |
+2021-03-21 06:34:42,640 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 06:35:48,358 Epoch: [44][0/1171]	Time 54.041s (54.041s)	Speed 2.4 samples/s	Data 35.588s (35.588s)	Loss 0.00026 (0.00026)	Accuracy 0.903 (0.903)
+2021-03-21 06:39:24,596 Epoch: [44][100/1171]	Time 1.978s (2.676s)	Speed 64.7 samples/s	Data 0.001s (0.550s)	Loss 0.00029 (0.00027)	Accuracy 0.873 (0.892)
+2021-03-21 06:42:49,675 Epoch: [44][200/1171]	Time 1.958s (2.365s)	Speed 65.4 samples/s	Data 0.001s (0.315s)	Loss 0.00027 (0.00027)	Accuracy 0.887 (0.891)
+2021-03-21 06:46:14,955 Epoch: [44][300/1171]	Time 2.298s (2.261s)	Speed 55.7 samples/s	Data 0.003s (0.237s)	Loss 0.00029 (0.00027)	Accuracy 0.874 (0.890)
+2021-03-21 06:49:39,727 Epoch: [44][400/1171]	Time 1.748s (2.208s)	Speed 73.2 samples/s	Data 0.000s (0.198s)	Loss 0.00028 (0.00027)	Accuracy 0.874 (0.890)
+2021-03-21 06:53:05,880 Epoch: [44][500/1171]	Time 4.084s (2.179s)	Speed 31.3 samples/s	Data 0.001s (0.174s)	Loss 0.00026 (0.00027)	Accuracy 0.886 (0.891)
+2021-03-21 06:56:28,615 Epoch: [44][600/1171]	Time 1.798s (2.154s)	Speed 71.2 samples/s	Data 0.000s (0.156s)	Loss 0.00031 (0.00027)	Accuracy 0.850 (0.890)
+2021-03-21 06:59:52,262 Epoch: [44][700/1171]	Time 1.940s (2.137s)	Speed 66.0 samples/s	Data 0.001s (0.145s)	Loss 0.00024 (0.00027)	Accuracy 0.913 (0.890)
+2021-03-21 07:03:16,921 Epoch: [44][800/1171]	Time 1.936s (2.126s)	Speed 66.1 samples/s	Data 0.001s (0.136s)	Loss 0.00028 (0.00027)	Accuracy 0.900 (0.891)
+2021-03-21 07:06:42,123 Epoch: [44][900/1171]	Time 1.480s (2.117s)	Speed 86.5 samples/s	Data 0.001s (0.130s)	Loss 0.00026 (0.00027)	Accuracy 0.878 (0.891)
+2021-03-21 07:10:05,132 Epoch: [44][1000/1171]	Time 1.929s (2.109s)	Speed 66.3 samples/s	Data 0.013s (0.125s)	Loss 0.00030 (0.00027)	Accuracy 0.880 (0.890)
+2021-03-21 07:13:29,750 Epoch: [44][1100/1171]	Time 1.764s (2.103s)	Speed 72.6 samples/s	Data 0.000s (0.120s)	Loss 0.00024 (0.00027)	Accuracy 0.911 (0.890)
+2021-03-21 07:16:25,238 Test: [0/50]	Time 61.516 (61.516)	Loss 0.0003 (0.0003)	Accuracy 0.892 (0.892)
+2021-03-21 07:18:39,233 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 07:18:46,270 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 07:18:46,272 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 07:18:46,272 | pose_hgr... | 0.749 | 0.917 | 0.817 | 0.727 | 0.788 | 0.786 | 0.933 | 0.845 | 0.753 | 0.837 |
+2021-03-21 07:18:46,281 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 07:19:48,377 Epoch: [45][0/1171]	Time 51.670s (51.670s)	Speed 2.5 samples/s	Data 33.717s (33.717s)	Loss 0.00025 (0.00025)	Accuracy 0.911 (0.911)
+2021-03-21 07:23:32,740 Epoch: [45][100/1171]	Time 1.962s (2.733s)	Speed 65.2 samples/s	Data 0.002s (0.559s)	Loss 0.00028 (0.00026)	Accuracy 0.880 (0.896)
+2021-03-21 07:26:58,367 Epoch: [45][200/1171]	Time 1.984s (2.396s)	Speed 64.5 samples/s	Data 0.000s (0.320s)	Loss 0.00028 (0.00027)	Accuracy 0.898 (0.893)
+2021-03-21 07:30:27,793 Epoch: [45][300/1171]	Time 1.805s (2.296s)	Speed 70.9 samples/s	Data 0.001s (0.240s)	Loss 0.00028 (0.00027)	Accuracy 0.882 (0.892)
+2021-03-21 07:33:53,511 Epoch: [45][400/1171]	Time 2.070s (2.236s)	Speed 61.8 samples/s	Data 0.001s (0.199s)	Loss 0.00027 (0.00027)	Accuracy 0.896 (0.892)
+2021-03-21 07:37:18,739 Epoch: [45][500/1171]	Time 1.855s (2.200s)	Speed 69.0 samples/s	Data 0.001s (0.174s)	Loss 0.00024 (0.00027)	Accuracy 0.898 (0.892)
+2021-03-21 07:40:44,333 Epoch: [45][600/1171]	Time 2.010s (2.176s)	Speed 63.7 samples/s	Data 0.011s (0.159s)	Loss 0.00028 (0.00027)	Accuracy 0.894 (0.892)
+2021-03-21 07:44:09,344 Epoch: [45][700/1171]	Time 1.929s (2.158s)	Speed 66.4 samples/s	Data 0.001s (0.147s)	Loss 0.00026 (0.00027)	Accuracy 0.883 (0.891)
+2021-03-21 07:47:34,945 Epoch: [45][800/1171]	Time 1.645s (2.145s)	Speed 77.8 samples/s	Data 0.000s (0.139s)	Loss 0.00027 (0.00027)	Accuracy 0.896 (0.892)
+2021-03-21 07:51:00,866 Epoch: [45][900/1171]	Time 2.182s (2.136s)	Speed 58.7 samples/s	Data 0.001s (0.132s)	Loss 0.00027 (0.00027)	Accuracy 0.903 (0.891)
+2021-03-21 07:54:26,229 Epoch: [45][1000/1171]	Time 2.032s (2.127s)	Speed 63.0 samples/s	Data 0.001s (0.127s)	Loss 0.00027 (0.00027)	Accuracy 0.896 (0.891)
+2021-03-21 07:57:51,623 Epoch: [45][1100/1171]	Time 1.743s (2.121s)	Speed 73.4 samples/s	Data 0.001s (0.122s)	Loss 0.00027 (0.00027)	Accuracy 0.870 (0.891)
+2021-03-21 08:00:50,945 Test: [0/50]	Time 63.926 (63.926)	Loss 0.0003 (0.0003)	Accuracy 0.881 (0.881)
+2021-03-21 08:03:04,169 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 08:03:11,258 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 08:03:11,260 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 08:03:11,260 | pose_hgr... | 0.754 | 0.924 | 0.815 | 0.723 | 0.804 | 0.782 | 0.933 | 0.840 | 0.746 | 0.837 |
+2021-03-21 08:03:11,269 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 08:04:16,929 Epoch: [46][0/1171]	Time 54.951s (54.951s)	Speed 2.3 samples/s	Data 36.356s (36.356s)	Loss 0.00025 (0.00025)	Accuracy 0.902 (0.902)
+2021-03-21 08:07:56,475 Epoch: [46][100/1171]	Time 1.992s (2.718s)	Speed 64.3 samples/s	Data 0.002s (0.550s)	Loss 0.00026 (0.00027)	Accuracy 0.895 (0.890)
+2021-03-21 08:11:24,983 Epoch: [46][200/1171]	Time 3.387s (2.403s)	Speed 37.8 samples/s	Data 0.000s (0.316s)	Loss 0.00029 (0.00027)	Accuracy 0.879 (0.891)
+2021-03-21 08:14:49,646 Epoch: [46][300/1171]	Time 1.888s (2.285s)	Speed 67.8 samples/s	Data 0.001s (0.234s)	Loss 0.00029 (0.00027)	Accuracy 0.887 (0.892)
+2021-03-21 08:18:15,923 Epoch: [46][400/1171]	Time 1.885s (2.229s)	Speed 67.9 samples/s	Data 0.001s (0.195s)	Loss 0.00027 (0.00027)	Accuracy 0.912 (0.892)
+2021-03-21 08:21:42,223 Epoch: [46][500/1171]	Time 1.919s (2.196s)	Speed 66.7 samples/s	Data 0.001s (0.172s)	Loss 0.00026 (0.00027)	Accuracy 0.901 (0.892)
+2021-03-21 08:25:09,401 Epoch: [46][600/1171]	Time 1.446s (2.175s)	Speed 88.5 samples/s	Data 0.001s (0.157s)	Loss 0.00027 (0.00027)	Accuracy 0.894 (0.893)
+2021-03-21 08:28:34,804 Epoch: [46][700/1171]	Time 1.916s (2.158s)	Speed 66.8 samples/s	Data 0.001s (0.145s)	Loss 0.00028 (0.00027)	Accuracy 0.861 (0.893)
+2021-03-21 08:32:02,131 Epoch: [46][800/1171]	Time 1.787s (2.148s)	Speed 71.6 samples/s	Data 0.001s (0.137s)	Loss 0.00026 (0.00027)	Accuracy 0.897 (0.893)
+2021-03-21 08:35:27,830 Epoch: [46][900/1171]	Time 1.896s (2.137s)	Speed 67.5 samples/s	Data 0.001s (0.130s)	Loss 0.00029 (0.00027)	Accuracy 0.870 (0.893)
+2021-03-21 08:38:54,260 Epoch: [46][1000/1171]	Time 1.923s (2.130s)	Speed 66.6 samples/s	Data 0.001s (0.125s)	Loss 0.00029 (0.00027)	Accuracy 0.895 (0.893)
+2021-03-21 08:42:18,774 Epoch: [46][1100/1171]	Time 1.716s (2.122s)	Speed 74.6 samples/s	Data 0.001s (0.121s)	Loss 0.00028 (0.00027)	Accuracy 0.873 (0.893)
+2021-03-21 08:45:17,690 Test: [0/50]	Time 63.433 (63.433)	Loss 0.0003 (0.0003)	Accuracy 0.890 (0.890)
+2021-03-21 08:47:30,074 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 08:47:37,022 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 08:47:37,024 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 08:47:37,024 | pose_hgr... | 0.762 | 0.926 | 0.827 | 0.732 | 0.813 | 0.790 | 0.935 | 0.848 | 0.754 | 0.844 |
+2021-03-21 08:47:37,033 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 08:48:51,155 Epoch: [47][0/1171]	Time 64.290s (64.290s)	Speed 2.0 samples/s	Data 47.835s (47.835s)	Loss 0.00027 (0.00027)	Accuracy 0.900 (0.900)
+2021-03-21 08:52:21,320 Epoch: [47][100/1171]	Time 2.217s (2.717s)	Speed 57.7 samples/s	Data 0.001s (0.581s)	Loss 0.00026 (0.00026)	Accuracy 0.896 (0.895)
+2021-03-21 08:55:46,414 Epoch: [47][200/1171]	Time 1.865s (2.386s)	Speed 68.6 samples/s	Data 0.001s (0.329s)	Loss 0.00029 (0.00026)	Accuracy 0.872 (0.897)
+2021-03-21 08:59:10,104 Epoch: [47][300/1171]	Time 1.942s (2.270s)	Speed 65.9 samples/s	Data 0.001s (0.246s)	Loss 0.00027 (0.00026)	Accuracy 0.886 (0.896)
+2021-03-21 09:02:36,253 Epoch: [47][400/1171]	Time 2.084s (2.218s)	Speed 61.4 samples/s	Data 0.000s (0.203s)	Loss 0.00030 (0.00026)	Accuracy 0.862 (0.895)
+2021-03-21 09:06:02,039 Epoch: [47][500/1171]	Time 1.640s (2.186s)	Speed 78.1 samples/s	Data 0.000s (0.178s)	Loss 0.00028 (0.00026)	Accuracy 0.878 (0.895)
+2021-03-21 09:09:28,032 Epoch: [47][600/1171]	Time 2.006s (2.165s)	Speed 63.8 samples/s	Data 0.001s (0.161s)	Loss 0.00025 (0.00026)	Accuracy 0.883 (0.895)
+2021-03-21 09:12:51,678 Epoch: [47][700/1171]	Time 1.705s (2.147s)	Speed 75.1 samples/s	Data 0.001s (0.149s)	Loss 0.00025 (0.00026)	Accuracy 0.900 (0.895)
+2021-03-21 09:16:16,425 Epoch: [47][800/1171]	Time 1.844s (2.134s)	Speed 69.4 samples/s	Data 0.001s (0.141s)	Loss 0.00024 (0.00026)	Accuracy 0.918 (0.895)
+2021-03-21 09:19:42,403 Epoch: [47][900/1171]	Time 2.028s (2.126s)	Speed 63.1 samples/s	Data 0.002s (0.134s)	Loss 0.00027 (0.00026)	Accuracy 0.886 (0.895)
+2021-03-21 09:23:06,599 Epoch: [47][1000/1171]	Time 1.862s (2.118s)	Speed 68.7 samples/s	Data 0.007s (0.128s)	Loss 0.00026 (0.00026)	Accuracy 0.900 (0.895)
+2021-03-21 09:26:32,547 Epoch: [47][1100/1171]	Time 3.951s (2.112s)	Speed 32.4 samples/s	Data 0.001s (0.124s)	Loss 0.00025 (0.00026)	Accuracy 0.896 (0.894)
+2021-03-21 09:29:28,998 Test: [0/50]	Time 63.545 (63.545)	Loss 0.0003 (0.0003)	Accuracy 0.893 (0.893)
+2021-03-21 09:31:42,267 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 09:31:49,348 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 09:31:49,349 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 09:31:49,349 | pose_hgr... | 0.763 | 0.925 | 0.827 | 0.731 | 0.816 | 0.791 | 0.938 | 0.850 | 0.755 | 0.846 |
+2021-03-21 09:31:49,359 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 09:33:04,581 Epoch: [48][0/1171]	Time 64.866s (64.866s)	Speed 2.0 samples/s	Data 56.080s (56.080s)	Loss 0.00029 (0.00029)	Accuracy 0.883 (0.883)
+2021-03-21 09:36:34,066 Epoch: [48][100/1171]	Time 1.909s (2.716s)	Speed 67.0 samples/s	Data 0.012s (0.644s)	Loss 0.00027 (0.00026)	Accuracy 0.888 (0.898)
+2021-03-21 09:40:01,475 Epoch: [48][200/1171]	Time 1.502s (2.397s)	Speed 85.2 samples/s	Data 0.001s (0.362s)	Loss 0.00024 (0.00026)	Accuracy 0.912 (0.896)
+2021-03-21 09:43:26,043 Epoch: [48][300/1171]	Time 1.763s (2.280s)	Speed 72.6 samples/s	Data 0.001s (0.266s)	Loss 0.00029 (0.00026)	Accuracy 0.881 (0.896)
+2021-03-21 09:46:51,231 Epoch: [48][400/1171]	Time 1.845s (2.223s)	Speed 69.4 samples/s	Data 0.001s (0.220s)	Loss 0.00032 (0.00026)	Accuracy 0.871 (0.895)
+2021-03-21 09:50:16,873 Epoch: [48][500/1171]	Time 1.984s (2.190s)	Speed 64.5 samples/s	Data 0.001s (0.193s)	Loss 0.00027 (0.00026)	Accuracy 0.897 (0.895)
+2021-03-21 09:53:42,315 Epoch: [48][600/1171]	Time 1.977s (2.167s)	Speed 64.7 samples/s	Data 0.000s (0.173s)	Loss 0.00027 (0.00026)	Accuracy 0.892 (0.895)
+2021-03-21 09:57:08,795 Epoch: [48][700/1171]	Time 1.500s (2.153s)	Speed 85.3 samples/s	Data 0.001s (0.160s)	Loss 0.00026 (0.00026)	Accuracy 0.894 (0.895)
+2021-03-21 10:00:33,536 Epoch: [48][800/1171]	Time 1.950s (2.140s)	Speed 65.6 samples/s	Data 0.001s (0.149s)	Loss 0.00028 (0.00026)	Accuracy 0.889 (0.895)
+2021-03-21 10:03:58,063 Epoch: [48][900/1171]	Time 1.769s (2.129s)	Speed 72.4 samples/s	Data 0.001s (0.141s)	Loss 0.00027 (0.00026)	Accuracy 0.894 (0.895)
+2021-03-21 10:07:22,216 Epoch: [48][1000/1171]	Time 1.909s (2.120s)	Speed 67.1 samples/s	Data 0.004s (0.135s)	Loss 0.00029 (0.00027)	Accuracy 0.870 (0.894)
+2021-03-21 10:10:46,078 Epoch: [48][1100/1171]	Time 1.878s (2.113s)	Speed 68.1 samples/s	Data 0.001s (0.130s)	Loss 0.00027 (0.00027)	Accuracy 0.896 (0.894)
+2021-03-21 10:13:44,491 Test: [0/50]	Time 63.465 (63.465)	Loss 0.0003 (0.0003)	Accuracy 0.896 (0.896)
+2021-03-21 10:15:56,324 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 10:16:03,216 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 10:16:03,218 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 10:16:03,218 | pose_hgr... | 0.765 | 0.936 | 0.827 | 0.734 | 0.814 | 0.791 | 0.940 | 0.847 | 0.757 | 0.843 |
+2021-03-21 10:16:03,227 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 10:17:11,580 Epoch: [49][0/1171]	Time 54.805s (54.805s)	Speed 2.3 samples/s	Data 36.883s (36.883s)	Loss 0.00023 (0.00023)	Accuracy 0.925 (0.925)
+2021-03-21 10:20:50,709 Epoch: [49][100/1171]	Time 1.894s (2.712s)	Speed 67.6 samples/s	Data 0.003s (0.569s)	Loss 0.00026 (0.00026)	Accuracy 0.889 (0.897)
+2021-03-21 10:24:22,779 Epoch: [49][200/1171]	Time 1.981s (2.418s)	Speed 64.6 samples/s	Data 0.000s (0.326s)	Loss 0.00027 (0.00026)	Accuracy 0.886 (0.896)
+2021-03-21 10:27:48,499 Epoch: [49][300/1171]	Time 1.633s (2.298s)	Speed 78.4 samples/s	Data 0.000s (0.244s)	Loss 0.00029 (0.00026)	Accuracy 0.868 (0.895)
+2021-03-21 10:31:14,313 Epoch: [49][400/1171]	Time 2.023s (2.238s)	Speed 63.3 samples/s	Data 0.000s (0.203s)	Loss 0.00028 (0.00026)	Accuracy 0.886 (0.896)
+2021-03-21 10:34:40,025 Epoch: [49][500/1171]	Time 1.790s (2.202s)	Speed 71.5 samples/s	Data 0.001s (0.177s)	Loss 0.00023 (0.00026)	Accuracy 0.927 (0.896)
+2021-03-21 10:38:04,288 Epoch: [49][600/1171]	Time 1.840s (2.176s)	Speed 69.6 samples/s	Data 0.015s (0.161s)	Loss 0.00028 (0.00026)	Accuracy 0.887 (0.896)
+2021-03-21 10:41:27,395 Epoch: [49][700/1171]	Time 1.782s (2.155s)	Speed 71.8 samples/s	Data 0.001s (0.149s)	Loss 0.00026 (0.00026)	Accuracy 0.887 (0.895)
+2021-03-21 10:44:53,068 Epoch: [49][800/1171]	Time 1.777s (2.143s)	Speed 72.0 samples/s	Data 0.003s (0.140s)	Loss 0.00028 (0.00026)	Accuracy 0.888 (0.895)
+2021-03-21 10:48:19,009 Epoch: [49][900/1171]	Time 1.965s (2.133s)	Speed 65.2 samples/s	Data 0.002s (0.133s)	Loss 0.00027 (0.00026)	Accuracy 0.901 (0.895)
+2021-03-21 10:51:42,548 Epoch: [49][1000/1171]	Time 1.863s (2.124s)	Speed 68.7 samples/s	Data 0.001s (0.128s)	Loss 0.00026 (0.00026)	Accuracy 0.905 (0.895)
+2021-03-21 10:55:08,305 Epoch: [49][1100/1171]	Time 1.684s (2.118s)	Speed 76.0 samples/s	Data 0.000s (0.123s)	Loss 0.00031 (0.00026)	Accuracy 0.854 (0.895)
+2021-03-21 10:58:06,900 Test: [0/50]	Time 63.025 (63.025)	Loss 0.0003 (0.0003)	Accuracy 0.892 (0.892)
+2021-03-21 11:00:20,097 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 11:00:28,195 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 11:00:28,196 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 11:00:28,196 | pose_hgr... | 0.765 | 0.926 | 0.837 | 0.736 | 0.813 | 0.792 | 0.939 | 0.851 | 0.758 | 0.844 |
+2021-03-21 11:00:28,205 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 11:01:40,277 Epoch: [50][0/1171]	Time 61.651s (61.651s)	Speed 2.1 samples/s	Data 45.763s (45.763s)	Loss 0.00026 (0.00026)	Accuracy 0.893 (0.893)
+2021-03-21 11:05:11,459 Epoch: [50][100/1171]	Time 2.159s (2.701s)	Speed 59.3 samples/s	Data 0.001s (0.573s)	Loss 0.00023 (0.00026)	Accuracy 0.916 (0.899)
+2021-03-21 11:08:38,535 Epoch: [50][200/1171]	Time 2.017s (2.388s)	Speed 63.5 samples/s	Data 0.001s (0.329s)	Loss 0.00023 (0.00026)	Accuracy 0.913 (0.900)
+2021-03-21 11:12:05,261 Epoch: [50][300/1171]	Time 2.032s (2.281s)	Speed 63.0 samples/s	Data 0.002s (0.246s)	Loss 0.00023 (0.00025)	Accuracy 0.900 (0.901)
+2021-03-21 11:15:31,766 Epoch: [50][400/1171]	Time 2.067s (2.227s)	Speed 61.9 samples/s	Data 0.001s (0.204s)	Loss 0.00021 (0.00025)	Accuracy 0.930 (0.902)
+2021-03-21 11:18:56,919 Epoch: [50][500/1171]	Time 1.766s (2.192s)	Speed 72.5 samples/s	Data 0.000s (0.179s)	Loss 0.00025 (0.00025)	Accuracy 0.897 (0.902)
+2021-03-21 11:22:23,532 Epoch: [50][600/1171]	Time 1.761s (2.171s)	Speed 72.7 samples/s	Data 0.000s (0.162s)	Loss 0.00024 (0.00025)	Accuracy 0.898 (0.903)
+2021-03-21 11:25:48,168 Epoch: [50][700/1171]	Time 1.855s (2.153s)	Speed 69.0 samples/s	Data 0.001s (0.150s)	Loss 0.00025 (0.00025)	Accuracy 0.904 (0.903)
+2021-03-21 11:29:13,058 Epoch: [50][800/1171]	Time 1.800s (2.140s)	Speed 71.1 samples/s	Data 0.038s (0.141s)	Loss 0.00025 (0.00025)	Accuracy 0.894 (0.903)
+2021-03-21 11:32:38,149 Epoch: [50][900/1171]	Time 1.990s (2.130s)	Speed 64.3 samples/s	Data 0.002s (0.134s)	Loss 0.00027 (0.00025)	Accuracy 0.885 (0.904)
+2021-03-21 11:36:03,691 Epoch: [50][1000/1171]	Time 1.837s (2.123s)	Speed 69.7 samples/s	Data 0.001s (0.128s)	Loss 0.00025 (0.00025)	Accuracy 0.921 (0.904)
+2021-03-21 11:39:28,493 Epoch: [50][1100/1171]	Time 1.883s (2.116s)	Speed 68.0 samples/s	Data 0.000s (0.124s)	Loss 0.00026 (0.00025)	Accuracy 0.901 (0.904)
+2021-03-21 11:42:27,210 Test: [0/50]	Time 63.472 (63.472)	Loss 0.0003 (0.0003)	Accuracy 0.901 (0.901)
+2021-03-21 11:44:39,918 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 11:44:46,972 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 11:44:46,973 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 11:44:46,973 | pose_hgr... | 0.775 | 0.936 | 0.848 | 0.744 | 0.823 | 0.801 | 0.942 | 0.861 | 0.767 | 0.853 |
+2021-03-21 11:44:46,982 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 11:45:56,244 Epoch: [51][0/1171]	Time 54.771s (54.771s)	Speed 2.3 samples/s	Data 35.969s (35.969s)	Loss 0.00026 (0.00026)	Accuracy 0.885 (0.885)
+2021-03-21 11:49:33,391 Epoch: [51][100/1171]	Time 1.814s (2.692s)	Speed 70.5 samples/s	Data 0.001s (0.549s)	Loss 0.00026 (0.00025)	Accuracy 0.922 (0.907)
+2021-03-21 11:52:58,265 Epoch: [51][200/1171]	Time 1.935s (2.372s)	Speed 66.2 samples/s	Data 0.001s (0.316s)	Loss 0.00021 (0.00025)	Accuracy 0.920 (0.907)
+2021-03-21 11:56:23,244 Epoch: [51][300/1171]	Time 2.076s (2.265s)	Speed 61.7 samples/s	Data 0.004s (0.237s)	Loss 0.00023 (0.00025)	Accuracy 0.919 (0.906)
+2021-03-21 11:59:48,033 Epoch: [51][400/1171]	Time 1.836s (2.211s)	Speed 69.7 samples/s	Data 0.001s (0.196s)	Loss 0.00024 (0.00025)	Accuracy 0.899 (0.907)
+2021-03-21 12:03:13,186 Epoch: [51][500/1171]	Time 2.076s (2.179s)	Speed 61.7 samples/s	Data 0.007s (0.173s)	Loss 0.00025 (0.00025)	Accuracy 0.909 (0.908)
+2021-03-21 12:06:38,288 Epoch: [51][600/1171]	Time 1.900s (2.158s)	Speed 67.4 samples/s	Data 0.001s (0.157s)	Loss 0.00026 (0.00025)	Accuracy 0.909 (0.908)
+2021-03-21 12:10:01,746 Epoch: [51][700/1171]	Time 1.992s (2.140s)	Speed 64.3 samples/s	Data 0.000s (0.146s)	Loss 0.00025 (0.00025)	Accuracy 0.897 (0.907)
+2021-03-21 12:13:26,499 Epoch: [51][800/1171]	Time 1.832s (2.129s)	Speed 69.9 samples/s	Data 0.021s (0.138s)	Loss 0.00021 (0.00025)	Accuracy 0.930 (0.908)
+2021-03-21 12:16:50,754 Epoch: [51][900/1171]	Time 1.852s (2.119s)	Speed 69.1 samples/s	Data 0.000s (0.131s)	Loss 0.00026 (0.00025)	Accuracy 0.889 (0.908)
+2021-03-21 12:20:14,098 Epoch: [51][1000/1171]	Time 1.902s (2.111s)	Speed 67.3 samples/s	Data 0.001s (0.126s)	Loss 0.00024 (0.00024)	Accuracy 0.901 (0.908)
+2021-03-21 12:23:37,775 Epoch: [51][1100/1171]	Time 1.908s (2.104s)	Speed 67.1 samples/s	Data 0.000s (0.121s)	Loss 0.00025 (0.00024)	Accuracy 0.898 (0.908)
+2021-03-21 12:26:33,346 Test: [0/50]	Time 62.234 (62.234)	Loss 0.0003 (0.0003)	Accuracy 0.899 (0.899)
+2021-03-21 12:28:46,748 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 12:28:53,840 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 12:28:53,842 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 12:28:53,842 | pose_hgr... | 0.776 | 0.935 | 0.847 | 0.747 | 0.823 | 0.802 | 0.943 | 0.861 | 0.769 | 0.854 |
+2021-03-21 12:28:53,850 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 12:30:04,397 Epoch: [52][0/1171]	Time 57.270s (57.270s)	Speed 2.2 samples/s	Data 39.985s (39.985s)	Loss 0.00025 (0.00025)	Accuracy 0.906 (0.906)
+2021-03-21 12:33:40,981 Epoch: [52][100/1171]	Time 1.914s (2.711s)	Speed 66.9 samples/s	Data 0.001s (0.558s)	Loss 0.00027 (0.00024)	Accuracy 0.893 (0.910)
+2021-03-21 12:37:07,713 Epoch: [52][200/1171]	Time 1.928s (2.391s)	Speed 66.4 samples/s	Data 0.001s (0.319s)	Loss 0.00025 (0.00024)	Accuracy 0.911 (0.909)
+2021-03-21 12:40:34,244 Epoch: [52][300/1171]	Time 1.955s (2.283s)	Speed 65.5 samples/s	Data 0.001s (0.240s)	Loss 0.00024 (0.00024)	Accuracy 0.910 (0.909)
+2021-03-21 12:43:59,269 Epoch: [52][400/1171]	Time 1.864s (2.225s)	Speed 68.7 samples/s	Data 0.000s (0.200s)	Loss 0.00025 (0.00024)	Accuracy 0.905 (0.909)
+2021-03-21 12:47:24,293 Epoch: [52][500/1171]	Time 2.095s (2.190s)	Speed 61.1 samples/s	Data 0.000s (0.176s)	Loss 0.00023 (0.00024)	Accuracy 0.914 (0.909)
+2021-03-21 12:50:49,127 Epoch: [52][600/1171]	Time 1.934s (2.166s)	Speed 66.2 samples/s	Data 0.001s (0.159s)	Loss 0.00027 (0.00024)	Accuracy 0.881 (0.910)
+2021-03-21 12:54:14,849 Epoch: [52][700/1171]	Time 1.962s (2.151s)	Speed 65.2 samples/s	Data 0.000s (0.148s)	Loss 0.00024 (0.00024)	Accuracy 0.908 (0.910)
+2021-03-21 12:57:40,416 Epoch: [52][800/1171]	Time 1.798s (2.139s)	Speed 71.2 samples/s	Data 0.001s (0.139s)	Loss 0.00022 (0.00024)	Accuracy 0.933 (0.910)
+2021-03-21 13:01:04,838 Epoch: [52][900/1171]	Time 1.651s (2.128s)	Speed 77.5 samples/s	Data 0.000s (0.132s)	Loss 0.00027 (0.00024)	Accuracy 0.894 (0.910)
+2021-03-21 13:04:29,706 Epoch: [52][1000/1171]	Time 2.055s (2.120s)	Speed 62.3 samples/s	Data 0.000s (0.127s)	Loss 0.00022 (0.00024)	Accuracy 0.915 (0.910)
+2021-03-21 13:07:54,696 Epoch: [52][1100/1171]	Time 1.795s (2.114s)	Speed 71.3 samples/s	Data 0.001s (0.122s)	Loss 0.00024 (0.00024)	Accuracy 0.900 (0.910)
+2021-03-21 13:10:52,112 Test: [0/50]	Time 62.251 (62.251)	Loss 0.0003 (0.0003)	Accuracy 0.892 (0.892)
+2021-03-21 13:13:04,324 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 13:13:11,339 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 13:13:11,341 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 13:13:11,341 | pose_hgr... | 0.776 | 0.936 | 0.838 | 0.745 | 0.824 | 0.802 | 0.945 | 0.858 | 0.769 | 0.853 |
+2021-03-21 13:13:11,349 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 13:14:19,740 Epoch: [53][0/1171]	Time 54.745s (54.745s)	Speed 2.3 samples/s	Data 37.320s (37.320s)	Loss 0.00021 (0.00021)	Accuracy 0.928 (0.928)
+2021-03-21 13:17:58,892 Epoch: [53][100/1171]	Time 1.919s (2.712s)	Speed 66.7 samples/s	Data 0.001s (0.566s)	Loss 0.00025 (0.00024)	Accuracy 0.904 (0.913)
+2021-03-21 13:21:26,757 Epoch: [53][200/1171]	Time 1.433s (2.397s)	Speed 89.3 samples/s	Data 0.001s (0.324s)	Loss 0.00022 (0.00024)	Accuracy 0.920 (0.911)
+2021-03-21 13:24:51,406 Epoch: [53][300/1171]	Time 1.875s (2.280s)	Speed 68.3 samples/s	Data 0.001s (0.241s)	Loss 0.00026 (0.00024)	Accuracy 0.908 (0.912)
+2021-03-21 13:28:17,162 Epoch: [53][400/1171]	Time 1.834s (2.225s)	Speed 69.8 samples/s	Data 0.000s (0.201s)	Loss 0.00026 (0.00024)	Accuracy 0.906 (0.911)
+2021-03-21 13:31:41,718 Epoch: [53][500/1171]	Time 1.795s (2.189s)	Speed 71.3 samples/s	Data 0.007s (0.176s)	Loss 0.00024 (0.00024)	Accuracy 0.911 (0.912)
+2021-03-21 13:35:06,980 Epoch: [53][600/1171]	Time 1.982s (2.166s)	Speed 64.6 samples/s	Data 0.000s (0.160s)	Loss 0.00022 (0.00024)	Accuracy 0.917 (0.912)
+2021-03-21 13:38:32,881 Epoch: [53][700/1171]	Time 1.858s (2.151s)	Speed 68.9 samples/s	Data 0.011s (0.148s)	Loss 0.00024 (0.00024)	Accuracy 0.919 (0.912)
+2021-03-21 13:41:57,321 Epoch: [53][800/1171]	Time 2.003s (2.138s)	Speed 63.9 samples/s	Data 0.001s (0.140s)	Loss 0.00024 (0.00024)	Accuracy 0.914 (0.912)
+2021-03-21 13:45:21,570 Epoch: [53][900/1171]	Time 2.206s (2.127s)	Speed 58.0 samples/s	Data 0.001s (0.133s)	Loss 0.00022 (0.00024)	Accuracy 0.918 (0.912)
+2021-03-21 13:48:45,888 Epoch: [53][1000/1171]	Time 1.903s (2.119s)	Speed 67.3 samples/s	Data 0.001s (0.127s)	Loss 0.00026 (0.00024)	Accuracy 0.873 (0.911)
+2021-03-21 13:52:10,074 Epoch: [53][1100/1171]	Time 1.967s (2.112s)	Speed 65.1 samples/s	Data 0.011s (0.123s)	Loss 0.00025 (0.00024)	Accuracy 0.903 (0.912)
+2021-03-21 13:55:07,647 Test: [0/50]	Time 63.223 (63.223)	Loss 0.0003 (0.0003)	Accuracy 0.893 (0.893)
+2021-03-21 13:57:21,179 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 13:57:28,161 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 13:57:28,162 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 13:57:28,162 | pose_hgr... | 0.777 | 0.936 | 0.847 | 0.744 | 0.826 | 0.803 | 0.944 | 0.861 | 0.768 | 0.856 |
+2021-03-21 13:57:28,171 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 13:58:36,680 Epoch: [54][0/1171]	Time 55.232s (55.232s)	Speed 2.3 samples/s	Data 36.612s (36.612s)	Loss 0.00024 (0.00024)	Accuracy 0.909 (0.909)
+2021-03-21 14:02:13,021 Epoch: [54][100/1171]	Time 1.989s (2.689s)	Speed 64.4 samples/s	Data 0.000s (0.540s)	Loss 0.00024 (0.00024)	Accuracy 0.906 (0.913)
+2021-03-21 14:05:39,268 Epoch: [54][200/1171]	Time 1.998s (2.377s)	Speed 64.1 samples/s	Data 0.001s (0.312s)	Loss 0.00024 (0.00024)	Accuracy 0.916 (0.912)
+2021-03-21 14:09:06,053 Epoch: [54][300/1171]	Time 1.775s (2.274s)	Speed 72.1 samples/s	Data 0.000s (0.234s)	Loss 0.00022 (0.00024)	Accuracy 0.921 (0.912)
+2021-03-21 14:12:30,065 Epoch: [54][400/1171]	Time 1.967s (2.216s)	Speed 65.1 samples/s	Data 0.004s (0.196s)	Loss 0.00022 (0.00024)	Accuracy 0.919 (0.912)
+2021-03-21 14:15:54,726 Epoch: [54][500/1171]	Time 2.063s (2.182s)	Speed 62.0 samples/s	Data 0.001s (0.172s)	Loss 0.00025 (0.00024)	Accuracy 0.902 (0.912)
+2021-03-21 14:19:20,238 Epoch: [54][600/1171]	Time 2.146s (2.161s)	Speed 59.6 samples/s	Data 0.001s (0.156s)	Loss 0.00021 (0.00024)	Accuracy 0.923 (0.913)
+2021-03-21 14:22:44,239 Epoch: [54][700/1171]	Time 1.971s (2.144s)	Speed 64.9 samples/s	Data 0.001s (0.144s)	Loss 0.00022 (0.00024)	Accuracy 0.919 (0.913)
+2021-03-21 14:26:07,205 Epoch: [54][800/1171]	Time 1.837s (2.130s)	Speed 69.7 samples/s	Data 0.001s (0.136s)	Loss 0.00024 (0.00024)	Accuracy 0.925 (0.913)
+2021-03-21 14:29:31,559 Epoch: [54][900/1171]	Time 1.925s (2.120s)	Speed 66.5 samples/s	Data 0.001s (0.129s)	Loss 0.00023 (0.00024)	Accuracy 0.925 (0.913)
+2021-03-21 14:32:56,179 Epoch: [54][1000/1171]	Time 1.898s (2.113s)	Speed 67.4 samples/s	Data 0.000s (0.124s)	Loss 0.00025 (0.00024)	Accuracy 0.906 (0.913)
+2021-03-21 14:36:21,284 Epoch: [54][1100/1171]	Time 2.094s (2.107s)	Speed 61.1 samples/s	Data 0.001s (0.120s)	Loss 0.00024 (0.00024)	Accuracy 0.896 (0.913)
+2021-03-21 14:39:17,548 Test: [0/50]	Time 62.728 (62.728)	Loss 0.0003 (0.0003)	Accuracy 0.896 (0.896)
+2021-03-21 14:41:29,987 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 14:41:38,203 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 14:41:38,204 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 14:41:38,204 | pose_hgr... | 0.777 | 0.936 | 0.847 | 0.745 | 0.825 | 0.803 | 0.944 | 0.861 | 0.768 | 0.856 |
+2021-03-21 14:41:38,213 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 14:42:50,069 Epoch: [55][0/1171]	Time 57.803s (57.803s)	Speed 2.2 samples/s	Data 40.773s (40.773s)	Loss 0.00025 (0.00025)	Accuracy 0.914 (0.914)
+2021-03-21 14:46:26,635 Epoch: [55][100/1171]	Time 1.883s (2.716s)	Speed 68.0 samples/s	Data 0.005s (0.570s)	Loss 0.00022 (0.00023)	Accuracy 0.910 (0.918)
+2021-03-21 14:49:53,267 Epoch: [55][200/1171]	Time 2.091s (2.393s)	Speed 61.2 samples/s	Data 0.001s (0.325s)	Loss 0.00024 (0.00024)	Accuracy 0.904 (0.914)
+2021-03-21 14:53:18,125 Epoch: [55][300/1171]	Time 1.819s (2.279s)	Speed 70.4 samples/s	Data 0.001s (0.243s)	Loss 0.00021 (0.00024)	Accuracy 0.939 (0.914)
+2021-03-21 14:56:45,755 Epoch: [55][400/1171]	Time 1.734s (2.228s)	Speed 73.8 samples/s	Data 0.001s (0.203s)	Loss 0.00023 (0.00024)	Accuracy 0.925 (0.913)
+2021-03-21 15:00:11,778 Epoch: [55][500/1171]	Time 2.099s (2.195s)	Speed 61.0 samples/s	Data 0.002s (0.177s)	Loss 0.00019 (0.00024)	Accuracy 0.928 (0.914)
+2021-03-21 15:03:38,448 Epoch: [55][600/1171]	Time 1.948s (2.173s)	Speed 65.7 samples/s	Data 0.001s (0.161s)	Loss 0.00023 (0.00024)	Accuracy 0.909 (0.914)
+2021-03-21 15:07:03,678 Epoch: [55][700/1171]	Time 1.821s (2.156s)	Speed 70.3 samples/s	Data 0.001s (0.149s)	Loss 0.00023 (0.00024)	Accuracy 0.925 (0.914)
+2021-03-21 15:10:28,741 Epoch: [55][800/1171]	Time 1.817s (2.143s)	Speed 70.5 samples/s	Data 0.000s (0.140s)	Loss 0.00023 (0.00024)	Accuracy 0.914 (0.914)
+2021-03-21 15:13:55,641 Epoch: [55][900/1171]	Time 1.699s (2.135s)	Speed 75.3 samples/s	Data 0.004s (0.133s)	Loss 0.00023 (0.00024)	Accuracy 0.927 (0.914)
+2021-03-21 15:17:20,492 Epoch: [55][1000/1171]	Time 2.074s (2.126s)	Speed 61.7 samples/s	Data 0.001s (0.127s)	Loss 0.00026 (0.00024)	Accuracy 0.899 (0.914)
+2021-03-21 15:20:51,710 Epoch: [55][1100/1171]	Time 2.160s (2.125s)	Speed 59.2 samples/s	Data 0.002s (0.123s)	Loss 0.00024 (0.00024)	Accuracy 0.912 (0.914)
+2021-03-21 15:23:49,296 Test: [0/50]	Time 61.821 (61.821)	Loss 0.0003 (0.0003)	Accuracy 0.898 (0.898)
+2021-03-21 15:26:03,528 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 15:26:10,583 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 15:26:10,584 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 15:26:10,584 | pose_hgr... | 0.776 | 0.935 | 0.839 | 0.745 | 0.825 | 0.802 | 0.941 | 0.859 | 0.767 | 0.855 |
+2021-03-21 15:26:10,591 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 15:27:16,596 Epoch: [56][0/1171]	Time 56.140s (56.140s)	Speed 2.3 samples/s	Data 39.213s (39.213s)	Loss 0.00023 (0.00023)	Accuracy 0.912 (0.912)
+2021-03-21 15:30:55,300 Epoch: [56][100/1171]	Time 2.068s (2.721s)	Speed 61.9 samples/s	Data 0.001s (0.571s)	Loss 0.00023 (0.00024)	Accuracy 0.918 (0.914)
+2021-03-21 15:34:22,193 Epoch: [56][200/1171]	Time 1.806s (2.397s)	Speed 70.9 samples/s	Data 0.000s (0.326s)	Loss 0.00024 (0.00024)	Accuracy 0.922 (0.914)
+2021-03-21 15:37:46,934 Epoch: [56][300/1171]	Time 1.578s (2.281s)	Speed 81.1 samples/s	Data 0.001s (0.243s)	Loss 0.00025 (0.00024)	Accuracy 0.900 (0.914)
+2021-03-21 15:41:14,580 Epoch: [56][400/1171]	Time 1.945s (2.230s)	Speed 65.8 samples/s	Data 0.001s (0.203s)	Loss 0.00023 (0.00024)	Accuracy 0.919 (0.914)
+2021-03-21 15:44:39,989 Epoch: [56][500/1171]	Time 1.823s (2.195s)	Speed 70.2 samples/s	Data 0.000s (0.178s)	Loss 0.00022 (0.00024)	Accuracy 0.930 (0.915)
+2021-03-21 15:48:10,178 Epoch: [56][600/1171]	Time 1.820s (2.179s)	Speed 70.3 samples/s	Data 0.000s (0.161s)	Loss 0.00023 (0.00024)	Accuracy 0.915 (0.915)
+2021-03-21 15:51:36,997 Epoch: [56][700/1171]	Time 1.907s (2.163s)	Speed 67.1 samples/s	Data 0.001s (0.149s)	Loss 0.00024 (0.00024)	Accuracy 0.918 (0.915)
+2021-03-21 15:55:02,075 Epoch: [56][800/1171]	Time 1.839s (2.149s)	Speed 69.6 samples/s	Data 0.000s (0.140s)	Loss 0.00024 (0.00023)	Accuracy 0.908 (0.915)
+2021-03-21 15:58:27,553 Epoch: [56][900/1171]	Time 1.745s (2.139s)	Speed 73.3 samples/s	Data 0.001s (0.133s)	Loss 0.00022 (0.00024)	Accuracy 0.930 (0.915)
+2021-03-21 16:01:50,905 Epoch: [56][1000/1171]	Time 2.077s (2.128s)	Speed 61.6 samples/s	Data 0.001s (0.128s)	Loss 0.00024 (0.00024)	Accuracy 0.907 (0.915)
+2021-03-21 16:05:15,249 Epoch: [56][1100/1171]	Time 2.012s (2.121s)	Speed 63.6 samples/s	Data 0.000s (0.123s)	Loss 0.00023 (0.00024)	Accuracy 0.923 (0.915)
+2021-03-21 16:08:14,229 Test: [0/50]	Time 63.519 (63.519)	Loss 0.0003 (0.0003)	Accuracy 0.895 (0.895)
+2021-03-21 16:10:27,363 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 16:10:34,564 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 16:10:34,566 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 16:10:34,566 | pose_hgr... | 0.776 | 0.935 | 0.839 | 0.745 | 0.825 | 0.802 | 0.941 | 0.859 | 0.768 | 0.854 |
+2021-03-21 16:10:34,576 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 16:11:36,664 Epoch: [57][0/1171]	Time 52.356s (52.356s)	Speed 2.4 samples/s	Data 35.423s (35.423s)	Loss 0.00021 (0.00021)	Accuracy 0.935 (0.935)
+2021-03-21 16:15:18,294 Epoch: [57][100/1171]	Time 2.108s (2.713s)	Speed 60.7 samples/s	Data 0.001s (0.557s)	Loss 0.00027 (0.00023)	Accuracy 0.899 (0.917)
+2021-03-21 16:18:45,424 Epoch: [57][200/1171]	Time 1.921s (2.394s)	Speed 66.6 samples/s	Data 0.016s (0.319s)	Loss 0.00024 (0.00024)	Accuracy 0.907 (0.915)
+2021-03-21 16:22:11,479 Epoch: [57][300/1171]	Time 2.018s (2.283s)	Speed 63.4 samples/s	Data 0.069s (0.239s)	Loss 0.00025 (0.00024)	Accuracy 0.907 (0.915)
+2021-03-21 16:25:38,079 Epoch: [57][400/1171]	Time 1.552s (2.229s)	Speed 82.5 samples/s	Data 0.000s (0.198s)	Loss 0.00022 (0.00024)	Accuracy 0.915 (0.915)
+2021-03-21 16:29:04,678 Epoch: [57][500/1171]	Time 1.834s (2.196s)	Speed 69.8 samples/s	Data 0.001s (0.174s)	Loss 0.00023 (0.00023)	Accuracy 0.918 (0.915)
+2021-03-21 16:32:30,146 Epoch: [57][600/1171]	Time 1.952s (2.173s)	Speed 65.6 samples/s	Data 0.001s (0.158s)	Loss 0.00024 (0.00023)	Accuracy 0.912 (0.915)
+2021-03-21 16:35:57,109 Epoch: [57][700/1171]	Time 2.178s (2.158s)	Speed 58.8 samples/s	Data 0.001s (0.147s)	Loss 0.00024 (0.00023)	Accuracy 0.917 (0.916)
+2021-03-21 16:39:22,695 Epoch: [57][800/1171]	Time 2.179s (2.145s)	Speed 58.7 samples/s	Data 0.002s (0.138s)	Loss 0.00022 (0.00023)	Accuracy 0.926 (0.916)
+2021-03-21 16:42:49,691 Epoch: [57][900/1171]	Time 1.763s (2.137s)	Speed 72.6 samples/s	Data 0.001s (0.131s)	Loss 0.00025 (0.00023)	Accuracy 0.921 (0.916)
+2021-03-21 16:46:13,459 Epoch: [57][1000/1171]	Time 1.967s (2.127s)	Speed 65.1 samples/s	Data 0.000s (0.125s)	Loss 0.00022 (0.00023)	Accuracy 0.923 (0.916)
+2021-03-21 16:49:36,821 Epoch: [57][1100/1171]	Time 1.952s (2.119s)	Speed 65.6 samples/s	Data 0.000s (0.121s)	Loss 0.00023 (0.00023)	Accuracy 0.919 (0.916)
+2021-03-21 16:52:34,974 Test: [0/50]	Time 62.664 (62.664)	Loss 0.0003 (0.0003)	Accuracy 0.901 (0.901)
+2021-03-21 16:54:48,231 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 16:54:56,605 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 16:54:56,606 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 16:54:56,607 | pose_hgr... | 0.776 | 0.935 | 0.847 | 0.744 | 0.824 | 0.802 | 0.942 | 0.861 | 0.768 | 0.855 |
+2021-03-21 16:54:56,614 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 16:55:58,291 Epoch: [58][0/1171]	Time 51.837s (51.837s)	Speed 2.5 samples/s	Data 34.304s (34.304s)	Loss 0.00025 (0.00025)	Accuracy 0.910 (0.910)
+2021-03-21 16:59:38,079 Epoch: [58][100/1171]	Time 1.766s (2.689s)	Speed 72.5 samples/s	Data 0.006s (0.567s)	Loss 0.00022 (0.00023)	Accuracy 0.934 (0.916)
+2021-03-21 17:03:04,354 Epoch: [58][200/1171]	Time 1.818s (2.378s)	Speed 70.4 samples/s	Data 0.001s (0.325s)	Loss 0.00022 (0.00023)	Accuracy 0.935 (0.916)
+2021-03-21 17:06:28,946 Epoch: [58][300/1171]	Time 1.803s (2.267s)	Speed 71.0 samples/s	Data 0.001s (0.243s)	Loss 0.00025 (0.00023)	Accuracy 0.909 (0.916)
+2021-03-21 17:09:54,502 Epoch: [58][400/1171]	Time 1.912s (2.215s)	Speed 67.0 samples/s	Data 0.001s (0.202s)	Loss 0.00024 (0.00023)	Accuracy 0.924 (0.915)
+2021-03-21 17:13:18,885 Epoch: [58][500/1171]	Time 2.251s (2.180s)	Speed 56.9 samples/s	Data 0.001s (0.177s)	Loss 0.00023 (0.00023)	Accuracy 0.918 (0.916)
+2021-03-21 17:16:44,038 Epoch: [58][600/1171]	Time 1.899s (2.159s)	Speed 67.4 samples/s	Data 0.001s (0.160s)	Loss 0.00025 (0.00023)	Accuracy 0.904 (0.916)
+2021-03-21 17:20:08,474 Epoch: [58][700/1171]	Time 1.937s (2.143s)	Speed 66.1 samples/s	Data 0.000s (0.148s)	Loss 0.00024 (0.00023)	Accuracy 0.929 (0.916)
+2021-03-21 17:23:31,684 Epoch: [58][800/1171]	Time 2.106s (2.129s)	Speed 60.8 samples/s	Data 0.001s (0.139s)	Loss 0.00023 (0.00023)	Accuracy 0.928 (0.916)
+2021-03-21 17:26:55,631 Epoch: [58][900/1171]	Time 1.876s (2.119s)	Speed 68.2 samples/s	Data 0.001s (0.133s)	Loss 0.00024 (0.00023)	Accuracy 0.905 (0.916)
+2021-03-21 17:30:19,665 Epoch: [58][1000/1171]	Time 1.703s (2.111s)	Speed 75.2 samples/s	Data 0.001s (0.127s)	Loss 0.00023 (0.00023)	Accuracy 0.920 (0.916)
+2021-03-21 17:33:45,432 Epoch: [58][1100/1171]	Time 1.756s (2.106s)	Speed 72.9 samples/s	Data 0.000s (0.123s)	Loss 0.00022 (0.00023)	Accuracy 0.925 (0.916)
+2021-03-21 17:36:45,126 Test: [0/50]	Time 64.396 (64.396)	Loss 0.0003 (0.0003)	Accuracy 0.898 (0.898)
+2021-03-21 17:38:58,372 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 17:39:05,434 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 17:39:05,436 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 17:39:05,436 | pose_hgr... | 0.775 | 0.935 | 0.848 | 0.744 | 0.826 | 0.802 | 0.943 | 0.864 | 0.768 | 0.855 |
+2021-03-21 17:39:05,443 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 17:40:11,936 Epoch: [59][0/1171]	Time 56.651s (56.651s)	Speed 2.3 samples/s	Data 38.722s (38.722s)	Loss 0.00022 (0.00022)	Accuracy 0.926 (0.926)
+2021-03-21 17:43:48,058 Epoch: [59][100/1171]	Time 1.886s (2.701s)	Speed 67.9 samples/s	Data 0.001s (0.548s)	Loss 0.00022 (0.00024)	Accuracy 0.923 (0.916)
+2021-03-21 17:47:14,221 Epoch: [59][200/1171]	Time 1.831s (2.383s)	Speed 69.9 samples/s	Data 0.001s (0.316s)	Loss 0.00023 (0.00023)	Accuracy 0.925 (0.916)
+2021-03-21 17:50:40,448 Epoch: [59][300/1171]	Time 1.734s (2.276s)	Speed 73.8 samples/s	Data 0.000s (0.237s)	Loss 0.00024 (0.00024)	Accuracy 0.924 (0.916)
+2021-03-21 17:54:04,502 Epoch: [59][400/1171]	Time 2.303s (2.217s)	Speed 55.6 samples/s	Data 0.001s (0.197s)	Loss 0.00022 (0.00024)	Accuracy 0.927 (0.915)
+2021-03-21 17:57:30,234 Epoch: [59][500/1171]	Time 2.081s (2.186s)	Speed 61.5 samples/s	Data 0.001s (0.173s)	Loss 0.00022 (0.00024)	Accuracy 0.919 (0.916)
+2021-03-21 18:00:55,200 Epoch: [59][600/1171]	Time 2.033s (2.163s)	Speed 63.0 samples/s	Data 0.001s (0.157s)	Loss 0.00025 (0.00023)	Accuracy 0.905 (0.916)
+2021-03-21 18:04:19,021 Epoch: [59][700/1171]	Time 2.049s (2.145s)	Speed 62.5 samples/s	Data 0.010s (0.145s)	Loss 0.00021 (0.00023)	Accuracy 0.935 (0.916)
+2021-03-21 18:07:42,729 Epoch: [59][800/1171]	Time 1.984s (2.132s)	Speed 64.5 samples/s	Data 0.001s (0.137s)	Loss 0.00022 (0.00023)	Accuracy 0.921 (0.916)
+2021-03-21 18:11:08,339 Epoch: [59][900/1171]	Time 2.194s (2.123s)	Speed 58.3 samples/s	Data 0.001s (0.130s)	Loss 0.00026 (0.00023)	Accuracy 0.901 (0.916)
+2021-03-21 18:14:32,588 Epoch: [59][1000/1171]	Time 1.888s (2.115s)	Speed 67.8 samples/s	Data 0.006s (0.125s)	Loss 0.00024 (0.00023)	Accuracy 0.929 (0.916)
+2021-03-21 18:17:57,521 Epoch: [59][1100/1171]	Time 1.764s (2.109s)	Speed 72.6 samples/s	Data 0.000s (0.120s)	Loss 0.00023 (0.00023)	Accuracy 0.913 (0.916)
+2021-03-21 18:20:55,357 Test: [0/50]	Time 63.073 (63.073)	Loss 0.0003 (0.0003)	Accuracy 0.898 (0.898)
+2021-03-21 18:23:10,435 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 18:23:17,504 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 18:23:17,506 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 18:23:17,506 | pose_hgr... | 0.778 | 0.935 | 0.848 | 0.747 | 0.825 | 0.804 | 0.944 | 0.863 | 0.770 | 0.856 |
+2021-03-21 18:23:17,514 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 18:24:34,740 Epoch: [60][0/1171]	Time 64.193s (64.193s)	Speed 2.0 samples/s	Data 49.089s (49.089s)	Loss 0.00023 (0.00023)	Accuracy 0.921 (0.921)
+2021-03-21 18:28:06,735 Epoch: [60][100/1171]	Time 1.939s (2.735s)	Speed 66.0 samples/s	Data 0.001s (0.591s)	Loss 0.00024 (0.00023)	Accuracy 0.915 (0.917)
+2021-03-21 18:31:35,279 Epoch: [60][200/1171]	Time 1.741s (2.412s)	Speed 73.5 samples/s	Data 0.000s (0.336s)	Loss 0.00023 (0.00023)	Accuracy 0.921 (0.916)
+2021-03-21 18:35:01,428 Epoch: [60][300/1171]	Time 2.034s (2.295s)	Speed 62.9 samples/s	Data 0.001s (0.250s)	Loss 0.00023 (0.00023)	Accuracy 0.915 (0.917)
+2021-03-21 18:38:27,908 Epoch: [60][400/1171]	Time 1.953s (2.238s)	Speed 65.5 samples/s	Data 0.001s (0.207s)	Loss 0.00024 (0.00023)	Accuracy 0.898 (0.917)
+2021-03-21 18:41:54,672 Epoch: [60][500/1171]	Time 1.752s (2.204s)	Speed 73.0 samples/s	Data 0.015s (0.181s)	Loss 0.00022 (0.00023)	Accuracy 0.924 (0.917)
+2021-03-21 18:45:23,868 Epoch: [60][600/1171]	Time 4.207s (2.185s)	Speed 30.4 samples/s	Data 0.007s (0.164s)	Loss 0.00023 (0.00023)	Accuracy 0.925 (0.917)
+2021-03-21 18:48:49,438 Epoch: [60][700/1171]	Time 1.841s (2.167s)	Speed 69.5 samples/s	Data 0.001s (0.151s)	Loss 0.00022 (0.00023)	Accuracy 0.920 (0.917)
+2021-03-21 18:52:16,002 Epoch: [60][800/1171]	Time 2.064s (2.154s)	Speed 62.0 samples/s	Data 0.001s (0.142s)	Loss 0.00023 (0.00023)	Accuracy 0.917 (0.917)
+2021-03-21 18:55:42,329 Epoch: [60][900/1171]	Time 1.894s (2.144s)	Speed 67.6 samples/s	Data 0.001s (0.135s)	Loss 0.00024 (0.00023)	Accuracy 0.913 (0.917)
+2021-03-21 18:59:08,311 Epoch: [60][1000/1171]	Time 1.941s (2.136s)	Speed 66.0 samples/s	Data 0.001s (0.129s)	Loss 0.00021 (0.00023)	Accuracy 0.920 (0.918)
+2021-03-21 19:02:34,854 Epoch: [60][1100/1171]	Time 1.454s (2.129s)	Speed 88.0 samples/s	Data 0.001s (0.125s)	Loss 0.00024 (0.00023)	Accuracy 0.904 (0.918)
+2021-03-21 19:05:32,095 Test: [0/50]	Time 62.847 (62.847)	Loss 0.0003 (0.0003)	Accuracy 0.895 (0.895)
+2021-03-21 19:07:44,613 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 19:07:52,836 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 19:07:52,837 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 19:07:52,837 | pose_hgr... | 0.777 | 0.936 | 0.848 | 0.746 | 0.826 | 0.804 | 0.944 | 0.862 | 0.769 | 0.856 |
+2021-03-21 19:07:52,845 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 19:09:03,716 Epoch: [61][0/1171]	Time 59.875s (59.875s)	Speed 2.1 samples/s	Data 41.966s (41.966s)	Loss 0.00022 (0.00022)	Accuracy 0.913 (0.913)
+2021-03-21 19:12:34,816 Epoch: [61][100/1171]	Time 2.100s (2.683s)	Speed 61.0 samples/s	Data 0.001s (0.559s)	Loss 0.00022 (0.00024)	Accuracy 0.928 (0.915)
+2021-03-21 19:16:02,395 Epoch: [61][200/1171]	Time 1.986s (2.381s)	Speed 64.4 samples/s	Data 0.001s (0.319s)	Loss 0.00022 (0.00024)	Accuracy 0.935 (0.914)
+2021-03-21 19:19:27,881 Epoch: [61][300/1171]	Time 1.885s (2.273s)	Speed 67.9 samples/s	Data 0.000s (0.238s)	Loss 0.00020 (0.00024)	Accuracy 0.935 (0.915)
+2021-03-21 19:22:51,293 Epoch: [61][400/1171]	Time 1.825s (2.213s)	Speed 70.1 samples/s	Data 0.001s (0.198s)	Loss 0.00026 (0.00024)	Accuracy 0.907 (0.915)
+2021-03-21 19:26:16,042 Epoch: [61][500/1171]	Time 4.056s (2.180s)	Speed 31.6 samples/s	Data 0.001s (0.174s)	Loss 0.00022 (0.00023)	Accuracy 0.933 (0.916)
+2021-03-21 19:29:36,635 Epoch: [61][600/1171]	Time 1.852s (2.151s)	Speed 69.1 samples/s	Data 0.001s (0.156s)	Loss 0.00021 (0.00023)	Accuracy 0.918 (0.916)
+2021-03-21 19:33:01,570 Epoch: [61][700/1171]	Time 1.608s (2.137s)	Speed 79.6 samples/s	Data 0.000s (0.145s)	Loss 0.00026 (0.00023)	Accuracy 0.900 (0.916)
+2021-03-21 19:36:25,128 Epoch: [61][800/1171]	Time 1.904s (2.124s)	Speed 67.2 samples/s	Data 0.012s (0.137s)	Loss 0.00022 (0.00023)	Accuracy 0.915 (0.916)
+2021-03-21 19:39:49,584 Epoch: [61][900/1171]	Time 1.478s (2.115s)	Speed 86.6 samples/s	Data 0.001s (0.130s)	Loss 0.00020 (0.00023)	Accuracy 0.935 (0.916)
+2021-03-21 19:43:11,648 Epoch: [61][1000/1171]	Time 2.156s (2.106s)	Speed 59.4 samples/s	Data 0.001s (0.124s)	Loss 0.00028 (0.00023)	Accuracy 0.882 (0.916)
+2021-03-21 19:46:36,079 Epoch: [61][1100/1171]	Time 1.754s (2.100s)	Speed 73.0 samples/s	Data 0.000s (0.120s)	Loss 0.00021 (0.00023)	Accuracy 0.931 (0.917)
+2021-03-21 19:49:33,729 Test: [0/50]	Time 63.750 (63.750)	Loss 0.0003 (0.0003)	Accuracy 0.900 (0.900)
+2021-03-21 19:51:46,559 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 19:51:54,806 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 19:51:54,807 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 19:51:54,807 | pose_hgr... | 0.775 | 0.935 | 0.838 | 0.744 | 0.824 | 0.801 | 0.940 | 0.860 | 0.766 | 0.855 |
+2021-03-21 19:51:54,815 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 19:52:59,975 Epoch: [62][0/1171]	Time 55.319s (55.319s)	Speed 2.3 samples/s	Data 38.336s (38.336s)	Loss 0.00020 (0.00020)	Accuracy 0.935 (0.935)
+2021-03-21 19:56:41,444 Epoch: [62][100/1171]	Time 2.100s (2.740s)	Speed 61.0 samples/s	Data 0.001s (0.562s)	Loss 0.00022 (0.00023)	Accuracy 0.914 (0.918)
+2021-03-21 20:00:08,702 Epoch: [62][200/1171]	Time 1.899s (2.408s)	Speed 67.4 samples/s	Data 0.020s (0.320s)	Loss 0.00024 (0.00023)	Accuracy 0.920 (0.917)
+2021-03-21 20:03:35,926 Epoch: [62][300/1171]	Time 2.109s (2.297s)	Speed 60.7 samples/s	Data 0.004s (0.240s)	Loss 0.00024 (0.00023)	Accuracy 0.920 (0.917)
+2021-03-21 20:07:11,030 Epoch: [62][400/1171]	Time 2.114s (2.260s)	Speed 60.6 samples/s	Data 0.002s (0.200s)	Loss 0.00022 (0.00023)	Accuracy 0.925 (0.917)
+2021-03-21 20:10:45,884 Epoch: [62][500/1171]	Time 1.853s (2.238s)	Speed 69.1 samples/s	Data 0.001s (0.176s)	Loss 0.00021 (0.00023)	Accuracy 0.928 (0.917)
+2021-03-21 20:14:21,421 Epoch: [62][600/1171]	Time 1.985s (2.224s)	Speed 64.5 samples/s	Data 0.001s (0.161s)	Loss 0.00025 (0.00023)	Accuracy 0.903 (0.917)
+2021-03-21 20:17:56,628 Epoch: [62][700/1171]	Time 1.891s (2.214s)	Speed 67.7 samples/s	Data 0.001s (0.150s)	Loss 0.00022 (0.00023)	Accuracy 0.926 (0.917)
+2021-03-21 20:21:31,363 Epoch: [62][800/1171]	Time 1.988s (2.206s)	Speed 64.4 samples/s	Data 0.001s (0.142s)	Loss 0.00019 (0.00023)	Accuracy 0.937 (0.918)
+2021-03-21 20:25:05,524 Epoch: [62][900/1171]	Time 2.009s (2.199s)	Speed 63.7 samples/s	Data 0.001s (0.135s)	Loss 0.00024 (0.00023)	Accuracy 0.914 (0.918)
+2021-03-21 20:28:39,628 Epoch: [62][1000/1171]	Time 2.123s (2.193s)	Speed 60.3 samples/s	Data 0.001s (0.130s)	Loss 0.00023 (0.00023)	Accuracy 0.920 (0.918)
+2021-03-21 20:32:13,871 Epoch: [62][1100/1171]	Time 1.862s (2.188s)	Speed 68.7 samples/s	Data 0.013s (0.126s)	Loss 0.00022 (0.00023)	Accuracy 0.927 (0.918)
+2021-03-21 20:35:19,916 Test: [0/50]	Time 67.623 (67.623)	Loss 0.0003 (0.0003)	Accuracy 0.897 (0.897)
+2021-03-21 20:37:42,729 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 20:37:50,208 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 20:37:50,209 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 20:37:50,209 | pose_hgr... | 0.776 | 0.935 | 0.847 | 0.745 | 0.824 | 0.802 | 0.941 | 0.861 | 0.768 | 0.855 |
+2021-03-21 20:37:50,219 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 20:39:05,900 Epoch: [63][0/1171]	Time 65.790s (65.790s)	Speed 1.9 samples/s	Data 47.624s (47.624s)	Loss 0.00021 (0.00021)	Accuracy 0.923 (0.923)
+2021-03-21 20:42:50,000 Epoch: [63][100/1171]	Time 2.315s (2.870s)	Speed 55.3 samples/s	Data 0.000s (0.599s)	Loss 0.00025 (0.00023)	Accuracy 0.909 (0.919)
+2021-03-21 20:46:26,578 Epoch: [63][200/1171]	Time 2.008s (2.520s)	Speed 63.8 samples/s	Data 0.000s (0.343s)	Loss 0.00022 (0.00023)	Accuracy 0.921 (0.918)
+2021-03-21 20:50:06,359 Epoch: [63][300/1171]	Time 1.528s (2.413s)	Speed 83.8 samples/s	Data 0.002s (0.257s)	Loss 0.00024 (0.00023)	Accuracy 0.907 (0.917)
+2021-03-21 20:53:43,036 Epoch: [63][400/1171]	Time 2.092s (2.351s)	Speed 61.2 samples/s	Data 0.000s (0.212s)	Loss 0.00021 (0.00023)	Accuracy 0.938 (0.918)
+2021-03-21 20:57:20,780 Epoch: [63][500/1171]	Time 2.013s (2.317s)	Speed 63.6 samples/s	Data 0.003s (0.186s)	Loss 0.00024 (0.00023)	Accuracy 0.921 (0.918)
+2021-03-21 21:00:58,740 Epoch: [63][600/1171]	Time 2.185s (2.294s)	Speed 58.6 samples/s	Data 0.001s (0.169s)	Loss 0.00022 (0.00023)	Accuracy 0.931 (0.919)
+2021-03-21 21:04:35,818 Epoch: [63][700/1171]	Time 2.001s (2.276s)	Speed 64.0 samples/s	Data 0.001s (0.156s)	Loss 0.00022 (0.00023)	Accuracy 0.926 (0.919)
+2021-03-21 21:08:14,881 Epoch: [63][800/1171]	Time 1.463s (2.266s)	Speed 87.5 samples/s	Data 0.001s (0.147s)	Loss 0.00023 (0.00023)	Accuracy 0.926 (0.919)
+2021-03-21 21:11:51,460 Epoch: [63][900/1171]	Time 2.063s (2.255s)	Speed 62.0 samples/s	Data 0.001s (0.139s)	Loss 0.00026 (0.00023)	Accuracy 0.897 (0.919)
+2021-03-21 21:15:27,524 Epoch: [63][1000/1171]	Time 2.323s (2.245s)	Speed 55.1 samples/s	Data 0.000s (0.134s)	Loss 0.00023 (0.00023)	Accuracy 0.908 (0.918)
+2021-03-21 21:19:05,245 Epoch: [63][1100/1171]	Time 2.093s (2.239s)	Speed 61.2 samples/s	Data 0.001s (0.129s)	Loss 0.00020 (0.00023)	Accuracy 0.948 (0.919)
+2021-03-21 21:22:11,638 Test: [0/50]	Time 67.145 (67.145)	Loss 0.0003 (0.0003)	Accuracy 0.897 (0.897)
+2021-03-21 21:24:34,037 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-21 21:24:41,492 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-21 21:24:41,493 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-21 21:24:41,493 | pose_hgr... | 0.776 | 0.925 | 0.847 | 0.744 | 0.824 | 0.801 | 0.939 | 0.862 | 0.767 | 0.854 |
+2021-03-21 21:24:41,501 => saving checkpoint to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3
+2021-03-21 21:25:57,456 Epoch: [64][0/1171]	Time 65.609s (65.609s)	Speed 2.0 samples/s	Data 48.459s (48.459s)	Loss 0.00023 (0.00023)	Accuracy 0.905 (0.905)
+2021-03-21 21:29:40,303 Epoch: [64][100/1171]	Time 2.047s (2.856s)	Speed 62.5 samples/s	Data 0.000s (0.585s)	Loss 0.00023 (0.00023)	Accuracy 0.924 (0.919)
+2021-03-21 21:33:18,958 Epoch: [64][200/1171]	Time 1.922s (2.523s)	Speed 66.6 samples/s	Data 0.001s (0.335s)	Loss 0.00021 (0.00023)	Accuracy 0.931 (0.918)
+2021-03-21 21:36:55,884 Epoch: [64][300/1171]	Time 1.694s (2.405s)	Speed 75.6 samples/s	Data 0.001s (0.251s)	Loss 0.00022 (0.00023)	Accuracy 0.927 (0.918)
+2021-03-21 21:40:33,627 Epoch: [64][400/1171]	Time 2.102s (2.349s)	Speed 60.9 samples/s	Data 0.002s (0.210s)	Loss 0.00024 (0.00023)	Accuracy 0.913 (0.918)
+2021-03-21 21:44:11,374 Epoch: [64][500/1171]	Time 2.175s (2.314s)	Speed 58.8 samples/s	Data 0.041s (0.185s)	Loss 0.00021 (0.00023)	Accuracy 0.929 (0.919)
+2021-03-21 21:47:47,771 Epoch: [64][600/1171]	Time 2.209s (2.289s)	Speed 57.9 samples/s	Data 0.001s (0.167s)	Loss 0.00023 (0.00023)	Accuracy 0.923 (0.919)
+2021-03-21 21:51:26,350 Epoch: [64][700/1171]	Time 2.046s (2.275s)	Speed 62.6 samples/s	Data 0.011s (0.155s)	Loss 0.00022 (0.00023)	Accuracy 0.930 (0.919)
+2021-03-21 21:55:03,494 Epoch: [64][800/1171]	Time 1.834s (2.262s)	Speed 69.8 samples/s	Data 0.000s (0.146s)	Loss 0.00024 (0.00023)	Accuracy 0.923 (0.919)
+2021-03-21 21:58:39,648 Epoch: [64][900/1171]	Time 1.787s (2.251s)	Speed 71.6 samples/s	Data 0.007s (0.138s)	Loss 0.00022 (0.00023)	Accuracy 0.928 (0.919)

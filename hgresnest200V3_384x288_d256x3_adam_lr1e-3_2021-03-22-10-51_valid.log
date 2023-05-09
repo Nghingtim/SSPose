@@ -1,0 +1,105 @@
+2021-03-22 10:51:54,882 Namespace(cfg='experiments/coco/resnest/hgresnest200V3_384x288_d256x3_adam_lr1e-3.yaml', dataDir='', logDir='', modelDir='', opts=['TEST.MODEL_FILE', 'output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/model_best.pth', 'TEST.USE_GT_BBOX', 'False'], prevModelDir='')
+2021-03-22 10:51:54,882 AUTO_RESUME: True
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+DATASET:
+  COLOR_RGB: False
+  DATASET: coco
+  DATA_FORMAT: jpg
+  FLIP: True
+  HYBRID_JOINTS_TYPE: 
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.0
+  ROOT: data/coco/
+  ROT_FACTOR: 40
+  SCALE_FACTOR: 0.3
+  SELECT_DATA: False
+  TEST_SET: val2017
+  TRAIN_SET: train2017
+DATA_DIR: 
+DEBUG:
+  DEBUG: True
+  SAVE_BATCH_IMAGES_GT: True
+  SAVE_BATCH_IMAGES_PRED: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
+GPUS: (0, 1, 2, 3)
+LOG_DIR: log
+LOSS:
+  TOPK: 8
+  USE_DIFFERENT_JOINTS_WEIGHT: False
+  USE_OHKM: False
+  USE_TARGET_WEIGHT: True
+MODEL:
+  EXTRA:
+    DECONV_WITH_BIAS: False
+    FINAL_CONV_KERNEL: 1
+    NUM_DECONV_FILTERS: [256, 256, 256]
+    NUM_DECONV_KERNELS: [4, 4, 4]
+    NUM_DECONV_LAYERS: 3
+    NUM_LAYERS: 101
+  HEATMAP_SIZE: [72, 96]
+  IMAGE_SIZE: [288, 384]
+  INIT_WEIGHTS: True
+  NAME: pose_hgresnestV3_200
+  NUM_JOINTS: 17
+  PRETRAINED: models/pytorch/imagenet/resnest200-75117900.pth
+  SIGMA: 3
+  TAG_PER_JOINT: True
+  TARGET_TYPE: gaussian
+OUTPUT_DIR: output
+PIN_MEMORY: True
+PRINT_FREQ: 100
+RANK: 0
+TEST:
+  BATCH_SIZE_PER_GPU: 32
+  BBOX_THRE: 1.0
+  COCO_BBOX_FILE: data/coco/person_detection_results/COCO_val2017_detections_AP_H_56_person.json
+  FLIP_TEST: True
+  IMAGE_THRE: 0.0
+  IN_VIS_THRE: 0.2
+  MODEL_FILE: output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/model_best.pth
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  POST_PROCESS: True
+  SHIFT_HEATMAP: True
+  SOFT_NMS: False
+  USE_GT_BBOX: False
+TRAIN:
+  BATCH_SIZE_PER_GPU: 32
+  BEGIN_EPOCH: 0
+  CHECKPOINT: 
+  END_EPOCH: 80
+  GAMMA1: 0.99
+  GAMMA2: 0.0
+  LR: 0.001
+  LR_FACTOR: 0.1
+  LR_STEP: [50, 65]
+  MOMENTUM: 0.9
+  NESTEROV: False
+  OPTIMIZER: adam
+  RESUME: False
+  SHUFFLE: True
+  WD: 0.0001
+WORKERS: 24
+2021-03-22 10:51:58,856 => loading model from output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/model_best.pth
+2021-03-22 10:52:17,149 => classes: ['__background__', 'person']
+2021-03-22 10:52:17,149 => num_images: 5000
+2021-03-22 10:52:21,168 => Total boxes: 104125
+2021-03-22 10:52:22,843 => Total boxes after fliter low score@0.0: 104125
+2021-03-22 10:52:22,892 => load 104125 samples
+2021-03-22 10:54:09,525 Test: [0/814]	Time 106.515 (106.515)	Loss 0.0002 (0.0002)	Accuracy 0.000 (0.000)
+2021-03-22 11:00:15,783 Test: [100/814]	Time 3.518 (4.681)	Loss 0.0002 (0.0001)	Accuracy 0.012 (0.008)
+2021-03-22 11:06:21,839 Test: [200/814]	Time 3.544 (4.173)	Loss 0.0002 (0.0001)	Accuracy 0.000 (0.007)
+2021-03-22 11:12:26,589 Test: [300/814]	Time 3.738 (3.999)	Loss 0.0000 (0.0001)	Accuracy 0.000 (0.006)
+2021-03-22 11:18:32,295 Test: [400/814]	Time 3.616 (3.913)	Loss 0.0001 (0.0001)	Accuracy 0.000 (0.005)
+2021-03-22 11:24:37,913 Test: [500/814]	Time 3.550 (3.862)	Loss 0.0000 (0.0001)	Accuracy 0.000 (0.005)
+2021-03-22 11:30:39,255 Test: [600/814]	Time 3.423 (3.821)	Loss 0.0001 (0.0001)	Accuracy 0.000 (0.004)
+2021-03-22 11:36:44,788 Test: [700/814]	Time 3.452 (3.797)	Loss 0.0005 (0.0001)	Accuracy 0.000 (0.004)
+2021-03-22 11:42:14,804 Test: [800/814]	Time 2.613 (3.735)	Loss 0.0002 (0.0001)	Accuracy 0.032 (0.004)
+2021-03-22 11:43:34,382 => writing results json to output/coco/pose_hgresnestV3_200/hgresnest200V3_384x288_d256x3_adam_lr1e-3/results/keypoints_val2017_results_0.json
+2021-03-22 11:44:40,999 | Arch | AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+2021-03-22 11:44:41,000 |---|---|---|---|---|---|---|---|---|---|---|
+2021-03-22 11:44:41,000 | pose_hgr... | 0.753 | 0.900 | 0.821 | 0.715 | 0.826 | 0.804 | 0.940 | 0.865 | 0.759 | 0.869 |
